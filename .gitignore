@@ -112,4 +112,8 @@ LocationOfData_GitData.txt
 PyDev.txt
 /OtherProjects
 /DS_Step2
+
+# Eclipse 
 .metadata
+.project
+.pydevproject
