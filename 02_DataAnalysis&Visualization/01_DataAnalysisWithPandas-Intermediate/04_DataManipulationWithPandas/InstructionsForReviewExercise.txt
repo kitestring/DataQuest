@@ -1,0 +1,8 @@
+Instructions
+	1. Normalize (using the max Protein value) the values in the "Protein_(g)" column, and assign the result to normalized_protein.
+	2. Assign normalized Protein value to a new column named Normalized_Protein.
+	3. Normalize (using the max Lipid value) the values in the "Lipid_Tot_(g)" column, and assign the result to normalized_fat.
+	4. Assign normalized Lipid value to a new column named Normalized_Fat
+	5. Use the Normalized_Protein and Normalized_Fat columns with the formula {Score = (2 x Normalized_Protein) - (0.75 * Normalized_Fat)} 
+		to create the Norm_Nutr_Index column.
+	6. Sort the food_info DataFrame in-place on the Norm_Nutr_Index column in descending order.

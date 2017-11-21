@@ -1,0 +1,5 @@
+darkgrid: Coordinate grid displayed, dark background color
+whitegrid: Coordinate grid displayed, white background color
+dark: Coordinate grid hidden, dark background color
+white: Coordinate grid hidden, white background color
+ticks: Coordinate grid hidden, white background color, ticks visible

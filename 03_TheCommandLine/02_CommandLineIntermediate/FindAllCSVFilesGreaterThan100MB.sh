@@ -1,0 +1,1 @@
+find . -size +1M -name *.csv | xargs ls -l

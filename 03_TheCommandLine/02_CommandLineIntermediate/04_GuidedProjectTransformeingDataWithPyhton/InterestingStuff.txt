@@ -1,0 +1,1 @@
+see count.py for an exmple of using the Counter() method that is in the collections library

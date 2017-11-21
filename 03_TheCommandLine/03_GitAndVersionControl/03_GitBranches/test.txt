@@ -1,0 +1,1 @@
+The initial line in my text file, the next line I'll try some string formattingNow here's a nunber 0Now here's a nunber 22

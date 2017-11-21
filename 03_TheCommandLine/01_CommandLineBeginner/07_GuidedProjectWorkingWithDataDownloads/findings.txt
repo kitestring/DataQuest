@@ -1,0 +1,5 @@
+Maginet schools (MS) have a smaller ratio of males to females  
+as compared to Juvenile justice facility, or youth prison (JJ)
+- MS m/f ratio = 6.014085
+- JJ m/f ratio = 1.048832
+

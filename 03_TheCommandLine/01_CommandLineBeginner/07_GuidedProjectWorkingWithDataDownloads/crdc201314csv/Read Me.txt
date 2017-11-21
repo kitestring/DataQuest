@@ -1,0 +1,62 @@
+About the CRDC Data:
+The Civil Rights Data Collection (CRDC) is a biennial (i.e., every other school year) survey required by the U.S. Department of Education’s (Department) Office for Civil Rights (OCR) since 1968. Similar to the 2011–12 CRDC, the 2013–14 CRDC collected data from a universe of all public local educational agencies (LEA) and schools, including long-term secure juvenile justice facilities, charter schools, alternative schools, and schools serving students with disabilities. 
+
+The CRDC collects data on leading civil rights indicators related to access and barriers to educational opportunity at the early childhood through grade 12 levels. The CRDC is also a longstanding and critical aspect of the overall enforcement and monitoring strategy used by OCR to ensure that recipients of the Department’s Federal financial assistance do not discriminate on the basis of race, color, national origin, sex, and disability. OCR relies on CRDC data it receives from public school districts as it investigates complaints alleging discrimination, determines whether the Federal civil rights laws it enforces have been violated, initiates proactive compliance reviews to focus on particularly acute or nationwide civil rights compliance problems, and provides policy guidance and technical assistance to educational institutions, parents, students, and others. In addition, the CRDC is a valuable resource for other Department offices and Federal agencies, policymakers and researchers, educators and school officials, parents and students, and the public who seek data on student equity and opportunity. 
+
+Data Corrections:
+OCR generally does not allow districts to make amendments to the data after the close of the collection. However, OCR recognizes that minor corrections to the data may be necessary. As part of the 2013-14 CRDC process, districts were allowed to submit data corrections for up to one year after the data submission period closed. A data correction is defined as revised data for a data element (e.g., enrollment numbers for female students). 
+
+Following is a summary of data corrections that were incorporated into the data. The following updates were made in the May 2017 data release. 
+* AppleTree Early Learning Public Charter School in Washington, DC made corrections to preschool expulsions.
+* Atlanta Public Schools in Georgia made corrections to chronic student absenteeism.
+* Barrington Community Unit School District 220 in Illinois made corrections to teacher absenteeism.
+* Belton Independent School District in Texas made corrections to reported allegations of harassment or bullying.
+* Columbia 93 in Missouri made corrections to chronic student absenteeism.
+* Cypress-Fairbanks Independent School District in Texas made corrections to advanced placement enrollment, advanced placement exams, and SAT.
+* Hawaii Department of Education made corrections to school characteristics, preschool enrollment, preschool suspensions, and expulsions.
+* Mt. Diablo Unified in California made corrections to referrals to law enforcement and school-related arrests.
+* New York City Public Schools in New York made corrections to chronic student absenteeism.
+* Newton Unified School District in Kansas made corrections to referrals to law enforcement.
+* Northland Preparatory Academy in Arizona made corrections to expulsions without educational services for students with disabilities.
+* Perry Township Schools in Indiana made corrections to teacher absenteeism.
+* Prince William County Public Schools in Virginia made corrections to teacher absenteeism.
+* La Crosse School District in Wisconsin made corrections to chronic student absenteeism.
+* Skokie School District 69 in Illinois made corrections to teacher absenteeism.
+* Topeka Public Schools in Kansas made corrections to school-related arrests.
+* Wisconsin Rapids School District (Lincoln High School) in Wisconsin made corrections to chronic student absenteeism.
+
+There are other known issues with the 2013-14 CRDC data that were not addressed because the data correction was: a) received after the deadline, b) not received at all, or c) not approved.  Data users should exercise caution when using these data. Following is a list of data issues that were NOT corrected in the data.
+* Several districts in Ohio replicated student counts across suspensions and expulsions data.
+* Hopewell Area School District (Beaver County Prison), Stroudsburg Area District (Stroudsburg High School), and Ridgway Area School District (Elk County Jail) in Pennsylvania informed OCR the reported days   in regular school year and hours are incorrect.
+* Humboldt Elementary School in Kansas informed OCR the number of school-related arrests is incorrect. 
+* Modoc Joint Unified School District in California informed OCR the number of school-related arrests is incorrect. 
+* Penfield School District (Penfield High School and Scribner Road Elementary School) in New York informed OCR the number of expulsions is incorrect.
+* Prince George's County Public Schools in Maryland reported all schools as charter schools and reported offering no mathematics courses.
+* Ritenour School District in Missouri informed OCR teacher absenteeism is incorrect. 
+* Tempe School District in Arizona informed OCR the indicator for LEA desegregation order or plan is incorrect. 
+* Waynesboro City Public Schools (Kate Collins Middle School) informed OCR chronic student absenteeism is incorrect.
+* Yosemite Unified in California informed OCR teacher absenteeism is incorrect. 
+
+The state of Florida, on behalf of its school districts, corrected data it previously submitted to the 2013-14 CRDC. Following is a short description of the corrections that were made in the October 2016 data release. 
+* Algebra I Courses and Classes – Students who passed Algebra I in grades 9 – 12.
+* Chronic Absenteeism – Students who were chronically absent.
+* Corporal Punishment – Students with disabilities and English Learners who received corporal punishment.
+* Expulsions – Students with disabilities and English Learners who received expulsions.
+* Harassment and Bullying - Students who were disciplined for bullying or harassment. Students who were reported as harassed or bullied.
+* Preschool – Preschoolers who received corporate punishment. 
+* Restraint and Seclusion – Students with disabilities and English Learners who were subjected to restraint or seclusion. Number of instances of restraint or seclusion subjected upon students with   disabilities and English Learners. 
+* Retention – Students who were retained. 
+* School Support and Security Staff – first and second year teachers. 
+* Student Referrals and Arrests - Students with disabilities and English Learners who received referrals to law enforcement or school-related arrests.
+* Suspensions – Students with disabilities and English Learners who received suspensions.
+
+Contact Information:
+If you have any comments or questions concerning the use of CRDC data, please write to: 
+Office for Civil Rights 
+U.S. Department of Education 
+400 Maryland Avenue S.W. 
+Washington, D.C. 20202-1172 
+Website: ocrdata.ed.gov
+Email: ocrdata@ed.gov
+
+	

@@ -1,0 +1,42 @@
+
+About the Civil Rights Data Collection
+
+The purpose of the U.S. Department of Education (ED) Civil Rights Data Collection (CRDC) is to obtain data related to the nation’s public school districts and elementary and secondary schools’ obligation to provide equal educational opportunity. Since 1968, the CRDC has collected a variety of information, including student enrollment and educational programs and services data that are disaggregated by race/ethnicity, sex, limited English proficiency, and disability, about
+public schools across the nation.
+
+The CRDC is a mandatory data collection, authorized under the statutes and regulations implementing Title VI of the Civil Rights Act of 1964, Title IX of the Education Amendments of 1972, Section
+504 of the Rehabilitation Act of 1973, and under the Department of Education Organization Act (20 U.S.C. § 3413). The regulations implementing these provisions can be found at 34 CFR 100.6(b); 34
+CFR 106.71; and 34 CFR 104.61.
+
+The 2013-14 CRDC is a universe survey. School districts self-report and certify all data presented. 
+
+
+
+Documentation for the 2013-14 CRDC
+
+The Public-Use Data File User’s Manual for the 2013–14 CRDC is available at http://ocrdata.ed.gov/DataFileUsersManual. The User's Manual provides information about the purpose of the study, the target population and respondents, data anomalies and considerations, differences in the restricted and public-use data, data collection procedures, the data file structure, and data processing.
+
+Documents describing the 2013-14 CRDC table layouts are available at http://www2.ed.gov/about/offices/list/ocr/docs/crdc-2013-14-all-schools-form.doc (school-level file) and http://www2.ed.gov/about/offices/list/ocr/docs/crdc-2013-14-lea-form.doc (district-level file). 
+
+For more information about the CRDC, please visit ocrdata.ed.gov.
+
+
+
+Documentation for the 2013-14 CRDC Single Flat Files
+
+ 
+CRDC2013_14_SCH.csv is a single flat file of all the school-level data from the 2013-14 CRDC. For each variable in CRDC2013_14.csv, the contents file (CRDC2013_14_SCH_contents.csv) lists each variable name, the variable order, the value type (i.e. numeric of text), the variable label, and the survey questionnaire part and question number.
+
+CRDC2013_14_LEA.csv is a single flat file of all the district-level data from the 2013-14 CRDC. For each variable in CRDC2013_14_LEA.csv, the contents file (CRDC2013_14_LEA_contents.csv) lists each variable name, the variable order, the value type (i.e. numeric of text), the variable label, and the survey questionnaire part and question number.
+
+********
+UPDATE (as of June 2017): OCR released the final data file from the 2013-14 CRDC. This final data file contains, in addition to prior corrections to the Florida data, corrections from 16 school districts for a variety of data issues, including preschool enrollment, suspensions and expulsions, chronic student absenteeism, teacher absenteeism, referrals to law enforcement, school-related arrests, expulsions, harassment or bullying, and advanced placement enrollment. Information on the districts that submitted corrections, and the specific data issues corrected for each district is provided in the “read me” file in this .zip file.
+
+The September 2016 version of the data files may be accessed here: 
+https://inventory.data.gov/dataset/2acc601e-9806-4dff-b144-f8a5e7c095b8/resource/4aeebb4d-53f4-4547-93be-774eea5859bc/download/crdc201314csv.zip
+ 
+********
+UPDATE (as of September 30, 2016): The state of Florida, on behalf of its school districts, corrected data it previously submitted to the 2013-2014 Civil Rights Data Collection. Those data are now incorporated in the public-use data files in this .zip file. Other school districts may submit corrected data consistent with established CRDC policies. The New York City Department of Education has specifically acknowledged anomalies in its chronic absenteeism data. 
+
+The originally-released CRDC data files may be accessed here: https://inventory.data.gov/dataset/2acc601e-9806-4dff-b144-f8a5e7c095b8/resource/74d23657-842c-485d-b175-db72f7f091f4/download/crdc201314csv.zip.
+********  
