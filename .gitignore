@@ -108,6 +108,7 @@ venv.bak/
 *.csv
 *.doc
 *.docx
+*.doc#
 LocationOfData_GitData.txt
 PyDev.txt
 /OtherProjects
