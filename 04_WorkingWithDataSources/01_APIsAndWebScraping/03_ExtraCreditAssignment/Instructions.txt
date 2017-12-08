@@ -1,5 +1,6 @@
 To Truly reinforce and learn the concepts of API usage I feel it would be very important to do the following mini-self assingnment for practice
-    1) Get my own OAuth2 authentication tolken.
+Refer to https://www.reddit.com/dev/api
+    1) Get my own OAuth2 authentication token, and verify my token works using the status_code.
     2) Get the 10 top/best/new/hot posts in /r/python.
     3) Get the 5 best/new/hot/top comments in each of the top 10 posts in /r/funny.
     4) Post a comment to a subreddit.

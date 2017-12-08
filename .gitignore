@@ -118,3 +118,7 @@ PyDev.txt
 .metadata
 .project
 .pydevproject
+
+# Security
+client_settings_json.txt
+initializejsonfile.py
