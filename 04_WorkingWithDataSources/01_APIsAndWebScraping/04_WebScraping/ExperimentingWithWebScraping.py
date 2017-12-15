@@ -4,9 +4,13 @@
 # for the entire history of the NFL.
 # data will be scraped from https://en.wikipedia.org/wiki/{Team_Name_City}_seasons
 
-from pandas import DataFrame
+import pprint
+import re
+
 from bs4 import BeautifulSoup
+from pandas import DataFrame
 import requests
+
 
 def determineheaderstyle(lsts):
     second_row_headers = lsts[1]
@@ -99,12 +103,13 @@ def buildlistofdicts(lsts, key_dict, starting_list_index=2):
         
     return dictlst
 
-                        
+url_dict = {'Chicago_Bears': "https://en.wikipedia.org/wiki/List_of_Chicago_Bears_seasons"}                        
 # url = 'https://en.wikipedia.org/wiki/List_of_Miami_Dolphins_seasons'
-url = "https://en.wikipedia.org/wiki/List_of_Chicago_Bears_seasons"
+# url = "https://en.wikipedia.org/wiki/List_of_Chicago_Bears_seasons"
 # url = 'https://en.wikipedia.org/wiki/List_of_Green_Bay_Packers_seasons'
 # url = 'https://en.wikipedia.org/wiki/List_of_Baltimore_Ravens_seasons'
 # url = 'https://en.wikipedia.org/wiki/List_of_Pittsburgh_Steelers_seasons'
+url = url_dict['Chicago_Bears']
 response = requests.get(url)
 
 content = response.content
@@ -113,17 +118,40 @@ content = response.content
 # I'm guessing that the parser is deterimnie from the DOCTYPE
 parser = BeautifulSoup(content, 'html.parser')
 
-# It looks like this has gotten me what I need.
-# I'll just have to write some logic so the I can 
-# structure it.
+# Get the list of urls from the NFL team seasons lists found @ = "https://en.wikipedia.org/wiki/List_of_Chicago_Bears_seasons"
+a_items = parser.find_all('a')
+
+# compile regular expression patter to find the team season urls
+url_string_pattern = re.compile("/wiki/List_of_(.*)_seasons")
+
+for a_item in a_items:
+    
+    try:
+        result = url_string_pattern.search(a_item['href'])
+        if result != None:
+            text_value = str(a_item.text).replace(" ", "_")
+            group1_value = result.group(1)
+            if text_value == group1_value:
+                url_dict[text_value] = str(a_item['href'])
+        
+    except KeyError:
+        pass
+    
+pp = pprint.PrettyPrinter(indent=4,width=80,depth=20)
+pp.pprint(url_dict)
+
+# exit()
+# Get the win loss data from the Season by Season table
 tabs = parser.find_all('table')
 season_record_row_strings = None
 
 for tab in tabs:
     # Iterates through each table looking for the "season-by-season" win loss data table
     # The table with "Season", "Team", "League", & "Conference" in the 1st 10 elements is the "season-by-season" win loss data table
+    print(tab)
     temp = tab.text.split('\n')
-
+    temp = tab.text.split('\n')
+ 
     if 'Season' in temp[0:10] and 'Team' in temp[0:10] and 'League' in temp[0:10] and 'Conference' in temp[0:10]:
         # each table row is delimited by 3 new line characters
         season_record_row_strings = tab.text.split('\n\n\n')
