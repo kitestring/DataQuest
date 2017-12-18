@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 
-def determineheaderstyle(lsts):
+def determineheaderstyle(lsts, team_name):
     second_row_headers = lsts[1]
     len_second_row_headers = len(second_row_headers)
     # The difference is that some data sets have a Win% column that is 
@@ -21,7 +21,7 @@ def determineheaderstyle(lsts):
         # index number and not necessarily the whole portion of  the data
         # this will be handled in a later method
     
-    if len_second_row_headers == 4:
+    if len_second_row_headers == 4 or team_name == 'New_York_Giants' or team_name == 'San_Francisco_49ers':
         # When len_second_row_headers == 4 Win% column is not present
         return {'Year': 0, 'Wins_RS': 6, 'Losses_RS': 7, 'Ties_RS': 8, 'Finish': 5, 'Post_Season_Results':9}
     elif len_second_row_headers == 5:
@@ -65,7 +65,8 @@ def cleanlsts(lsts, team = None):
     
     # define logic exceptions
     logic_exception_year = {'Cleveland_Browns': 1949,
-                        'Los_Angeles_Rams': 1936}
+                        'Los_Angeles_Rams': 1936,
+                        'San_Francisco_49ers': 1949}
     
     logic_exception = team in logic_exception_year
     
@@ -104,6 +105,10 @@ def buildlistofdicts(lsts, key_dict, starting_list_index=2, additional_values_di
         # values: the index numbers to access the elements in the sublist that will be the values in the dictlst
     dictlst = []
     for lst in lsts[starting_list_index:]:
+        
+        if additional_values_dict['Team'] == 'San_Francisco_49ers':
+            print(lst) 
+        
         temp_dict = {}
         for key, index in key_dict.items(): # New_York_Giants San_Francisco_49ers - AttributeError: 'NoneType' object has no attribute 'items'
             
@@ -188,7 +193,7 @@ conference_pattern = re.compile('(.*)conference(.*)')
 # url_dict.pop('New_York_Giants', None) # AttributeError: 'NoneType' object has no attribute 'items' (line 98)
 url_dict.pop('Detroit_Lions', None) # Exception: Unexpected Data Formatting: The string = "Season" was not found in the home value. (line 232)
 # url_dict.pop('Los_Angeles_Rams', None) # IndexError: list index out of range (line 113)
-url_dict.pop('San_Francisco_49ers', None) # AttributeError: 'NoneType' object has no attribute 'items' (line 98)
+# url_dict.pop('San_Francisco_49ers', None) # AttributeError: 'NoneType' object has no attribute 'items' (line 98)
 
 for team_name, team_url in url_dict.items():
     
@@ -238,6 +243,9 @@ for team_name, team_url in url_dict.items():
             # each table row is delimited by 3 new line characters
         if season_found and team_found and league_found and conference_found:
             season_record_row_strings = tab.text.split('\n\n\n')
+#             if team_name == 'New_York_Giants' or team_name == 'San_Francisco_49ers':
+#                 for row in season_record_row_strings:
+#                     print(row.split('\n'))
     
     # If the season is not found or formatted differently then raise an exception        
     if season_record_row_strings == None:
@@ -259,6 +267,13 @@ for team_name, team_url in url_dict.items():
     # Clean up the data set
     # Removing leading '' elements
     season_record_lsts[:] = [remove_leading_empties(sublist) for sublist in season_record_lsts]
+    
+    
+    if team_name == "San_Francisco_49ers":
+        for lst in season_record_lsts:
+            print(lst)
+    
+    
     # All rows of a single element contain no win loss data and are thus removed
     season_record_lsts[:] = [sublist for sublist in season_record_lsts if len(sublist) > 1] 
     # All rows whose 0th & 1st elements are not the same 4 digit integer are culled
@@ -266,7 +281,11 @@ for team_name, team_url in url_dict.items():
     
     # Restructure data into list of dictionaries
     # each dictionary is a row of data where the key = header and value = value
-    key_dict = determineheaderstyle(cleaned_season_record_lsts)
+    
+#     if team_name == 'New_York_Giants' or team_name == 'San_Francisco_49ers':
+#         print(cleaned_season_record_lsts[:1])
+    
+    key_dict = determineheaderstyle(cleaned_season_record_lsts, team_name)
     seasons_lst_of_dicts = buildlistofdicts(cleaned_season_record_lsts, key_dict, additional_values_dict={'Team': team_name, 'url': url})
     # Create DataFrame for easy data manuplation
     season_df = pd.DataFrame(seasons_lst_of_dicts)
