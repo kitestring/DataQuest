@@ -75,11 +75,6 @@ def cleanlsts(lsts, team = None):
     attch_next_row = False
        
     for lst in lsts[2:]:
-#         if team == 'Los_Angeles_Rams':
-#             print(lst)
-            # if and 1949 clev brnws
-            # if Los_Angeles_Rams & 1936
-        
         
         if attch_next_row == True:
             # The preceding row is verified to be prior to 1933
@@ -106,11 +101,8 @@ def buildlistofdicts(lsts, key_dict, starting_list_index=2, additional_values_di
     dictlst = []
     for lst in lsts[starting_list_index:]:
         
-#         if additional_values_dict['Team'] == 'San_Francisco_49ers':
-#             print(lst) 
-        
         temp_dict = {}
-        for key, index in key_dict.items(): # New_York_Giants San_Francisco_49ers - AttributeError: 'NoneType' object has no attribute 'items'
+        for key, index in key_dict.items(): 
             
             # handling special cases
             if key == 'Post_Season_Results':
@@ -184,21 +176,10 @@ for a_item in a_items:
 team_data_lst = []
 team_data_dict = {}
 
-# season_pattern = re.compile('(.*)season(.*)')
-# team_pattern = re.compile('(.*)team(.*)')
-# league_pattern = re.compile('(.*)league(.*)')
-# conference_pattern = re.compile('(.*)conference(.*)')
-
 season_str = 'season'
 team_str = 'team'
 league_str = 'league'
 conference_str = 'conference'
-
-# url_dict.pop('Cleveland_Browns', None)  # IndexError: list index out of range (line 113)
-# url_dict.pop('New_York_Giants', None) # AttributeError: 'NoneType' object has no attribute 'items' (line 98)
-# url_dict.pop('Detroit_Lions', None) # Exception: Unexpected Data Formatting: The string = "Season" was not found in the home value. (line 232)
-# url_dict.pop('Los_Angeles_Rams', None) # IndexError: list index out of range (line 113)
-# url_dict.pop('San_Francisco_49ers', None) # AttributeError: 'NoneType' object has no attribute 'items' (line 98)
 
 for team_name, team_url in url_dict.items():
     
@@ -214,86 +195,35 @@ for team_name, team_url in url_dict.items():
     tabs = parser.find_all('table')
     season_record_row_strings = None
     
-    x = 0
-    
     for tab in tabs:
-        
-        x += 1
         
         # Iterates through each table looking for the "season-by-season" win loss data table
         # The table with "Season", "Team", "League", & "Conference" in the 1st 10 elements is the "season-by-season" win loss data table
         temp = tab.text.split('\n')
         
-        if team_name == 'Detroit_Lions' and x == 2:
-            print(temp)
-            print('season_str in temp[2]')
-            print(season_str in temp[2])
-        
         # Check for primer strings
         season_found, team_found, league_found, conference_found = False, False, False, False
         
         for value in temp[0:20]:
-            
-            if team_name == 'Detroit_Lions' and x == 2:
-#                 team_found = True
-                 
-                print(value.lower())
-                 
-                print('season_str in value.lower()')
-                print(season_str in value.lower())
-                print('team_str in value.lower()')
-                print(team_str in value.lower())
-                print('league_str in value.lower()')
-                print(league_str in value.lower())
-                print('conference_str in value.lower()')
-                print(conference_str in value.lower())
-                print()
-            
-#             if season_pattern.search(value.lower()) != None:
-#                 season_found = True
-#             elif team_pattern.search(value.lower()) != None:
-#                 team_found = True
-#             elif league_pattern.search(value.lower()) != None:
-#                 league_found = True
-#             elif conference_pattern.search(value.lower()) != None:
-#                 conference_found = True
-                
+                           
             if season_str in value.lower() and not team_str in value.lower():
                 season_found = True
-                if team_name == 'Detroit_Lions' and x == 2:
-                    print('season_found = True***\n')
             elif team_str in value.lower():
                 team_found = True
-                if team_name == 'Detroit_Lions' and x == 2:
-                    print('team_found = True***\n')
             elif league_str in value.lower():
                 league_found = True
-                if team_name == 'Detroit_Lions' and x == 2:
-                    print('league_found = True***\n')
             elif conference_str in value.lower():
                 conference_found = True
-                if team_name == 'Detroit_Lions' and x == 2:
-                    print('conference_found = True***\n')
      
 #         if 'Season' in temp[0:10] and 'Team' in temp[0:10] and 'League' in temp[0:10] and 'Conference' in temp[0:10]:
             # each table row is delimited by 3 new line characters
         if season_found and team_found and league_found and conference_found:
-            if team_name == 'Detroit_Lions':
-                print("Hello")
             season_record_row_strings = tab.text.split('\n\n\n')
             break
-#             if team_name == 'New_York_Giants' or team_name == 'San_Francisco_49ers':
-#                 for row in season_record_row_strings:
-#                     print(row.split('\n'))
     
     # If the season is not found or formatted differently then raise an exception        
     if season_record_row_strings == None:
-        print('season_found:', season_found)
-        print('team_found:', team_found)
-        print('league_found:', league_found)
-        print('conference_found:', conference_found)
         raise Exception('Unexpected Data Formatting: The string = "Season" was not found in the home value.')
-        # Detroit_Lions
             
     # Structre data: list if libraries that can be converted into a pd DataFrame
         # 1) Each row terminates with '\n\n\n' (with few exceptions)
@@ -307,12 +237,6 @@ for team_name, team_url in url_dict.items():
     # Removing leading '' elements
     season_record_lsts[:] = [remove_leading_empties(sublist) for sublist in season_record_lsts]
     
-    
-#     if team_name == "San_Francisco_49ers":
-#         for lst in season_record_lsts:
-#             print(lst)
-    
-    
     # All rows of a single element contain no win loss data and are thus removed
     season_record_lsts[:] = [sublist for sublist in season_record_lsts if len(sublist) > 1] 
     # All rows whose 0th & 1st elements are not the same 4 digit integer are culled
@@ -320,9 +244,6 @@ for team_name, team_url in url_dict.items():
     
     # Restructure data into list of dictionaries
     # each dictionary is a row of data where the key = header and value = value
-    
-#     if team_name == 'New_York_Giants' or team_name == 'San_Francisco_49ers':
-#         print(cleaned_season_record_lsts[:1])
     
     key_dict = determineheaderstyle(cleaned_season_record_lsts, team_name)
     seasons_lst_of_dicts = buildlistofdicts(cleaned_season_record_lsts, key_dict, additional_values_dict={'Team': team_name, 'url': url})
