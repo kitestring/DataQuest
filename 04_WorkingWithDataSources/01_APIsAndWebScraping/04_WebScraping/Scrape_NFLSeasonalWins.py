@@ -106,8 +106,8 @@ def buildlistofdicts(lsts, key_dict, starting_list_index=2, additional_values_di
     dictlst = []
     for lst in lsts[starting_list_index:]:
         
-        if additional_values_dict['Team'] == 'San_Francisco_49ers':
-            print(lst) 
+#         if additional_values_dict['Team'] == 'San_Francisco_49ers':
+#             print(lst) 
         
         temp_dict = {}
         for key, index in key_dict.items(): # New_York_Giants San_Francisco_49ers - AttributeError: 'NoneType' object has no attribute 'items'
@@ -184,14 +184,19 @@ for a_item in a_items:
 team_data_lst = []
 team_data_dict = {}
 
-season_pattern = re.compile('(.*)season(.*)')
-team_pattern = re.compile('(.*)team(.*)')
-league_pattern = re.compile('(.*)league(.*)')
-conference_pattern = re.compile('(.*)conference(.*)')
+# season_pattern = re.compile('(.*)season(.*)')
+# team_pattern = re.compile('(.*)team(.*)')
+# league_pattern = re.compile('(.*)league(.*)')
+# conference_pattern = re.compile('(.*)conference(.*)')
+
+season_str = 'season'
+team_str = 'team'
+league_str = 'league'
+conference_str = 'conference'
 
 # url_dict.pop('Cleveland_Browns', None)  # IndexError: list index out of range (line 113)
 # url_dict.pop('New_York_Giants', None) # AttributeError: 'NoneType' object has no attribute 'items' (line 98)
-url_dict.pop('Detroit_Lions', None) # Exception: Unexpected Data Formatting: The string = "Season" was not found in the home value. (line 232)
+# url_dict.pop('Detroit_Lions', None) # Exception: Unexpected Data Formatting: The string = "Season" was not found in the home value. (line 232)
 # url_dict.pop('Los_Angeles_Rams', None) # IndexError: list index out of range (line 113)
 # url_dict.pop('San_Francisco_49ers', None) # AttributeError: 'NoneType' object has no attribute 'items' (line 98)
 
@@ -219,8 +224,10 @@ for team_name, team_url in url_dict.items():
         # The table with "Season", "Team", "League", & "Conference" in the 1st 10 elements is the "season-by-season" win loss data table
         temp = tab.text.split('\n')
         
-        if team_name == 'Detroit_Lions':
+        if team_name == 'Detroit_Lions' and x == 2:
             print(temp)
+            print('season_str in temp[2]')
+            print(season_str in temp[2])
         
         # Check for primer strings
         season_found, team_found, league_found, conference_found = False, False, False, False
@@ -228,21 +235,53 @@ for team_name, team_url in url_dict.items():
         for value in temp[0:20]:
             
             if team_name == 'Detroit_Lions' and x == 2:
-                print(value)
+#                 team_found = True
+                 
+                print(value.lower())
+                 
+                print('season_str in value.lower()')
+                print(season_str in value.lower())
+                print('team_str in value.lower()')
+                print(team_str in value.lower())
+                print('league_str in value.lower()')
+                print(league_str in value.lower())
+                print('conference_str in value.lower()')
+                print(conference_str in value.lower())
+                print()
             
-            if season_pattern.search(value.lower()) != None:
+#             if season_pattern.search(value.lower()) != None:
+#                 season_found = True
+#             elif team_pattern.search(value.lower()) != None:
+#                 team_found = True
+#             elif league_pattern.search(value.lower()) != None:
+#                 league_found = True
+#             elif conference_pattern.search(value.lower()) != None:
+#                 conference_found = True
+                
+            if season_str in value.lower() and not team_str in value.lower():
                 season_found = True
-            elif team_pattern.search(value.lower()) != None:
+                if team_name == 'Detroit_Lions' and x == 2:
+                    print('season_found = True***\n')
+            elif team_str in value.lower():
                 team_found = True
-            elif league_pattern.search(value.lower()) != None:
+                if team_name == 'Detroit_Lions' and x == 2:
+                    print('team_found = True***\n')
+            elif league_str in value.lower():
                 league_found = True
-            elif conference_pattern.search(value.lower()) != None:
+                if team_name == 'Detroit_Lions' and x == 2:
+                    print('league_found = True***\n')
+            elif conference_str in value.lower():
                 conference_found = True
+                if team_name == 'Detroit_Lions' and x == 2:
+                    print('conference_found = True***\n')
      
 #         if 'Season' in temp[0:10] and 'Team' in temp[0:10] and 'League' in temp[0:10] and 'Conference' in temp[0:10]:
             # each table row is delimited by 3 new line characters
         if season_found and team_found and league_found and conference_found:
+            if team_name == 'Detroit_Lions':
+                print("Hello")
             season_record_row_strings = tab.text.split('\n\n\n')
+            break
 #             if team_name == 'New_York_Giants' or team_name == 'San_Francisco_49ers':
 #                 for row in season_record_row_strings:
 #                     print(row.split('\n'))
@@ -269,9 +308,9 @@ for team_name, team_url in url_dict.items():
     season_record_lsts[:] = [remove_leading_empties(sublist) for sublist in season_record_lsts]
     
     
-    if team_name == "San_Francisco_49ers":
-        for lst in season_record_lsts:
-            print(lst)
+#     if team_name == "San_Francisco_49ers":
+#         for lst in season_record_lsts:
+#             print(lst)
     
     
     # All rows of a single element contain no win loss data and are thus removed
@@ -293,7 +332,7 @@ for team_name, team_url in url_dict.items():
     # Parce playoff data to get playoff wins losses, & Games_Played
     season_df['Wins_Pl'] = season_df['Post_Season_Results'].apply(count_playoffwins)
     season_df['Losses_Pl'] = season_df['Post_Season_Results'].apply(count_playofflosses)
-    season_df['Games_Played'] = season_df['Wins_Pl'] + season_df['Losses_Pl']
+    season_df['Pl_Games_Played'] = season_df['Wins_Pl'] + season_df['Losses_Pl']
     
     # print(season_df[['Year','Wins_Pl','Losses_Pl', 'Games_Played', 'Post_Season_Results']][season_df['Games_Played'] > 0])
     
@@ -301,5 +340,5 @@ for team_name, team_url in url_dict.items():
     team_data_dict[team_name] = season_df
     
 combined_team_data = team_data_lst[0].append(team_data_lst[1:])
-FileName = os.path.join(os.getcwd(),'NFL_SeasonalWins_latin.csv')
+FileName = os.path.join(os.getcwd(),'NFL_SeasonalWins.csv')
 combined_team_data.to_csv(FileName, encoding='utf-8')
