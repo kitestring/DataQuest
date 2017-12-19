@@ -4,6 +4,11 @@
 # for the entire history of the NFL.
 # data will be scraped from https://en.wikipedia.org/wiki/{Team_Name_City}_seasons
 
+# *************Note*************
+# I've come to learn that using BeautifulSoup in this manner is not robust at all
+# If your needed to use the split method you are not doing it correctly.
+# Most likely you just need to nest more HTML tags to get to the data your interested in.
+
 import os
 import pprint
 import re
