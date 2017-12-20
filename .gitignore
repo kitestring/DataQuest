@@ -13,8 +13,7 @@ develop-eggs/
 dist/
 downloads/
 eggs/
-.eggs/
-lib/
+.eggs/lib/
 lib64/
 parts/
 sdist/
@@ -109,10 +108,12 @@ venv.bak/
 *.doc
 *.docx
 *.doc#
+*.db
 LocationOfData_GitData.txt
 PyDev.txt
 /OtherProjects
 /DS_Step2
+/fivethirtyeight
 
 # Eclipse 
 .metadata
