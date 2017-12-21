@@ -1,63 +1,88 @@
 /* 01_Introduction
-Write a query that returns the number of majors with mostly male students.
-	Use all caps in the SELECT clause so our answer checking will match - COUNT(Major). */
+	Write a SQL query that displays all of the columns and the first five rows of the recent_grads table. */
 SELECT 
-	COUNT(Major) 
+	* 
 FROM
 	recent_grads
-WHERE
-	ShareWomen < 0.5;
+LIMIT 5;
 	
-/* 02_Finding A Column's Minimum and Maximum Values in SQLCODE
-	Write a query that returns the Engineering major with the lowest median salary.
-		We only want the Major, Major_category, and MIN(Median) columns in the result. */
+/* 02 Calculating Group-Level Summary Statistics
+	Use the SELECT statement to select the following columns and aggregates in a query:
+		Major_category
+		AVG(ShareWomen)
+	Use the GROUP BY statement to group the query by the Major_category column. */
 SELECT 
-	Major, Major_category, MIN(Median)
+	Major_category,
+	AVG(ShareWomen)
+FROM 
+	recent_grads
+GROUP BY 1;
+
+/* 03 Practice: Using GROUP BY
+	For each major category, find the percentage of graduates who are employed.
+		Use the SELECT statement to select the following columns and aggregates in your query:
+			Major_category
+			AVG(Employed) / AVG(Total) as share_employed
+		Use the GROUP BY statement to group the query by the Major_category column. */
+SELECT 
+	Major_category,
+	AVG(Employed) / AVG(Total) as share_employed
+FROM 
+	recent_grads
+GROUP BY Major_category;
+
+/* 04 Querying Virtual Columns With the HAVING Statement
+	Find all of the major categories where the share of graduates with low-wage jobs is greater than .1.
+		Use the SELECT statement to select the following columns and aggregates in a query:
+			Major_category
+			AVG(Low_wage_jobs) / AVG(Total) as share_low_wage
+		Use the GROUP BY statement to group the query by the Major_category column.
+		Use the HAVING statement to restrict the selection to rows where share_low_wage is greater than .1. */
+SELECT 
+	Major_category,
+	AVG(Low_wage_jobs) / AVG(Total) as share_low_wage
+FROM 
+	recent_grads
+GROUP BY 1
+HAVING
+	share_low_wage > 0.1;
+	
+/* 05 Rounding Results With the ROUND() FUNCTION
+	Write a SQL query that returns the following columns of recent_grads (in the same order):
+		ShareWomen rounded to 4 decimal places
+		Major_category
+	Limit the results to 10 rows. */
+SELECT 
+	ROUND(ShareWomen, 4),
+	Major_category
 FROM
 	recent_grads
-WHERE
-	Major_category = 'Engineering';
-	
-/* 03_Calculating Sums and Averages in SQL
-	Write a query that computes the sum of the Total column. - Return only the total number of students integer value. */
-SELECT SUM(Total)
-FROM recent_grads;
+LIMIT 10;
 
-
-/* 04_Combining Multiple Aggregation Functions
-	Write a query that computes the average of the Total column, the minimum of the Men 
-	column, and the maximum of the Women column, in that specific order.
-	Make sure that all of the aggregate functions are capitalized (SUM() not sum(), etc), so our results match yours. */
-SELECT AVG(Total), MIN(Men), MAX(Women)
-FROM recent_grads; 
-
-/* 05_Customizing the Results
-	Write a query that returns, in the following order:
-		the number of rows as Number of Students
-		the maximum value of Unemployment_rate as Highest Unemployment Rate */
-SELECT COUNT(*) 'Number of Students', MAX(Unemployment_rate) 'Highest Unemployment Rate'
-FROM recent_grads;
-
-
-/* 06_Counting Uniquie Values
-	Write a query that returns the number of unique values in the Major, 
-	Major_category, and Major_code columns. Use the following aliases in the following order:
-		For the unique value count of the Major column, use the alias unique_majors.
-		For the unique value count of the Major_category column, use the alias unique_major_categories.
-		For the unique value count of the Major_code column, use the alias unique_major_codes. */
-SELECT 
-	COUNT(DISTINCT(Major)) 'unique_majors', COUNT(DISTINCT(Major_category)) 'unique_major_categories', COUNT(DISTINCT(Major_code)) 'unique_major_codes'
+/* 06 Nesting Functions
+	Use the SELECT statement to select the following columns and aggregates in a query:
+		Major_category
+		AVG(College_jobs) / AVG(Total) as share_degree_jobs
+			Use the ROUND function to round share_degree_jobs to 3 decimal places.
+	Group the query by the Major_category column.
+	Only select rows where share_degree_jobs is less than .3. */
+SELECT
+	Major_category,
+	ROUND(AVG(College_jobs) / AVG(Total), 3) as share_degree_jobs
 FROM
-	recent_grads;
+	recent_grads
+GROUP BY 1
+HAVING
+	share_degree_jobs < 0.3;
 	
-	
-/* 07_Performing Arithmetic in SQL
-	Write a query that computes the difference between the 25th and 75th percentile of salaries for all majors.
-		Return the Major column first, using the default column name.
-		Return the Major_category column second, using the default column name.
-		Return the compute difference between the 25th and 75th percentile third, using the alias quartile_spread.
-		Order the results from lowest to highest and only return the first 20 results. */
-SELECT Major, Major_category, P75th - P25th  'quartile_spread'
-FROM recent_grads
-ORDER BY 3 ASC
-LIMIT 20;
+/* 07 Casting
+	Write a query that divides the sum of the Women column by the sum of the Total column, aliased as SW.
+	Group the results by Major_category and order by SW.
+	The results should only contain the Major_category and SW columns, in that order. */
+SELECT
+	Major_category,
+	SUM(CAST(Women as Float)) / SUM(CAST(Total as Float)) as SW
+FROM
+	recent_grads
+GROUP BY 1
+ORDER BY 2;
