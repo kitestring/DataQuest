@@ -1,0 +1,25 @@
+see \DATAQUEST\02_DataAnalysis&Visualization\04_DataCleaning\04_GuidedProject_AnalyzingNYCHighSchoolData
+
+The following mark down will make a blue header 
+Then, a table below
+Finally, two sentences below the table with red font
+
+
+
+
+### <font color=blue>The following Survey Fields had the best coorelation to SAT scores.</font>
+
+
+
+| Field | Abv | r value |
+| :----- | :----- | :----- |
+|Number of student respondents| N_s | 0.423463 |
+|Number of parent respondents| N_p | 0.421530 |
+|Academic expectations score based on student responses | aca_s_11 | 0.339435 |
+|Safety and Respect score based on student responses | saf_s_11 | 0.337639 |
+|Safety and Respect total score | saf_tot_11 | 0.318753 |
+| Safety and Respect score based on teacher responses| saf_t_11 | 0.313810 |
+<br>
+<font color=red>Safety and respect seem to coorelate well with SAT scores.</font>
+<br>
+<font color=red>3 of the top 6 correlating survey fields are related to safety and respect</font>
