@@ -28,9 +28,9 @@
   * Authentication (OAuth2)
   * Web Scraping (BeautifulSoup)
   * SQL
-  * SQLite
+  * SQLite (sqlite3)
   * Database normalization
-  * PostgreSQL
+  * PostgreSQL (psycopg2)
   * Database indexing
 
 ### 5. Probability and Statistics
