@@ -1,7 +1,7 @@
 # Self-Directed Data Scientific Learning 
 ##### [DataQuest.io](https://www.dataquest.io/)
 
-### 2. Data Analysis & Visualization
+### 2. Data Analysis, Visualization, & Cleaning
   * Numpy
   * Pandas
   * Jupyter Notebook
