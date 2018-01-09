@@ -15,7 +15,7 @@
   * Nagivation
   * Working with files
   * Running python scripts from the command line
-  * Pipng & redirection output
+  * Pipng & redirecting output
   * csv toolkit
   * git
   * git remotes (github)
@@ -39,3 +39,17 @@
   * Probability Distributions
   * Chi-Squared Tests
   * Multi Category Chi-Squared Tests
+  
+### 6. Maching Learning  
+  1. Fundamentals
+     1. Model Testing using error metrics & simple validation
+     1. K-Nearest Neighbors
+     1. Multivariate K-Nearest Neighbors
+     1. Hyperparameter Optimization
+     1. Cross Validation
+  1. Calculus For Machine Learning
+     1. Linear Systems
+     1. Vectors
+     1. Matrix Algebra
+     1. K-Nearest Neighbors
+     1. Multivariate K-Nearest Neighbors
