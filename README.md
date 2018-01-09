@@ -53,3 +53,25 @@
      1. Matrix Algebra
      1. K-Nearest Neighbors
      1. Multivariate K-Nearest Neighbors
+  1. Linear Regression For Machine Learning
+     1. Linear Regression
+     1. Select features for linear regression
+     1. Fit a model using gradient descent
+     1. Ordinary Least Squares
+  1. Machine Learning in Python Intermediate Course
+     1. Logistic Regression
+     1. Binary Classifiers
+     1. Multiclass Classification
+     1. Intermediate Linear Regression
+     1. Overfitting
+     1. Clustering Basics
+     1. K-Means Clustering
+     1. Gradient Descent
+     1. Into to Neural Networks
+  1. Decision Trees
+     1. Entropy
+     1. Information gain
+     1. ID3 algorithm
+     1. apply & tweak decision trees
+     1. random forests
+
