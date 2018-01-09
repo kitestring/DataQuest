@@ -25,6 +25,16 @@
   * Authentication (OAuth2)
   * Web Scraping (BeautifulSoup)
   * SQL
+  * SQLite
   * Database normalization
   * PostgreSQL
   * Database indexing
+
+### 5. Probability and Statistics
+  * Standard Deviation & Correlation
+  * Linear Regression
+  * Disributions & Sampling
+  * Probabilities
+  * Probability Distributions
+  * Chi-Squared Tests
+  * Multi Category Chi-Squared Tests
