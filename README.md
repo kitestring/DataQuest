@@ -1,3 +1,5 @@
+<img src="https://avatars1.githubusercontent.com/u/18421630?s=400&u=d5c54d6323e38b78cf9115512b21647e80338ec0&v=4" width="48">
+
 # Self-Directed Data Scientific Learning 
 ##### [DataQuest.io](https://www.dataquest.io/)
 
