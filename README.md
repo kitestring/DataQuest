@@ -11,6 +11,7 @@
   * regular expressions (re)
   
 ### 3. Linux Command Line
+  * Running a Linux VM
   * Nagivation
   * Working with files
   * Running python scripts from the command line
