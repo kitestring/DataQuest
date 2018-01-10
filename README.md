@@ -30,7 +30,7 @@
   * SQL
   * SQLite (sqlite3)
   * Database normalization
-  * PostgreSQL (psycopg2)
+  * PostgreSQL (psycopg2, Command line PostgreSQL)
   * Database indexing
 
 ### 5. Probability and Statistics
