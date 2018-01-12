@@ -75,5 +75,5 @@
      1. Information gain
      1. ID3 algorithm
      1. apply & tweak decision trees
-     1. random forests
+     1. random forests (F-Ratio?)
 
