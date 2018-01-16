@@ -1,0 +1,20 @@
+kkite@mint18 ~ $ export PATH=/opt/PostgreSQL/9.6/bin/:$PATH
+kkite@mint18 ~ $ psql -U postgres -d postgres
+Password for user postgres: 
+psql.bin (9.6.6)
+Type "help" for help.
+
+Cannot read termcap database;
+using dumb terminal settings.
+postgres=# CREATE ROLE kitestring WITH SUPERUSER LOGIN PASSWORD 'Chlorine35%';
+postgres=# \q
+
+kkite@mint18 ~ $ psql -U kitestring -d postgres
+Password for user kitestring: 
+psql.bin (9.6.6)
+Type "help" for help.
+
+Cannot read termcap database;
+using dumb terminal settings.
+postgres=# Create DATABASE chinook;
+postgres=# \q
