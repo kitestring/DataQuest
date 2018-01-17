@@ -8,4 +8,5 @@ The steps in this exercise are written for SQLite, and the chinook.db was provid
 __Note:__ There is one inconsistancy between the SQLite database and the PostgreSQL databaase.  Witin the the SQLite database the *playlist_track* table has two PRIMARY KEYS, which is not supported in PostgreSQL.  As such that particular table has no primary key.
 
 ### Database chinook Schema
-https://s3.amazonaws.com/dq-content/189/chinook-schema.svg
+![chinook-schema](https://s3.amazonaws.com/dq-content/189/chinook-schema.svg)
+
