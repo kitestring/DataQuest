@@ -1,5 +1,5 @@
 ### Procedure Change
-The steps in this exercise are written for SQLite, and the chinook.db was provided.  To and an extra wrinkle the following alterations will be made to the steps to this exercise.
+The steps in this exercise are written for SQLite, and the *chinook.db* was provided.  To and an extra wrinkle the following alterations will be made to the steps to this exercise.
 
  1.  A new module will be written with a class to extract the data from a SQLite database *chinook.db* and load it into a PostgreSQL managed database.
  1.  Then this exercise can be done using PostgreSQL commandline rather then SQLite.		  
