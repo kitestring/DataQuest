@@ -1,0 +1,17 @@
+# The file .pgpass in a user's home directory can contain passwords to be used if the connection requires a password (and no password has been specified otherwise). 
+
+kkite@mint18 ~ $ nano ~/.pgpass
+# hostname:port:database:username:password
+	below is file contents:
+	
+*:*:*:kitestring:Chlorine35%
+
+kkite@mint18 ~ $ chmod 0600 .pgpass
+
+# Once the .pgpass file has the correct permissions and is in 
+# the correction you can run *.sql files using psql.
+# To run *.sql files using PostgreSQL use the following command:
+kkite@mint18 ~ $ psql -d chinook -U kitestring -w -f *.sql
+
+# more generically:
+psql -d Database -U UserInPGpassFile -w -f SQL_Command(s).sql
