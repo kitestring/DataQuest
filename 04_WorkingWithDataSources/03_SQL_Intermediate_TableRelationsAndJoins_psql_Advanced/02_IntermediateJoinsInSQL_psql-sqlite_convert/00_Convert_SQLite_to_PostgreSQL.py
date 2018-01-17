@@ -15,7 +15,7 @@ class postgresql_converter():
         return self.cur_sqlite.fetchall()
         # [('album',), ('artist',), ('customer',), ('employee',), ('genre',), ('invoice',), ('invoice_line',), ('media_type',), ('playlist',), ('playlist_track',), ('track',)]
     
-    def getTableSchema(self, table_name):
+    def getTableSchema_FromSQLite(self, table_name):
         return self.conn_sqlite.execute("PRAGMA table_info({tn});".format(tn=table_name)).fetchall()
         # [(0, 'album_id', 'INTEGER', 1, None, 1), (1, 'title', 'NVARCHAR(160)', 1, None, 0), (2, 'artist_id', 'INTEGER', 1, None, 0)]
         
@@ -86,7 +86,7 @@ class postgresql_converter():
         tables[:] = ['%s' % t for t in tables]
         for table_name in tables:
             print('Woring Table: {tn}\n'.format(tn=table_name))
-            table_schema = self.getTableSchema(table_name)
+            table_schema = self.getTableSchema_FromSQLite(table_name)
             print(table_schema)
             table_rows = self.getData_FromSQLite(table_name)
             self.create_postgresql_table(table_name, table_schema)
