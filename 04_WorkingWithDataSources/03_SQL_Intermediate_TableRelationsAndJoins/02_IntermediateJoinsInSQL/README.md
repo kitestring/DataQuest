@@ -6,3 +6,6 @@ The steps in this exercise are written for SQLite, and the chinook.db was provid
 1.  Using the PostgreSQL command line the user ken_kite should be added with permisison to create databases.  The syntax for this will be saved on *"PostgreSQLCommandLine_Setup.txt"*.
 
 __Note:__ There is one inconsistancy between the SQLite database and the PostgreSQL databaase.  Witin the the SQLite database the *playlist_track* table has two PRIMARY KEYS, which is not supported in PostgreSQL.  As such that particular table has no primary key.
+
+### Database chinook Schema
+https://s3.amazonaws.com/dq-content/189/chinook-schema.svg
