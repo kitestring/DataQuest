@@ -4,7 +4,7 @@ The steps in this exercise are written for SQLite, and the *chinook.db* was prov
  *  Since this data set uses the same database as previous exercise *(02_IntermediateJoinsInSQL_psql-sqlite_convert)* I can continue utilizing the PostgreSQL managed database *chinook*.
  *  Recall a class was written to extract all the data from the SQL version of the DB and create each corresponding table and load the data into the PostgreSQL DB.
  *  Recall: to run a *.sql file from the PostgreSQL commandline use the folloiwing syntax: 
-     *  kkite@mint18 ~ $ psql -d chinook -U kitestring -w -f *.sql
+     *  psql -d chinook -U kitestring -w -f *.sql
 
  #### Database chinook Schema
 
