@@ -4,6 +4,6 @@ using the customer_usa and customer_gt_90_dollars views:
 	The result should contain the columns from customers, in their original order.
  */
  
-\du
-\l
-\dt
+SELECT * FROM customer_usa;
+
+SELECT * FROM customer_gt_90_dollars;
