@@ -27,10 +27,10 @@
   * JSON (JavaScript Object Notation)
   * Authentication (OAuth2)
   * Web Scraping (BeautifulSoup)
-  * SQL
+  * SQL (Joins, WITH VIEW, UNION, INTERSECT, EXCEPT, ect...)
   * SQLite (sqlite3)
   * Database normalization
-  * PostgreSQL (psycopg2, Command line PostgreSQL)
+  * PostgreSQL (psycopg2, PostgreSQL Command-line, .pgpass)
   * Database indexing
 
 ### 5. Probability and Statistics
