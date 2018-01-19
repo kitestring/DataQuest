@@ -11,16 +11,14 @@ CREATE VIEW customer_gt_90_dollars AS
 	WITH total_puchased_info AS
 		(
 		SELECT 
-			c.*,
-			SUM(i.total) as total_purchased 
+			c.* 
 		FROM invoice i
 		INNER JOIN customer c ON c.customer_id = i.customer_id
 		GROUP BY c.customer_id
+		HAVING SUM(i.total) > 90
 		)
 
-
-	SELECT * FROM total_puchased_info
-	WHERE total_purchased > 90;
+	SELECT * FROM total_puchased_info;
 	
 /* 	
 Dataquest solution...
