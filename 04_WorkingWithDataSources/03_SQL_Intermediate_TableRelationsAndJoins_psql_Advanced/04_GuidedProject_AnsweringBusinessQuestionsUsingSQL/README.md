@@ -26,9 +26,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
 import security as s
-
-
-# cur = conn.cursor() 
 ```
 
 
@@ -459,7 +456,7 @@ ax.annotate('Hire Date: Apr 2017', xy=(0.25, 0.82), xycoords='axes fraction')
 
 
 
-    <matplotlib.text.Annotation at 0x7fec939c3ef0>
+    <matplotlib.text.Annotation at 0x7fec9404b550>
 
 
 
@@ -591,9 +588,9 @@ WITH
 
 SELECT 
     Country,
-    Customer_Count,
-    Total_Sales,
-    Avg_Order,
+    Customer_Count customers,
+    Total_Sales total_sales,
+    Avg_Order average_order,
     customer_lifetime_value
 FROM rank_total_sales
 ORDER BY sort_value DESC;
@@ -625,9 +622,9 @@ sales_by_country
     <tr style="text-align: right;">
       <th></th>
       <th>country</th>
-      <th>customer_count</th>
+      <th>customers</th>
       <th>total_sales</th>
-      <th>avg_order</th>
+      <th>average_order</th>
       <th>customer_lifetime_value</th>
     </tr>
   </thead>
@@ -725,11 +722,89 @@ sales_by_country
 
 
 ```python
-sales_by_country.set_index('country', inplace=True)
+sales_by_country.set_index("country", drop=True, inplace=True)
 colors = [plt.cm.Accent(i) for i in np.linspace(0, 1, sales_by_country.shape[0])]
 
+fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(9, 10))
+ax1, ax2, ax3, ax4 = axes.flatten()
+fig.subplots_adjust(hspace=.5, wspace=.3)
 
+
+# top left
+sales_breakdown = sales_by_country["total_sales"].copy().rename('')
+sales_breakdown.plot.pie(
+    ax=ax1,
+    startangle=-90,
+    counterclock=False,
+    title='Sales Breakdown by Country,\nNumber of Customers',
+    colormap=plt.cm.Accent,
+    fontsize=8,
+    wedgeprops={'linewidth':0}
+    
+)
+
+# top right
+cvd_cols = ["customers","total_sales"]
+custs_vs_dollars = sales_by_country[cvd_cols].copy()
+custs_vs_dollars.index.name = ''
+for c in cvd_cols:
+    custs_vs_dollars[c] /= custs_vs_dollars[c].sum() / 100
+custs_vs_dollars.plot.bar(
+    ax=ax2,
+    colormap=plt.cm.Set1,
+    title="Pct Customers vs Sales"
+)
+ax2.tick_params(top="off", right="off", left="off", bottom="off")
+ax2.spines["top"].set_visible(False)
+ax2.spines["right"].set_visible(False)
+
+
+# bottom left
+avg_order = sales_by_country["average_order"].copy()
+avg_order.index.name = ''
+difference_from_avg = avg_order * 100 / avg_order.mean() - 100
+difference_from_avg.drop("Other", inplace=True)
+difference_from_avg.plot.bar(
+    ax=ax3,
+    color=colors,
+    title="Average Order,\nPct Difference from Mean"
+)
+ax3.tick_params(top="off", right="off", left="off", bottom="off")
+ax3.axhline(0, color='k')
+ax3.spines["top"].set_visible(False)
+ax3.spines["right"].set_visible(False)
+ax3.spines["bottom"].set_visible(False)
+
+# bottom right
+ltv = sales_by_country["customer_lifetime_value"].copy()
+ltv.index.name = ''
+ltv.drop("Other",inplace=True)
+ltv.plot.bar(
+    ax=ax4,
+    color=colors,
+    title="Customer Lifetime Value, Dollars"
+)
+ax4.tick_params(top="off", right="off", left="off", bottom="off")
+ax4.spines["top"].set_visible(False)
+ax4.spines["right"].set_visible(False)
+
+plt.show()
 ```
 
-    [(0.49803921568627452, 0.78823529411764703, 0.49803921568627452, 1.0), (0.49803921568627452, 0.78823529411764703, 0.49803921568627452, 1.0), (0.74509803921568629, 0.68235294117647061, 0.83137254901960789, 1.0), (0.99215686274509807, 0.75294117647058822, 0.52549019607843139, 1.0), (1.0, 1.0, 0.59999999999999998, 1.0), (0.2196078431372549, 0.42352941176470588, 0.69019607843137254, 1.0), (0.94117647058823528, 0.0078431372549019607, 0.49803921568627452, 1.0), (0.74901960784313726, 0.35686274509803922, 0.090196078431372534, 1.0), (0.40000000000000002, 0.40000000000000002, 0.40000000000000002, 1.0), (0.40000000000000002, 0.40000000000000002, 0.40000000000000002, 1.0)]
 
+![png](output_16_0.png)
+
+
+#### <font color=blue>Discussion of the Data...</font>
+
+Based on the data, there may be opportunity in the following countries:
+  *  Czech Republic
+  *  United Kingdom
+  *  India
+  
+It's worth keeping in mind that because the amount of data from each of these countries is relatively low. Because of this, we should be cautious spending too much money on new marketing campaigns, as the sample size is not large enough to give us high confidence. A better approach would be to run small campaigns in these countries, collecting and analyzing the new customers to make sure that these trends hold with new customers.
+
+# <font color=blue>07 Albums vs Individual Tracks, Part 1</font>
+  -  Write a query that categorizes each invoice as either an album purchase or not, and calculates the following summary statistics
+    -  Number of invoices
+    -  Percentage of invoices
