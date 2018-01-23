@@ -22,7 +22,7 @@ In an effort to transition my career from that of a Chemist & Data Automation Sp
   * Pipng & redirecting output
   * csv toolkit
   * git
-  * git remotes (github)
+  * git remotes (github, .gitignore)
   
 ### 4. Working with Data Sources
   * API's (requests)
