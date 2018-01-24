@@ -11,6 +11,7 @@
 ```python
 %matplotlib inline
 import pandas as pd
+import sqlite3
 
 pd.set_option('max_columns', 180)
 pd.set_option('max_rows', 200000)
@@ -745,9 +746,9 @@ print(game_log.tail(3))
     
 
 ### <font color=blue>game_log Data Set description</font>
-  1.  161 Columns
-  1.  171,907 Rows
-  1.  It looks like it the combination of the <font color=red>*date*, *v_game_number*</font>, & <font color=red>*h_game_number*</font> columns can be used to make a PRIMARY KEY.
+  1.  Columns: 161
+  1.  Rows: 171,907
+  1.  It looks like the combination of the <font color=red>*date*, *v_game_number*</font>, & <font color=red>*h_game_number*</font> columns can be used to make a PRIMARY KEY.
   1.  Columns 1 - 19 describe the game numbers, teams, datetime, the statium, ect...
   1.  Columns 20 - 161 have metrics that describe game play such as hit, home runs, doubles, ect...
 
@@ -834,8 +835,8 @@ print(game_log['park_id'].head(10))
 
 
 ### <font color=blue>park_codes Data Set description</font>
-  1.  9 Columns
-  1.  252 Rows
+  1.  Columns: 9
+  1.  Rows: 252
   1.  It looks like the <font color=red>*park_id*</font> column can be used to make a PRIMARY KEY and to create a relationship to the game_log data set.
   1.  All of the columns have basic information to describe each park
 
@@ -885,3 +886,372 @@ print(person_codes.tail(3))
     20492  zycht001      Zych   Tony   09/04/2015       NaN         NaN       NaN
     20493  thoma102  Thompson    NaN          NaN       NaN         NaN       NaN
 
+
+### <font color=blue>person_codes Data Set description</font>
+  1.  Columns: 7
+  1.  Rows: 20494
+  1.  It looks like the <font color=red>*id*</font> column can be used to make a PRIMARY KEY and to create a relationship to the game_log data set.
+  1.  However, the relationship looks to be a bit more complex than in many cases.  There are a multidue of columns were the game_log data set refererences a persion via their id.  Any time a given statistic in a game is linked back to a specific person their person_codes id is utilized.
+  1.  The person_codes columns provide the person's first and last names.  As well as their debut dates as a player, manager, coach, or ump.
+
+
+```python
+print('Explore team_codes data')
+print('\nteam_codes data set size\n\tRows: {rows}\n\tCols: {cols}'.format(rows=team_codes.shape[0], cols=team_codes.shape[1]))
+
+print(team_codes['team_id'].value_counts())
+print(team_codes['team_id'].value_counts().shape)
+print(team_codes[team_codes['team_id'] == 'MIL'])
+
+print('\nteam_codes columns')
+for col in team_codes.columns:
+    print('\t- ' + col)
+print('\n\n\n*****First 3 rows of team_codes*****\n')
+print(team_codes.head(3))
+print('\n\n\n*****Last 3 rows of team_codes*****\n')
+print(team_codes.tail(3))
+```
+
+    Explore team_codes data
+    
+    team_codes data set size
+    	Rows: 150
+    	Cols: 8
+    MIL    2
+    SE1    1
+    SL2    1
+    PHI    1
+    CL6    1
+    PH3    1
+    TBA    1
+    BUF    1
+    BSN    1
+    KCN    1
+    IND    1
+    NEW    1
+    ANA    1
+    BR1    1
+    MLA    1
+    ARI    1
+    BR4    1
+    CNU    1
+    PH2    1
+    OAK    1
+    BLF    1
+    CHP    1
+    WOR    1
+    KEO    1
+    MIA    1
+    KCA    1
+    LS2    1
+    SPU    1
+    SLF    1
+    KCU    1
+    CL3    1
+    WS1    1
+    WS4    1
+    BR2    1
+    PTF    1
+    KC1    1
+    SLU    1
+    TL2    1
+    NY1    1
+    NYA    1
+    CL2    1
+    PHP    1
+    BSP    1
+    TOR    1
+    CH2    1
+    FLO    1
+    BRF    1
+    BS2    1
+    NYN    1
+    BSU    1
+    NY3    1
+    BFN    1
+    CLP    1
+    PHU    1
+    WS9    1
+    RIC    1
+    COL    1
+    WAS    1
+    CL4    1
+    SL3    1
+    TEX    1
+    PTP    1
+    CAL    1
+    PT1    1
+    PRO    1
+    WIL    1
+    NH1    1
+    PH1    1
+    PTU    1
+    BS1    1
+    MLN    1
+    IN1    1
+    PHN    1
+    WS8    1
+    BOS    1
+    SLA    1
+    SLN    1
+    ML2    1
+    NYP    1
+    TL1    1
+    PIT    1
+    BRP    1
+    HAR    1
+    CHN    1
+    SR2    1
+    MON    1
+    MLU    1
+    BL2    1
+    CL1    1
+    RC2    1
+    BLA    1
+    SFN    1
+    WSU    1
+    DTN    1
+    CHA    1
+    WS2    1
+    BFP    1
+    BL1    1
+    CL5    1
+    PH4    1
+    TRN    1
+    WS6    1
+    HOU    1
+    SL5    1
+    DET    1
+    TRO    1
+    WSN    1
+    WS7    1
+    SL4    1
+    WS5    1
+    LAA    1
+    KC2    1
+    SR1    1
+    NY2    1
+    CHU    1
+    BRO    1
+    ML3    1
+    CN2    1
+    IN2    1
+    IN3    1
+    PHA    1
+    CLE    1
+    CHF    1
+    SL1    1
+    KCF    1
+    HR1    1
+    CIN    1
+    CN3    1
+    CH1    1
+    RC1    1
+    SDN    1
+    LAN    1
+    BLN    1
+    LS1    1
+    MID    1
+    BLU    1
+    ATL    1
+    WS3    1
+    FW1    1
+    BR3    1
+    ALT    1
+    MIN    1
+    BL4    1
+    CN1    1
+    BAL    1
+    ELI    1
+    LS3    1
+    NY4    1
+    SEA    1
+    Name: team_id, dtype: int64
+    (149,)
+        team_id league  start   end       city nickname franch_id  seq
+    112     MIL     AL   1970  1997  Milwaukee  Brewers       SE1    2
+    113     MIL     NL   1998     0  Milwaukee  Brewers       SE1    3
+    
+    team_codes columns
+    	- team_id
+    	- league
+    	- start
+    	- end
+    	- city
+    	- nickname
+    	- franch_id
+    	- seq
+    
+    
+    
+    *****First 3 rows of team_codes*****
+    
+      team_id league  start   end     city         nickname franch_id  seq
+    0     ALT     UA   1884  1884  Altoona  Mountain Cities       ALT    1
+    1     ARI     NL   1998     0  Arizona     Diamondbacks       ARI    1
+    2     BFN     NL   1879  1885  Buffalo           Bisons       BFN    1
+    
+    
+    
+    *****Last 3 rows of team_codes*****
+    
+        team_id league  start   end        city   nickname franch_id  seq
+    147     WSN     NL   1892  1899  Washington   Senators       WS9    2
+    148     WSU     UA   1884  1884  Washington  Nationals       WSU    1
+    149     MIA     NL   2012     0       Miami    Marlins       FLO    2
+
+
+### <font color=blue>team_codes Data Set description</font>
+  1.  Columns: 8
+  1.  Rows: 150
+  1.  It looks like the <font color=red>*team_id*</font> and  <font color=red>*league*</font> columns can be used to make a PRIMARY KEY and to create a relationship to the game_log data set.
+  1.  The relationship can be made between the team_codes.team_id column and the  game_log.v_name and game_log.v_league or game_log.h_name and game_log.h_league columns.
+  1.  Furthermore, a recursive relationship exists using the franch_id.  It is necessary because it some franchises have have multiple entries if they've switched from one league to another.
+    1.  I noticed this with MIL, however the Houston Astros are another team that has switch leagues, but that is not captured in this dataset.  Perhaps the data set is not up to date.
+  1.  The team_codes has some basic info on each team:
+    1.  Team foundation and terminations dates
+    1.  league
+    1.  Location
+    1.  Nickname
+    1.  I'm not sure what the seq columns is for.
+
+## <font color=blue>02 Importing Data into SQLite</font>
+  -  Recreate the <font color=red>*run_command()*</font> and <font color=red>*run_query()*</font> functions from the previous guided project, which you can use.
+  -  Use <font color=red>*DataFrame.to_sql()*</font> to create tables for each of our dataframes in a new SQLite database, <font color=red>*mlb.db*</font>:
+    -  The table name should be the same as each of the CSV filename without the extension, eg <font color=red>*game_log.csv*</font> should be imported to a table called <font color=red>*game_log*</font>.
+  -  Using <font color=red>*run_command()*</font>, create a new column in the <font color=red>*game_log*</font> table called <font color=red>*game_id*</font>:
+
+
+```python
+def run_query(query):
+    with sqlite3.connect('mlb.db') as conn:
+        return pd.read_sql_query(query, conn)
+
+def run_command(command):
+    with sqlite3.connect('mlb.db') as conn:
+        conn.isolation_level = None # tells SQLite to autocommit any changes
+        conn.execute(command)
+        
+def create_DF_table(df, tablename):
+    with sqlite3.connect('mlb.db') as conn:
+        df.to_sql(tablename, conn, flavor='sqlite', index=False)
+
+def show_tables():
+    with sqlite3.connect('mlb.db') as conn:
+        cur = conn.cursor()
+        cur.execute("SELECT name FROM sqlite_master WHERE type='table';")
+        return [str('%s' % x) for x in cur.fetchall()]
+    
+def show_columns(tablename):
+    query = 'SELECT * from {tab}'.format(tab=tablename)
+    print(query)
+    column_query = run_command(query)
+    return [description[0] for description in column_query.description]
+```
+
+
+```python
+create_DF_table(game_log, 'game_log')
+create_DF_table(park_codes, 'park_codes')
+create_DF_table(person_codes, 'person_codes')
+create_DF_table(team_codes, 'team_codes')
+```
+
+    /dataquest/system/env/python3/lib/python3.4/site-packages/pandas/io/sql.py:525: FutureWarning: the 'flavor' parameter is deprecated and will be removed in a future version, as 'sqlite' is the only supported option when SQLAlchemy is not installed.
+      _validate_flavor_parameter(flavor)
+
+
+
+    
+
+    ValueErrorTraceback (most recent call last)
+
+    <ipython-input-18-1518cfb80ab7> in <module>()
+    ----> 1 create_DF_table(game_log, 'game_log')
+          2 create_DF_table(park_codes, 'park_codes')
+          3 create_DF_table(person_codes, 'person_codes')
+          4 create_DF_table(team_codes, 'team_codes')
+
+
+    <ipython-input-17-42b54a94d6d4> in create_DF_table(df, tablename)
+         10 def create_DF_table(df, tablename):
+         11     with sqlite3.connect('mlb.db') as conn:
+    ---> 12         df.to_sql(tablename, conn, flavor='sqlite', index=False)
+         13 
+         14 def show_tables():
+
+
+    /dataquest/system/env/python3/lib/python3.4/site-packages/pandas/core/generic.py in to_sql(self, name, con, flavor, schema, if_exists, index, index_label, chunksize, dtype)
+       1199         sql.to_sql(self, name, con, flavor=flavor, schema=schema,
+       1200                    if_exists=if_exists, index=index, index_label=index_label,
+    -> 1201                    chunksize=chunksize, dtype=dtype)
+       1202 
+       1203     def to_pickle(self, path):
+
+
+    /dataquest/system/env/python3/lib/python3.4/site-packages/pandas/io/sql.py in to_sql(frame, name, con, flavor, schema, if_exists, index, index_label, chunksize, dtype)
+        468     pandas_sql.to_sql(frame, name, if_exists=if_exists, index=index,
+        469                       index_label=index_label, schema=schema,
+    --> 470                       chunksize=chunksize, dtype=dtype)
+        471 
+        472 
+
+
+    /dataquest/system/env/python3/lib/python3.4/site-packages/pandas/io/sql.py in to_sql(self, frame, name, if_exists, index, index_label, schema, chunksize, dtype)
+       1500                             if_exists=if_exists, index_label=index_label,
+       1501                             dtype=dtype)
+    -> 1502         table.create()
+       1503         table.insert(chunksize)
+       1504 
+
+
+    /dataquest/system/env/python3/lib/python3.4/site-packages/pandas/io/sql.py in create(self)
+        584         if self.exists():
+        585             if self.if_exists == 'fail':
+    --> 586                 raise ValueError("Table '%s' already exists." % self.name)
+        587             elif self.if_exists == 'replace':
+        588                 self.pd_sql.drop_table(self.name, self.schema)
+
+
+    ValueError: Table 'game_log' already exists.
+
+
+
+```python
+tables = show_tables()
+
+for t in tables:
+    print(t)
+    print(show_columns(t))
+    print(' ')
+```
+
+    game_log
+    SELECT * from game_log
+
+
+
+    
+
+    AttributeErrorTraceback (most recent call last)
+
+    <ipython-input-22-ab3fa1dc2d96> in <module>()
+          3 for t in tables:
+          4     print(t)
+    ----> 5     print(show_columns(t))
+          6     print(' ')
+
+
+    <ipython-input-21-8df998b4edda> in show_columns(tablename)
+         22     print(query)
+         23     column_query = run_command(query)
+    ---> 24     return [description[0] for description in column_query.description]
+    
+
+    AttributeError: 'NoneType' object has no attribute 'description'
+
+
+
+```python
+run_query('SELECT * from game_log')
+```
