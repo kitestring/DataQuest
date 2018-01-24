@@ -1,0 +1,3 @@
+# Table Relations & Normalization via the PostgreSQL Shell
+The instructions are written for the SQLite Shell, however, I am very well versed in SQLlite and I am going to do these missions from the PostgreSQL Shell to expand my skill set.  The commands for each mission is run using script.sh executables.  PostgreSQL will be accessed using the .pgpass file, that was set up in the [02_IntermediateJoinsInSQL_psql-sqlite_convert](https://github.com/kitestring/DataQuest/tree/master/04_WorkingWithDataSources/03_SQL_Intermediate_TableRelationsAndJoins_psql_Advanced/02_IntermediateJoinsInSQL_psql-sqlite_convert) sub-chapter.
+
