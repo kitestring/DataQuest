@@ -9,7 +9,7 @@
 
 
 ```python
-%matplotlib inline
+# %matplotlib inline
 import pandas as pd
 import sqlite3
 
@@ -918,154 +918,154 @@ print(team_codes.tail(3))
     	Rows: 150
     	Cols: 8
     MIL    2
-    SE1    1
-    SL2    1
-    PHI    1
-    CL6    1
-    PH3    1
-    TBA    1
-    BUF    1
-    BSN    1
-    KCN    1
-    IND    1
-    NEW    1
-    ANA    1
-    BR1    1
-    MLA    1
-    ARI    1
-    BR4    1
-    CNU    1
-    PH2    1
-    OAK    1
-    BLF    1
-    CHP    1
-    WOR    1
-    KEO    1
-    MIA    1
-    KCA    1
-    LS2    1
-    SPU    1
-    SLF    1
-    KCU    1
-    CL3    1
-    WS1    1
-    WS4    1
-    BR2    1
-    PTF    1
-    KC1    1
-    SLU    1
-    TL2    1
-    NY1    1
-    NYA    1
-    CL2    1
-    PHP    1
-    BSP    1
-    TOR    1
-    CH2    1
-    FLO    1
-    BRF    1
-    BS2    1
-    NYN    1
-    BSU    1
-    NY3    1
-    BFN    1
-    CLP    1
-    PHU    1
-    WS9    1
-    RIC    1
-    COL    1
-    WAS    1
-    CL4    1
-    SL3    1
-    TEX    1
-    PTP    1
-    CAL    1
-    PT1    1
-    PRO    1
-    WIL    1
-    NH1    1
-    PH1    1
-    PTU    1
-    BS1    1
-    MLN    1
-    IN1    1
-    PHN    1
-    WS8    1
-    BOS    1
-    SLA    1
-    SLN    1
-    ML2    1
-    NYP    1
-    TL1    1
-    PIT    1
-    BRP    1
-    HAR    1
-    CHN    1
-    SR2    1
-    MON    1
-    MLU    1
     BL2    1
-    CL1    1
-    RC2    1
-    BLA    1
-    SFN    1
-    WSU    1
-    DTN    1
-    CHA    1
-    WS2    1
-    BFP    1
-    BL1    1
-    CL5    1
-    PH4    1
-    TRN    1
-    WS6    1
-    HOU    1
-    SL5    1
+    PHP    1
     DET    1
-    TRO    1
-    WSN    1
-    WS7    1
-    SL4    1
-    WS5    1
-    LAA    1
-    KC2    1
-    SR1    1
-    NY2    1
-    CHU    1
-    BRO    1
-    ML3    1
-    CN2    1
-    IN2    1
-    IN3    1
-    PHA    1
-    CLE    1
-    CHF    1
-    SL1    1
-    KCF    1
-    HR1    1
-    CIN    1
-    CN3    1
-    CH1    1
-    RC1    1
-    SDN    1
-    LAN    1
-    BLN    1
-    LS1    1
-    MID    1
-    BLU    1
-    ATL    1
-    WS3    1
-    FW1    1
-    BR3    1
-    ALT    1
     MIN    1
-    BL4    1
     CN1    1
-    BAL    1
     ELI    1
-    LS3    1
-    NY4    1
+    NY3    1
+    SPU    1
+    MLA    1
+    WS9    1
+    OAK    1
+    BRP    1
+    WS3    1
+    CAL    1
+    WS7    1
+    SDN    1
+    HAR    1
+    CN2    1
+    SL2    1
+    CN3    1
+    SR1    1
+    SLU    1
+    KC2    1
+    CIN    1
+    MLN    1
+    BUF    1
+    LAN    1
+    CL2    1
+    SE1    1
+    BL1    1
+    ML2    1
+    PHI    1
+    BRO    1
+    CL6    1
+    PTP    1
+    HOU    1
+    KC1    1
+    LAA    1
+    PHU    1
+    SLF    1
+    SLN    1
+    BLU    1
     SEA    1
+    WOR    1
+    SL3    1
+    CL4    1
+    SL4    1
+    BS1    1
+    NH1    1
+    CLE    1
+    HR1    1
+    BS2    1
+    LS1    1
+    CHP    1
+    IN2    1
+    PH2    1
+    NY1    1
+    CHF    1
+    COL    1
+    CH1    1
+    WS2    1
+    NY4    1
+    NEW    1
+    TL1    1
+    NYA    1
+    NYP    1
+    BRF    1
+    CHU    1
+    IND    1
+    WSN    1
+    IN3    1
+    CL1    1
+    ML3    1
+    MLU    1
+    PH4    1
+    PHA    1
+    BLN    1
+    CHN    1
+    KEO    1
+    CH2    1
+    BLF    1
+    WS6    1
+    ATL    1
+    TRO    1
+    TEX    1
+    IN1    1
+    LS3    1
+    NY2    1
+    BAL    1
+    WS1    1
+    WS8    1
+    ANA    1
+    WS4    1
+    PIT    1
+    CNU    1
+    PTF    1
+    SLA    1
+    NYN    1
+    BFN    1
+    MON    1
+    BSN    1
+    FLO    1
+    PH1    1
+    KCU    1
+    BSU    1
+    SL1    1
+    SR2    1
+    CL5    1
+    PH3    1
+    BLA    1
+    PTU    1
+    DTN    1
+    TRN    1
+    WS5    1
+    TOR    1
+    SL5    1
+    MID    1
+    RC2    1
+    BFP    1
+    BR3    1
+    SFN    1
+    PRO    1
+    KCA    1
+    PT1    1
+    PHN    1
+    BSP    1
+    RC1    1
+    BOS    1
+    TBA    1
+    TL2    1
+    KCF    1
+    RIC    1
+    WSU    1
+    MIA    1
+    BL4    1
+    CLP    1
+    BR1    1
+    WAS    1
+    WIL    1
+    LS2    1
+    ALT    1
+    CL3    1
+    FW1    1
+    BR2    1
+    BR4    1
+    CHA    1
+    KCN    1
+    ARI    1
     Name: team_id, dtype: int64
     (149,)
         team_id league  start   end       city nickname franch_id  seq
@@ -1119,7 +1119,12 @@ print(team_codes.tail(3))
   -  Recreate the <font color=red>*run_command()*</font> and <font color=red>*run_query()*</font> functions from the previous guided project, which you can use.
   -  Use <font color=red>*DataFrame.to_sql()*</font> to create tables for each of our dataframes in a new SQLite database, <font color=red>*mlb.db*</font>:
     -  The table name should be the same as each of the CSV filename without the extension, eg <font color=red>*game_log.csv*</font> should be imported to a table called <font color=red>*game_log*</font>.
-  -  Using <font color=red>*run_command()*</font>, create a new column in the <font color=red>*game_log*</font> table called <font color=red>*game_id*</font>:
+  -  Using <font color=red>*run_command()*</font>, create a new column in the <font color=red>*game_log*</font> table called <font color=red>*game_id*</font>. The following game_log columns should be conconated:
+    1.  <font color=red>*h_name*</font>
+    1.  <font color=red>*date*</font> in the following format (yyyymmdd)
+    1.  <font color=red>*number_of_game*</font>
+    1.  Here's an example of the conconated column (Atlanta Braves - April 8, 1983 - Game 0):
+      *  ATL198304080
 
 
 ```python
@@ -1134,6 +1139,7 @@ def run_command(command):
         
 def create_DF_table(df, tablename):
     with sqlite3.connect('mlb.db') as conn:
+        conn.execute("DROP TABLE IF EXISTS {};".format(tablename))
         df.to_sql(tablename, conn, flavor='sqlite', index=False)
 
 def show_tables():
@@ -1143,10 +1149,11 @@ def show_tables():
         return [str('%s' % x) for x in cur.fetchall()]
     
 def show_columns(tablename):
-    query = 'SELECT * from {tab}'.format(tab=tablename)
-    print(query)
-    column_query = run_command(query)
-    return [description[0] for description in column_query.description]
+    # This work but it's too easy to over load Jupyter Notebook
+    with sqlite3.connect('mlb.db') as conn:
+        conn.isolation_level = None # tells SQLite to autocommit any changes
+        column_query = conn.execute('SELECT * from {tab};'.format(tab=tablename))
+        return [description[0] for description in column_query.description]
 ```
 
 
@@ -1162,96 +1169,160 @@ create_DF_table(team_codes, 'team_codes')
 
 
 
-    
-
-    ValueErrorTraceback (most recent call last)
-
-    <ipython-input-18-1518cfb80ab7> in <module>()
-    ----> 1 create_DF_table(game_log, 'game_log')
-          2 create_DF_table(park_codes, 'park_codes')
-          3 create_DF_table(person_codes, 'person_codes')
-          4 create_DF_table(team_codes, 'team_codes')
-
-
-    <ipython-input-17-42b54a94d6d4> in create_DF_table(df, tablename)
-         10 def create_DF_table(df, tablename):
-         11     with sqlite3.connect('mlb.db') as conn:
-    ---> 12         df.to_sql(tablename, conn, flavor='sqlite', index=False)
-         13 
-         14 def show_tables():
-
-
-    /dataquest/system/env/python3/lib/python3.4/site-packages/pandas/core/generic.py in to_sql(self, name, con, flavor, schema, if_exists, index, index_label, chunksize, dtype)
-       1199         sql.to_sql(self, name, con, flavor=flavor, schema=schema,
-       1200                    if_exists=if_exists, index=index, index_label=index_label,
-    -> 1201                    chunksize=chunksize, dtype=dtype)
-       1202 
-       1203     def to_pickle(self, path):
-
-
-    /dataquest/system/env/python3/lib/python3.4/site-packages/pandas/io/sql.py in to_sql(frame, name, con, flavor, schema, if_exists, index, index_label, chunksize, dtype)
-        468     pandas_sql.to_sql(frame, name, if_exists=if_exists, index=index,
-        469                       index_label=index_label, schema=schema,
-    --> 470                       chunksize=chunksize, dtype=dtype)
-        471 
-        472 
-
-
-    /dataquest/system/env/python3/lib/python3.4/site-packages/pandas/io/sql.py in to_sql(self, frame, name, if_exists, index, index_label, schema, chunksize, dtype)
-       1500                             if_exists=if_exists, index_label=index_label,
-       1501                             dtype=dtype)
-    -> 1502         table.create()
-       1503         table.insert(chunksize)
-       1504 
-
-
-    /dataquest/system/env/python3/lib/python3.4/site-packages/pandas/io/sql.py in create(self)
-        584         if self.exists():
-        585             if self.if_exists == 'fail':
-    --> 586                 raise ValueError("Table '%s' already exists." % self.name)
-        587             elif self.if_exists == 'replace':
-        588                 self.pd_sql.drop_table(self.name, self.schema)
-
-
-    ValueError: Table 'game_log' already exists.
-
-
-
 ```python
 tables = show_tables()
-
 for t in tables:
     print(t)
-    print(show_columns(t))
-    print(' ')
 ```
 
     game_log
-    SELECT * from game_log
-
-
-
-    
-
-    AttributeErrorTraceback (most recent call last)
-
-    <ipython-input-22-ab3fa1dc2d96> in <module>()
-          3 for t in tables:
-          4     print(t)
-    ----> 5     print(show_columns(t))
-          6     print(' ')
-
-
-    <ipython-input-21-8df998b4edda> in show_columns(tablename)
-         22     print(query)
-         23     column_query = run_command(query)
-    ---> 24     return [description[0] for description in column_query.description]
-    
-
-    AttributeError: 'NoneType' object has no attribute 'description'
+    park_codes
+    person_codes
+    team_codes
 
 
 
 ```python
-run_query('SELECT * from game_log')
+run_command('ALTER TABLE game_log ADD COLUMN game_id TEXT;')
+
+update_query = '''
+UPDATE game_log 
+SET game_id = h_name || date || number_of_game
+WHERE game_id IS Null;
+'''
+run_command(update_query)
+run_query('SELECT game_id, h_name, date, number_of_game \
+                FROM game_log LIMIT 10;')
 ```
+
+
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>game_id</th>
+      <th>h_name</th>
+      <th>date</th>
+      <th>number_of_game</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>FW1187105040</td>
+      <td>FW1</td>
+      <td>18710504</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>WS3187105050</td>
+      <td>WS3</td>
+      <td>18710505</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>RC1187105060</td>
+      <td>RC1</td>
+      <td>18710506</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CH1187105080</td>
+      <td>CH1</td>
+      <td>18710508</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>TRO187105090</td>
+      <td>TRO</td>
+      <td>18710509</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>CL1187105110</td>
+      <td>CL1</td>
+      <td>18710511</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>CL1187105130</td>
+      <td>CL1</td>
+      <td>18710513</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>FW1187105130</td>
+      <td>FW1</td>
+      <td>18710513</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>FW1187105150</td>
+      <td>FW1</td>
+      <td>18710515</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>BS1187105160</td>
+      <td>BS1</td>
+      <td>18710516</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## <font color=blue>03 Looing for Normalization Opportunities</font>
+  -  Looking at the various files, look for opportunities to normalize the data and record your observations in a markdown cell.
+  
+#### <font color=blue>The following are opportunities for normalization of our data:</font>
+  -  In person_codes, all the debut dates will be able to be reproduced using game log data.
+  -  In team_codes, the start, end and sequence columns will be able to be reproduced using game log data.
+  -  In park_codes, the start and end years will be able to be reproduced using game log data. While technically the state is an attribute of the city, we might not want to have a an incomplete city/state table so we will leave this in.
+  -  There are lots of places in game log where we have a player ID followed by the players name. We will be able to remove this and use the name data in person_codes
+  -  In game_log, all offensive and defensive stats are repeated for the home team and the visiting team. We could break these out and have a table that lists each game twice, one for each team, and cut out this column repetition.
+  -  Similarly, in game_log, we have a listing for 9 players on each team with their positions - we can remove these and have one table that tracks player appearances and their positions.
+  -  We can do a similar thing with the umpires from game_log, instead of listing all four positions as columns, we can put the umpires either in their own table or make one table for players, umpires and managers.
+  -  We have several awards in game_log like winning pitcher and losing pitcher. We can either break these out into their own table, have a table for awards, or combine the awards in with general appearances like the players and umpires.
+
+## <font color=blue>04 Planning a Normalized Schema</font>
+
+The best way to work visually with a schema diagram, just like the ones we've used so far in this course. Start by creating a diagram of the four existing tables and their columns, and then gradually create new tables that move the data into a more normalized state.
+
+Some people like to do this on paper, others use diagramming tools like Sketch or Figma, others like using Photoshop or similar. Our recommendation is that the best way to do this is using a schema designing tool like [DbDesigner.net](https://dbdesigner.net/). This free tool allows you to create a schema and will create lines to show foreign key relations clearly.
+
+#### <font color=blue>mlb DB Normalized Schema</font>
+
+![mlb.db Schema](https://s3.amazonaws.com/dq-content/193/mlb_schema.svg)
+
+## <font color=blue>05 Create Tables w/o Foreign Relations</font>
+  -  Create the <font color=red>*person*</font> table with columns and primary key as shown in the schema diagram.
+    -  Select the appropriate type based on the data.
+    -  Insert the data from the <font color=red>*person_codes*</font> table.
+    -  Write a query to display the first few rows of the table.
+  -  Create the <font color=red>*park*</font> table with columns and primary key as shown in the schema diagram.
+    -  Select the appropriate type based on the data
+    -  Insert the data from the <font color=red>*park_codes*</font> table.
+    -  Write a query to display the first few rows of the table.
+  -  Create the <font color=red>*league*</font> table with columns and primary key as shown in the schema diagram.
+    -  Select the appropriate type based on the data.
+    -  Insert the data manually based on your research on the names of the six league IDs.
+    -  Write a query to display the table.
+  -  Create the <font color=red>*appearance_type*</font> table with columns and primary key as shown in the schema diagram.
+    -  Select the appropriate type based on the data.
+    -  Import and insert the data from <font color=red>*appearance_type.csv*</font>.
+    -  Write a query to display the table.
