@@ -9,10 +9,10 @@
 #     -  What each defensive position number represents.
 #     -  The values in the various league fields, and which leagues they represent.
 
-# In[11]:
+# In[1]:
 
 
-get_ipython().magic('matplotlib inline')
+# %matplotlib inline
 import pandas as pd
 import sqlite3
 
@@ -26,7 +26,7 @@ person_codes = pd.read_csv('person_codes.csv')
 team_codes = pd.read_csv('team_codes.csv')
 
 
-# In[12]:
+# In[2]:
 
 
 print('Explore game_log data')
@@ -40,7 +40,7 @@ print('\n\n\n*****Last 3 rows of game_log*****\n')
 print(game_log.tail(3))
 
 
-# In[13]:
+# In[3]:
 
 
 get_ipython().system('cat game_log_fields.txt')
@@ -53,7 +53,7 @@ get_ipython().system('cat game_log_fields.txt')
 #   1.  Columns 1 - 19 describe the game numbers, teams, datetime, the statium, ect...
 #   1.  Columns 20 - 161 have metrics that describe game play such as hit, home runs, doubles, ect...
 
-# In[14]:
+# In[4]:
 
 
 print('Explore park_codes data')
@@ -75,7 +75,7 @@ print(game_log['park_id'].head(10))
 #   1.  It looks like the <font color=red>*park_id*</font> column can be used to make a PRIMARY KEY and to create a relationship to the game_log data set.
 #   1.  All of the columns have basic information to describe each park
 
-# In[15]:
+# In[5]:
 
 
 print('Explore person_codes data')
@@ -96,7 +96,7 @@ print(person_codes.tail(3))
 #   1.  However, the relationship looks to be a bit more complex than in many cases.  There are a multidue of columns were the game_log data set refererences a persion via their id.  Any time a given statistic in a game is linked back to a specific person their person_codes id is utilized.
 #   1.  The person_codes columns provide the person's first and last names.  As well as their debut dates as a player, manager, coach, or ump.
 
-# In[16]:
+# In[6]:
 
 
 print('Explore team_codes data')
@@ -133,9 +133,14 @@ print(team_codes.tail(3))
 #   -  Recreate the <font color=red>*run_command()*</font> and <font color=red>*run_query()*</font> functions from the previous guided project, which you can use.
 #   -  Use <font color=red>*DataFrame.to_sql()*</font> to create tables for each of our dataframes in a new SQLite database, <font color=red>*mlb.db*</font>:
 #     -  The table name should be the same as each of the CSV filename without the extension, eg <font color=red>*game_log.csv*</font> should be imported to a table called <font color=red>*game_log*</font>.
-#   -  Using <font color=red>*run_command()*</font>, create a new column in the <font color=red>*game_log*</font> table called <font color=red>*game_id*</font>:
+#   -  Using <font color=red>*run_command()*</font>, create a new column in the <font color=red>*game_log*</font> table called <font color=red>*game_id*</font>. The following game_log columns should be conconated:
+#     1.  <font color=red>*h_name*</font>
+#     1.  <font color=red>*date*</font> in the following format (yyyymmdd)
+#     1.  <font color=red>*number_of_game*</font>
+#     1.  Here's an example of the conconated column (Atlanta Braves - April 8, 1983 - Game 0):
+#       *  ATL198304080
 
-# In[21]:
+# In[7]:
 
 
 def run_query(query):
@@ -149,6 +154,7 @@ def run_command(command):
         
 def create_DF_table(df, tablename):
     with sqlite3.connect('mlb.db') as conn:
+        conn.execute("DROP TABLE IF EXISTS {};".format(tablename))
         df.to_sql(tablename, conn, flavor='sqlite', index=False)
 
 def show_tables():
@@ -158,13 +164,14 @@ def show_tables():
         return [str('%s' % x) for x in cur.fetchall()]
     
 def show_columns(tablename):
-    query = 'SELECT * from {tab}'.format(tab=tablename)
-    print(query)
-    column_query = run_command(query)
-    return [description[0] for description in column_query.description]
+    # This work but it's too easy to over load Jupyter Notebook
+    with sqlite3.connect('mlb.db') as conn:
+        conn.isolation_level = None # tells SQLite to autocommit any changes
+        column_query = conn.execute('SELECT * from {tab};'.format(tab=tablename))
+        return [description[0] for description in column_query.description]
 
 
-# In[18]:
+# In[8]:
 
 
 create_DF_table(game_log, 'game_log')
@@ -173,19 +180,65 @@ create_DF_table(person_codes, 'person_codes')
 create_DF_table(team_codes, 'team_codes')
 
 
-# In[22]:
+# In[9]:
 
 
 tables = show_tables()
-
 for t in tables:
     print(t)
-    print(show_columns(t))
-    print(' ')
 
 
-# In[ ]:
+# In[10]:
 
 
-run_query('SELECT * from game_log')
+run_command('ALTER TABLE game_log ADD COLUMN game_id TEXT;')
 
+update_query = '''
+UPDATE game_log 
+SET game_id = h_name || date || number_of_game
+WHERE game_id IS Null;
+'''
+run_command(update_query)
+run_query('SELECT game_id, h_name, date, number_of_game                 FROM game_log LIMIT 10;')
+
+
+# ## <font color=blue>03 Looing for Normalization Opportunities</font>
+#   -  Looking at the various files, look for opportunities to normalize the data and record your observations in a markdown cell.
+#   
+# #### <font color=blue>The following are opportunities for normalization of our data:</font>
+#   -  In person_codes, all the debut dates will be able to be reproduced using game log data.
+#   -  In team_codes, the start, end and sequence columns will be able to be reproduced using game log data.
+#   -  In park_codes, the start and end years will be able to be reproduced using game log data. While technically the state is an attribute of the city, we might not want to have a an incomplete city/state table so we will leave this in.
+#   -  There are lots of places in game log where we have a player ID followed by the players name. We will be able to remove this and use the name data in person_codes
+#   -  In game_log, all offensive and defensive stats are repeated for the home team and the visiting team. We could break these out and have a table that lists each game twice, one for each team, and cut out this column repetition.
+#   -  Similarly, in game_log, we have a listing for 9 players on each team with their positions - we can remove these and have one table that tracks player appearances and their positions.
+#   -  We can do a similar thing with the umpires from game_log, instead of listing all four positions as columns, we can put the umpires either in their own table or make one table for players, umpires and managers.
+#   -  We have several awards in game_log like winning pitcher and losing pitcher. We can either break these out into their own table, have a table for awards, or combine the awards in with general appearances like the players and umpires.
+
+# ## <font color=blue>04 Planning a Normalized Schema</font>
+# 
+# The best way to work visually with a schema diagram, just like the ones we've used so far in this course. Start by creating a diagram of the four existing tables and their columns, and then gradually create new tables that move the data into a more normalized state.
+# 
+# Some people like to do this on paper, others use diagramming tools like Sketch or Figma, others like using Photoshop or similar. Our recommendation is that the best way to do this is using a schema designing tool like [DbDesigner.net](https://dbdesigner.net/). This free tool allows you to create a schema and will create lines to show foreign key relations clearly.
+# 
+# #### <font color=blue>mlb DB Normalized Schema</font>
+# 
+# ![mlb.db Schema](https://s3.amazonaws.com/dq-content/193/mlb_schema.svg)
+
+# ## <font color=blue>05 Create Tables w/o Foreign Relations</font>
+#   -  Create the <font color=red>*person*</font> table with columns and primary key as shown in the schema diagram.
+#     -  Select the appropriate type based on the data.
+#     -  Insert the data from the <font color=red>*person_codes*</font> table.
+#     -  Write a query to display the first few rows of the table.
+#   -  Create the <font color=red>*park*</font> table with columns and primary key as shown in the schema diagram.
+#     -  Select the appropriate type based on the data
+#     -  Insert the data from the <font color=red>*park_codes*</font> table.
+#     -  Write a query to display the first few rows of the table.
+#   -  Create the <font color=red>*league*</font> table with columns and primary key as shown in the schema diagram.
+#     -  Select the appropriate type based on the data.
+#     -  Insert the data manually based on your research on the names of the six league IDs.
+#     -  Write a query to display the table.
+#   -  Create the <font color=red>*appearance_type*</font> table with columns and primary key as shown in the schema diagram.
+#     -  Select the appropriate type based on the data.
+#     -  Import and insert the data from <font color=red>*appearance_type.csv*</font>.
+#     -  Write a query to display the table.
