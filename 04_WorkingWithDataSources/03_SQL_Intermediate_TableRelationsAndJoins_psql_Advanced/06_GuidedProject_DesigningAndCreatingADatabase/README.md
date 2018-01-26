@@ -918,154 +918,154 @@ print(team_codes.tail(3))
     	Rows: 150
     	Cols: 8
     MIL    2
-    BL2    1
-    PHP    1
-    DET    1
-    MIN    1
-    CN1    1
-    ELI    1
-    NY3    1
-    SPU    1
-    MLA    1
-    WS9    1
-    OAK    1
-    BRP    1
-    WS3    1
-    CAL    1
-    WS7    1
-    SDN    1
-    HAR    1
-    CN2    1
-    SL2    1
-    CN3    1
-    SR1    1
-    SLU    1
+    TRO    1
+    WSN    1
     KC2    1
-    CIN    1
-    MLN    1
-    BUF    1
-    LAN    1
-    CL2    1
-    SE1    1
+    CL3    1
+    SPU    1
+    SLN    1
     BL1    1
+    PHU    1
+    CN1    1
+    SL3    1
+    NEW    1
+    KCF    1
+    MLU    1
+    CIN    1
+    BFN    1
+    SDN    1
+    IN2    1
+    CH2    1
+    LS2    1
+    TRN    1
+    KCU    1
+    PH3    1
+    FLO    1
     ML2    1
-    PHI    1
-    BRO    1
-    CL6    1
+    ARI    1
+    BFP    1
+    PH4    1
+    SL1    1
+    DTN    1
     PTP    1
     HOU    1
-    KC1    1
-    LAA    1
-    PHU    1
-    SLF    1
-    SLN    1
-    BLU    1
-    SEA    1
-    WOR    1
-    SL3    1
-    CL4    1
-    SL4    1
-    BS1    1
-    NH1    1
-    CLE    1
-    HR1    1
-    BS2    1
-    LS1    1
-    CHP    1
-    IN2    1
-    PH2    1
-    NY1    1
-    CHF    1
     COL    1
-    CH1    1
-    WS2    1
-    NY4    1
-    NEW    1
-    TL1    1
-    NYA    1
-    NYP    1
-    BRF    1
-    CHU    1
-    IND    1
-    WSN    1
-    IN3    1
-    CL1    1
+    MID    1
+    MLN    1
+    LS1    1
+    PRO    1
+    LAA    1
+    BRP    1
     ML3    1
-    MLU    1
-    PH4    1
-    PHA    1
-    BLN    1
-    CHN    1
-    KEO    1
-    CH2    1
+    PHI    1
     BLF    1
-    WS6    1
-    ATL    1
-    TRO    1
-    TEX    1
-    IN1    1
-    LS3    1
-    NY2    1
-    BAL    1
-    WS1    1
-    WS8    1
-    ANA    1
-    WS4    1
-    PIT    1
-    CNU    1
-    PTF    1
-    SLA    1
+    SE1    1
+    CLP    1
+    BS1    1
+    BLA    1
     NYN    1
-    BFN    1
+    BLU    1
+    PHP    1
+    BR1    1
+    SFN    1
+    WOR    1
+    BL2    1
+    SLA    1
+    HR1    1
+    WS9    1
+    IND    1
+    SEA    1
+    LAN    1
+    BR3    1
+    ANA    1
+    PIT    1
+    CLE    1
+    CL6    1
+    SL5    1
+    BR4    1
+    TL1    1
+    BRF    1
+    IN1    1
+    CL2    1
+    BS2    1
+    BAL    1
+    PTF    1
+    CN2    1
+    WS2    1
+    RC1    1
+    SL2    1
+    SR2    1
+    PTU    1
+    WS4    1
+    WS6    1
+    CNU    1
+    IN3    1
+    WS5    1
+    WS8    1
+    MIA    1
+    CHP    1
+    BSP    1
+    CH1    1
+    CHF    1
+    PH2    1
+    WSU    1
+    TBA    1
+    WS3    1
+    KEO    1
+    SLU    1
+    SLF    1
+    NY2    1
+    CHN    1
+    NY4    1
+    CL5    1
+    WIL    1
+    KC1    1
+    PHA    1
+    HAR    1
+    BUF    1
+    CHU    1
+    BL4    1
+    NY1    1
+    RC2    1
+    SR1    1
+    WS1    1
+    ELI    1
+    BRO    1
+    NY3    1
+    CAL    1
+    MIN    1
+    OAK    1
+    CN3    1
+    BSU    1
+    MLA    1
+    TEX    1
+    TL2    1
+    PHN    1
+    NYA    1
+    ATL    1
+    PH1    1
+    CHA    1
+    BLN    1
+    KCA    1
+    BR2    1
+    CL4    1
+    CL1    1
+    TOR    1
+    DET    1
+    RIC    1
+    NH1    1
+    KCN    1
+    NYP    1
+    BOS    1
+    LS3    1
+    WS7    1
     MON    1
     BSN    1
-    FLO    1
-    PH1    1
-    KCU    1
-    BSU    1
-    SL1    1
-    SR2    1
-    CL5    1
-    PH3    1
-    BLA    1
-    PTU    1
-    DTN    1
-    TRN    1
-    WS5    1
-    TOR    1
-    SL5    1
-    MID    1
-    RC2    1
-    BFP    1
-    BR3    1
-    SFN    1
-    PRO    1
-    KCA    1
-    PT1    1
-    PHN    1
-    BSP    1
-    RC1    1
-    BOS    1
-    TBA    1
-    TL2    1
-    KCF    1
-    RIC    1
-    WSU    1
-    MIA    1
-    BL4    1
-    CLP    1
-    BR1    1
-    WAS    1
-    WIL    1
-    LS2    1
-    ALT    1
-    CL3    1
     FW1    1
-    BR2    1
-    BR4    1
-    CHA    1
-    KCN    1
-    ARI    1
+    WAS    1
+    PT1    1
+    ALT    1
+    SL4    1
     Name: team_id, dtype: int64
     (149,)
         team_id league  start   end       city nickname franch_id  seq
@@ -1175,6 +1175,14 @@ for t in tables:
     print(t)
 ```
 
+    person
+    park
+    league
+    appearance_type
+    team
+    game
+    team_appearance
+    person_appearance
     game_log
     park_codes
     person_codes
@@ -1326,3 +1334,1506 @@ Some people like to do this on paper, others use diagramming tools like Sketch o
     -  Select the appropriate type based on the data.
     -  Import and insert the data from <font color=red>*appearance_type.csv*</font>.
     -  Write a query to display the table.
+
+
+```python
+c1 = """
+CREATE TABLE IF NOT EXISTS person (
+    person_id TEXT PRIMARY KEY,
+    first_name TEXT,
+    last_name TEXT
+);
+"""
+
+c2 = """
+INSERT OR IGNORE INTO person
+SELECT
+    id,
+    first,
+    last
+FROM person_codes;
+"""
+
+q = """
+SELECT * FROM person
+LIMIT 5;
+"""
+
+run_command(c1)
+run_command(c2)
+run_query(q)
+```
+
+
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>person_id</th>
+      <th>first_name</th>
+      <th>last_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>aardd001</td>
+      <td>David</td>
+      <td>Aardsma</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>aaroh101</td>
+      <td>Hank</td>
+      <td>Aaron</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>aarot101</td>
+      <td>Tommie</td>
+      <td>Aaron</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>aased001</td>
+      <td>Don</td>
+      <td>Aase</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>abada001</td>
+      <td>Andy</td>
+      <td>Abad</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+c1 = """
+CREATE TABLE IF NOT EXISTS park (
+    park_id TEXT PRIMARY KEY,
+    name TEXT,
+    nickname TEXT,
+    city TEXT,
+    state TEXT,
+    notes TEXT
+);
+"""
+
+c2 = """
+INSERT OR IGNORE INTO park
+SELECT
+    park_id,
+    name,
+    aka,
+    city,
+    state,
+    notes
+FROM park_codes;
+"""
+
+q = """
+SELECT * FROM park
+LIMIT 5;
+"""
+
+run_command(c1)
+run_command(c2)
+run_query(q)
+```
+
+
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>park_id</th>
+      <th>name</th>
+      <th>nickname</th>
+      <th>city</th>
+      <th>state</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ALB01</td>
+      <td>Riverside Park</td>
+      <td>None</td>
+      <td>Albany</td>
+      <td>NY</td>
+      <td>TRN:9/11/80;6/15&amp;9/10/1881;5/16-5/18&amp;5/30/1882</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ALT01</td>
+      <td>Columbia Park</td>
+      <td>None</td>
+      <td>Altoona</td>
+      <td>PA</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>ANA01</td>
+      <td>Angel Stadium of Anaheim</td>
+      <td>Edison Field; Anaheim Stadium</td>
+      <td>Anaheim</td>
+      <td>CA</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ARL01</td>
+      <td>Arlington Stadium</td>
+      <td>None</td>
+      <td>Arlington</td>
+      <td>TX</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ARL02</td>
+      <td>Rangers Ballpark in Arlington</td>
+      <td>The Ballpark in Arlington; Ameriquest Fl</td>
+      <td>Arlington</td>
+      <td>TX</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+c1 = """
+CREATE TABLE IF NOT EXISTS league (
+    league_id TEXT PRIMARY KEY,
+    name TEXT
+);
+"""
+
+c2 = """
+INSERT OR IGNORE INTO league
+VALUES
+    ("NL", "National League"),
+    ("AL", "American League"),
+    ("AA", "American Association"),
+    ("FL", "Federal League"),
+    ("PL", "Players League"),
+    ("UA", "Union Association")
+;
+"""
+
+q = """
+SELECT * FROM league
+"""
+
+run_command(c1)
+run_command(c2)
+run_query(q)
+```
+
+
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>league_id</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NL</td>
+      <td>National League</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AL</td>
+      <td>American League</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AA</td>
+      <td>American Association</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>FL</td>
+      <td>Federal League</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>PL</td>
+      <td>Players League</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>UA</td>
+      <td>Union Association</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+c1 = "DROP TABLE IF EXISTS appearance_type;"
+
+run_command(c1)
+
+c2 = """
+CREATE TABLE appearance_type (
+    appearance_type_id TEXT PRIMARY KEY,
+    name TEXT,
+    category TEXT
+);
+"""
+run_command(c2)
+
+appearance_type = pd.read_csv('appearance_type.csv')
+
+with sqlite3.connect('mlb.db') as conn:
+    appearance_type.to_sql('appearance_type',
+                           conn,
+                           index=False,
+                           if_exists='append')
+
+q = """
+SELECT * FROM appearance_type;
+"""
+
+run_query(q)
+```
+
+
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>appearance_type_id</th>
+      <th>name</th>
+      <th>category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>O1</td>
+      <td>Batter 1</td>
+      <td>offense</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>O2</td>
+      <td>Batter 2</td>
+      <td>offense</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>O3</td>
+      <td>Batter 3</td>
+      <td>offense</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>O4</td>
+      <td>Batter 4</td>
+      <td>offense</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>O5</td>
+      <td>Batter 5</td>
+      <td>offense</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>O6</td>
+      <td>Batter 6</td>
+      <td>offense</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>O7</td>
+      <td>Batter 7</td>
+      <td>offense</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>O8</td>
+      <td>Batter 8</td>
+      <td>offense</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>O9</td>
+      <td>Batter 9</td>
+      <td>offense</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>D1</td>
+      <td>Pitcher</td>
+      <td>defense</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>D2</td>
+      <td>Catcher</td>
+      <td>defense</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>D3</td>
+      <td>1st Base</td>
+      <td>defense</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>D4</td>
+      <td>2nd Base</td>
+      <td>defense</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>D5</td>
+      <td>3rd Base</td>
+      <td>defense</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>D6</td>
+      <td>Shortstop</td>
+      <td>defense</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>D7</td>
+      <td>Left Field</td>
+      <td>defense</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>D8</td>
+      <td>Center Field</td>
+      <td>defense</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>D9</td>
+      <td>Right Field</td>
+      <td>defense</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>D10</td>
+      <td>Unknown Position</td>
+      <td>defense</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>UHP</td>
+      <td>Home Plate</td>
+      <td>umpire</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>U1B</td>
+      <td>First Base</td>
+      <td>umpire</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>U2B</td>
+      <td>Second Base</td>
+      <td>umpire</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>U3B</td>
+      <td>Third Base</td>
+      <td>umpire</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>ULF</td>
+      <td>Left Field</td>
+      <td>umpire</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>URF</td>
+      <td>Right Field</td>
+      <td>umpire</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>MM</td>
+      <td>Manager</td>
+      <td>manager</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>AWP</td>
+      <td>Winning Pitcher</td>
+      <td>award</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>ALP</td>
+      <td>Losing Pitcher</td>
+      <td>award</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>ASP</td>
+      <td>Saving Pitcher</td>
+      <td>award</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>AWB</td>
+      <td>Winning RBI Batter</td>
+      <td>award</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>PSP</td>
+      <td>Starting Pitcher</td>
+      <td>pitcher</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## <font color=blue>06 Adding The Team and Game Tables</font>
+  -  Create the team <font color=red>*table*</font> with columns, primary key, and foreign key as shown in the schema diagram.
+    -  Select the appropriate type based on the data.
+    -  Insert the data from the <font color=red>*team_codes*</font> table.
+    -  Write a query to display the first few rows of the table.
+  -  Create the <font color=red>*game table*</font> with columns, primary key, and foreign key as shown in the schema diagram.
+    -  Select the appropriate type based on the data.
+    -  Insert the data from the <font color=red>*game_log*</font> table.
+    -  Write a query to display the first few rows of the table.
+
+
+```python
+c1 = """
+CREATE TABLE IF NOT EXISTS team (
+    team_id TEXT PRIMARY KEY,
+    league_id TEXT,
+    city TEXT,
+    nickname TEXT,
+    franch_id TEXT,
+    FOREIGN KEY (league_id) REFERENCES league(league_id)
+);
+"""
+
+c2 = """
+INSERT OR IGNORE INTO team
+SELECT
+    team_id,
+    league,
+    city,
+    nickname,
+    franch_id
+FROM team_codes;
+"""
+
+q = """
+SELECT * FROM team
+LIMIT 5;
+"""
+
+run_command(c1)
+run_command(c2)
+run_query(q)
+```
+
+
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>team_id</th>
+      <th>league_id</th>
+      <th>city</th>
+      <th>nickname</th>
+      <th>franch_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ALT</td>
+      <td>UA</td>
+      <td>Altoona</td>
+      <td>Mountain Cities</td>
+      <td>ALT</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ARI</td>
+      <td>NL</td>
+      <td>Arizona</td>
+      <td>Diamondbacks</td>
+      <td>ARI</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BFN</td>
+      <td>NL</td>
+      <td>Buffalo</td>
+      <td>Bisons</td>
+      <td>BFN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>BFP</td>
+      <td>PL</td>
+      <td>Buffalo</td>
+      <td>Bisons</td>
+      <td>BFP</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>BL1</td>
+      <td>None</td>
+      <td>Baltimore</td>
+      <td>Canaries</td>
+      <td>BL1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+c1 = """
+CREATE TABLE IF NOT EXISTS game (
+    game_id TEXT PRIMARY KEY,
+    date TEXT,
+    number_of_game INTEGER,
+    park_id TEXT,
+    length_outs INTEGER,
+    day BOOLEAN,
+    completion TEXT,
+    forefeit TEXT,
+    protest TEXT,
+    attendance INTEGER,
+    legnth_minutes INTEGER,
+    additional_info TEXT,
+    acquisition_info TEXT,
+    FOREIGN KEY (park_id) REFERENCES park(park_id)
+);
+"""
+
+c2 = """
+INSERT OR IGNORE INTO game
+SELECT
+    game_id,
+    date,
+    number_of_game,
+    park_id,
+    length_outs,
+    CASE
+        WHEN day_night = "D" THEN 1
+        WHEN day_night = "N" THEN 0
+        ELSE NULL
+        END
+        AS day,
+    completion,
+    forefeit,
+    protest,
+    attendance,
+    length_minutes,
+    additional_info,
+    acquisition_info
+FROM game_log;
+"""
+
+q = """
+SELECT * FROM game
+LIMIT 5;
+"""
+
+run_command(c1)
+run_command(c2)
+run_query(q)
+```
+
+
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>game_id</th>
+      <th>date</th>
+      <th>number_of_game</th>
+      <th>park_id</th>
+      <th>length_outs</th>
+      <th>day</th>
+      <th>completion</th>
+      <th>forefeit</th>
+      <th>protest</th>
+      <th>attendance</th>
+      <th>legnth_minutes</th>
+      <th>additional_info</th>
+      <th>acquisition_info</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>FW1187105040</td>
+      <td>18710504</td>
+      <td>0</td>
+      <td>FOR01</td>
+      <td>54</td>
+      <td>1</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>200</td>
+      <td>120</td>
+      <td>None</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>WS3187105050</td>
+      <td>18710505</td>
+      <td>0</td>
+      <td>WAS01</td>
+      <td>54</td>
+      <td>1</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>5000</td>
+      <td>145</td>
+      <td>HTBF</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>RC1187105060</td>
+      <td>18710506</td>
+      <td>0</td>
+      <td>RCK01</td>
+      <td>54</td>
+      <td>1</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1000</td>
+      <td>140</td>
+      <td>None</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CH1187105080</td>
+      <td>18710508</td>
+      <td>0</td>
+      <td>CHI01</td>
+      <td>54</td>
+      <td>1</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>5000</td>
+      <td>150</td>
+      <td>None</td>
+      <td>Y</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>TRO187105090</td>
+      <td>18710509</td>
+      <td>0</td>
+      <td>TRO01</td>
+      <td>54</td>
+      <td>1</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>3250</td>
+      <td>145</td>
+      <td>HTBF</td>
+      <td>Y</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## <font color=blue>07 Adding the Team Appearance Table</font>
+  -  Create the <font color=red>*team_appearance*</font> table with columns, primary key, and foreign keys as shown in the schema diagram.
+    -  Select the appropriate type based on the data.
+    -  Insert the data from the <font color=red>*game_log*</font> table, using a <font color=red>*UNION*</font> clause to combine the data from the column sets for the home and away teams.
+    -  Write a query to verify that your data was inserted correctly.
+
+
+```python
+c1 = """
+CREATE TABLE IF NOT EXISTS team_appearance (
+    team_id TEXT,
+    game_id TEXT,
+    home BOOLEAN,
+    league_id TEXT,
+    score INTEGER,
+    line_score TEXT,
+    at_bats INTEGER,
+    hits INTEGER,
+    doubles INTEGER,
+    triples INTEGER,
+    homeruns INTEGER,
+    rbi INTEGER,
+    sacrifice_hits INTEGER,
+    sacrifice_flies INTEGER,
+    hit_by_pitch INTEGER,
+    walks INTEGER,
+    intentional_walks INTEGER,
+    strikeouts INTEGER,
+    stolen_bases INTEGER,
+    caught_stealing INTEGER,
+    grounded_into_double INTEGER,
+    first_catcher_interference INTEGER,
+    left_on_base INTEGER,
+    pitchers_used INTEGER,
+    individual_earned_runs INTEGER,
+    team_earned_runs INTEGER,
+    wild_pitches INTEGER,
+    balks INTEGER,
+    putouts INTEGER,
+    assists INTEGER,
+    errors INTEGER,
+    passed_balls INTEGER,
+    double_plays INTEGER,
+    triple_plays INTEGER,
+    PRIMARY KEY (team_id, game_id),
+    FOREIGN KEY (team_id) REFERENCES team(team_id),
+    FOREIGN KEY (game_id) REFERENCES game(game_id),
+    FOREIGN KEY (team_id) REFERENCES team(team_id)
+);
+"""
+
+run_command(c1)
+
+c2 = """
+INSERT OR IGNORE INTO team_appearance
+    SELECT
+        h_name,
+        game_id,
+        1 AS home,
+        h_league,
+        h_score,
+        h_line_score,
+        h_at_bats,
+        h_hits,
+        h_doubles,
+        h_triples,
+        h_homeruns,
+        h_rbi,
+        h_sacrifice_hits,
+        h_sacrifice_flies,
+        h_hit_by_pitch,
+        h_walks,
+        h_intentional_walks,
+        h_strikeouts,
+        h_stolen_bases,
+        h_caught_stealing,
+        h_grounded_into_double,
+        h_first_catcher_interference,
+        h_left_on_base,
+        h_pitchers_used,
+        h_individual_earned_runs,
+        h_team_earned_runs,
+        h_wild_pitches,
+        h_balks,
+        h_putouts,
+        h_assists,
+        h_errors,
+        h_passed_balls,
+        h_double_plays,
+        h_triple_plays
+    FROM game_log
+
+UNION
+
+    SELECT    
+        v_name,
+        game_id,
+        0 AS home,
+        v_league,
+        v_score,
+        v_line_score,
+        v_at_bats,
+        v_hits,
+        v_doubles,
+        v_triples,
+        v_homeruns,
+        v_rbi,
+        v_sacrifice_hits,
+        v_sacrifice_flies,
+        v_hit_by_pitch,
+        v_walks,
+        v_intentional_walks,
+        v_strikeouts,
+        v_stolen_bases,
+        v_caught_stealing,
+        v_grounded_into_double,
+        v_first_catcher_interference,
+        v_left_on_base,
+        v_pitchers_used,
+        v_individual_earned_runs,
+        v_team_earned_runs,
+        v_wild_pitches,
+        v_balks,
+        v_putouts,
+        v_assists,
+        v_errors,
+        v_passed_balls,
+        v_double_plays,
+        v_triple_plays
+    from game_log;
+"""
+
+run_command(c2)
+
+q = """
+SELECT * FROM team_appearance
+WHERE game_id = (
+                 SELECT MIN(game_id) from game
+                )
+   OR game_id = (
+                 SELECT MAX(game_id) from game
+                )
+ORDER By game_id, home;
+"""
+
+run_query(q)
+```
+
+
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>team_id</th>
+      <th>game_id</th>
+      <th>home</th>
+      <th>league_id</th>
+      <th>score</th>
+      <th>line_score</th>
+      <th>at_bats</th>
+      <th>hits</th>
+      <th>doubles</th>
+      <th>triples</th>
+      <th>homeruns</th>
+      <th>rbi</th>
+      <th>sacrifice_hits</th>
+      <th>sacrifice_flies</th>
+      <th>hit_by_pitch</th>
+      <th>walks</th>
+      <th>intentional_walks</th>
+      <th>strikeouts</th>
+      <th>stolen_bases</th>
+      <th>caught_stealing</th>
+      <th>grounded_into_double</th>
+      <th>first_catcher_interference</th>
+      <th>left_on_base</th>
+      <th>pitchers_used</th>
+      <th>individual_earned_runs</th>
+      <th>team_earned_runs</th>
+      <th>wild_pitches</th>
+      <th>balks</th>
+      <th>putouts</th>
+      <th>assists</th>
+      <th>errors</th>
+      <th>passed_balls</th>
+      <th>double_plays</th>
+      <th>triple_plays</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>SLU</td>
+      <td>ALT188404300</td>
+      <td>0</td>
+      <td>UA</td>
+      <td>15</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>ALT</td>
+      <td>ALT188404300</td>
+      <td>1</td>
+      <td>UA</td>
+      <td>2</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BSU</td>
+      <td>WSU188409250</td>
+      <td>0</td>
+      <td>UA</td>
+      <td>2</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>WSU</td>
+      <td>WSU188409250</td>
+      <td>1</td>
+      <td>UA</td>
+      <td>10</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## <font color=blue>08 Adding the Person Appearance Table</font>
+  -  Create the <font color=red>*person_appearance*</font> table with columns, primary key, and foreign keys as shown in the schema diagram.
+    -  Select the appropriate type based on the data.
+    -  Insert the data from the <font color=red>*game_log*</font> table, using <font color=red>*UNION*</font> clauses to combine the data from the columns for managers, umpires, pitchers, and awards.
+    -  Use a loop with string formatting to insert the data for offensive and defensive positions from the <font color=red>*game_log*</font> table.
+    -  Write a query to verify that your data was inserted correctly.
+
+
+```python
+c0 = "DROP TABLE IF EXISTS person_appearance"
+
+run_command(c0)
+
+c1 = """
+CREATE TABLE person_appearance (
+    appearance_id INTEGER PRIMARY KEY,
+    person_id TEXT,
+    team_id TEXT,
+    game_id TEXT,
+    appearance_type_id,
+    FOREIGN KEY (person_id) REFERENCES person(person_id),
+    FOREIGN KEY (team_id) REFERENCES team(team_id),
+    FOREIGN KEY (game_id) REFERENCES game(game_id),
+    FOREIGN KEY (appearance_type_id) REFERENCES appearance_type(appearance_type_id)
+);
+"""
+
+c2 = """
+INSERT OR IGNORE INTO person_appearance (
+    game_id,
+    team_id,
+    person_id,
+    appearance_type_id
+) 
+    SELECT
+        game_id,
+        NULL,
+        hp_umpire_id,
+        "UHP"
+    FROM game_log
+    WHERE hp_umpire_id IS NOT NULL    
+
+UNION
+
+    SELECT
+        game_id,
+        NULL,
+        [1b_umpire_id],
+        "U1B"
+    FROM game_log
+    WHERE "1b_umpire_id" IS NOT NULL
+
+UNION
+
+    SELECT
+        game_id,
+        NULL,
+        [2b_umpire_id],
+        "U2B"
+    FROM game_log
+    WHERE [2b_umpire_id] IS NOT NULL
+
+UNION
+
+    SELECT
+        game_id,
+        NULL,
+        [3b_umpire_id],
+        "U3B"
+    FROM game_log
+    WHERE [3b_umpire_id] IS NOT NULL
+
+UNION
+
+    SELECT
+        game_id,
+        NULL,
+        lf_umpire_id,
+        "ULF"
+    FROM game_log
+    WHERE lf_umpire_id IS NOT NULL
+
+UNION
+
+    SELECT
+        game_id,
+        NULL,
+        rf_umpire_id,
+        "URF"
+    FROM game_log
+    WHERE rf_umpire_id IS NOT NULL
+
+UNION
+
+    SELECT
+        game_id,
+        v_name,
+        v_manager_id,
+        "MM"
+    FROM game_log
+    WHERE v_manager_id IS NOT NULL
+
+UNION
+
+    SELECT
+        game_id,
+        h_name,
+        h_manager_id,
+        "MM"
+    FROM game_log
+    WHERE h_manager_id IS NOT NULL
+
+UNION
+
+    SELECT
+        game_id,
+        CASE
+            WHEN h_score > v_score THEN h_name
+            ELSE v_name
+            END,
+        winning_pitcher_id,
+        "AWP"
+    FROM game_log
+    WHERE winning_pitcher_id IS NOT NULL
+
+UNION
+
+    SELECT
+        game_id,
+        CASE
+            WHEN h_score < v_score THEN h_name
+            ELSE v_name
+            END,
+        losing_pitcher_id,
+        "ALP"
+    FROM game_log
+    WHERE losing_pitcher_id IS NOT NULL
+
+UNION
+
+    SELECT
+        game_id,
+        CASE
+            WHEN h_score > v_score THEN h_name
+            ELSE v_name
+            END,
+        saving_pitcher_id,
+        "ASP"
+    FROM game_log
+    WHERE saving_pitcher_id IS NOT NULL
+
+UNION
+
+    SELECT
+        game_id,
+        CASE
+            WHEN h_score > v_score THEN h_name
+            ELSE v_name
+            END,
+        winning_rbi_batter_id,
+        "AWB"
+    FROM game_log
+    WHERE winning_rbi_batter_id IS NOT NULL
+
+UNION
+
+    SELECT
+        game_id,
+        v_name,
+        v_starting_pitcher_id,
+        "PSP"
+    FROM game_log
+    WHERE v_starting_pitcher_id IS NOT NULL
+
+UNION
+
+    SELECT
+        game_id,
+        h_name,
+        h_starting_pitcher_id,
+        "PSP"
+    FROM game_log
+    WHERE h_starting_pitcher_id IS NOT NULL;
+"""
+
+template = """
+INSERT INTO person_appearance (
+    game_id,
+    team_id,
+    person_id,
+    appearance_type_id
+) 
+    SELECT
+        game_id,
+        {hv}_name,
+        {hv}_player_{num}_id,
+        "O{num}"
+    FROM game_log
+    WHERE {hv}_player_{num}_id IS NOT NULL
+
+UNION
+
+    SELECT
+        game_id,
+        {hv}_name,
+        {hv}_player_{num}_id,
+        "D" || CAST({hv}_player_{num}_def_pos AS INT)
+    FROM game_log
+    WHERE {hv}_player_{num}_id IS NOT NULL;
+"""
+
+run_command(c1)
+run_command(c2)
+
+for hv in ["h","v"]:
+    for num in range(1,10):
+        query_vars = {
+            "hv": hv,
+            "num": num
+        }
+        run_command(template.format(**query_vars))
+```
+
+
+```python
+print(run_query("SELECT COUNT(DISTINCT game_id) games_game FROM game"))
+print(run_query("SELECT COUNT(DISTINCT game_id) games_person_appearance FROM person_appearance"))
+
+q = """
+SELECT
+    pa.*,
+    at.name,
+    at.category
+FROM person_appearance pa
+INNER JOIN appearance_type at on at.appearance_type_id = pa.appearance_type_id
+WHERE PA.game_id = (
+                   SELECT max(game_id)
+                    FROM person_appearance
+                   )
+ORDER BY team_id, appearance_type_id
+"""
+
+run_query(q)
+```
+
+       games_game
+    0      171907
+       games_person_appearance
+    0                   171907
+
+
+
+
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>appearance_id</th>
+      <th>person_id</th>
+      <th>team_id</th>
+      <th>game_id</th>
+      <th>appearance_type_id</th>
+      <th>name</th>
+      <th>category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1646114</td>
+      <td>steab101</td>
+      <td>None</td>
+      <td>WSU188409250</td>
+      <td>UHP</td>
+      <td>Home Plate</td>
+      <td>umpire</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1646116</td>
+      <td>murnt101</td>
+      <td>BSU</td>
+      <td>WSU188409250</td>
+      <td>MM</td>
+      <td>Manager</td>
+      <td>manager</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1646115</td>
+      <td>crane101</td>
+      <td>BSU</td>
+      <td>WSU188409250</td>
+      <td>PSP</td>
+      <td>Starting Pitcher</td>
+      <td>pitcher</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1646118</td>
+      <td>scanm801</td>
+      <td>WSU</td>
+      <td>WSU188409250</td>
+      <td>MM</td>
+      <td>Manager</td>
+      <td>manager</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1646117</td>
+      <td>dailh101</td>
+      <td>WSU</td>
+      <td>WSU188409250</td>
+      <td>PSP</td>
+      <td>Starting Pitcher</td>
+      <td>pitcher</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+## <font color=blue>09 Removing the Original Tables</font>
+  -  Drop the tables we created to hold our unnormalized data:
+    -  <font color=red>*game_log*</font>
+    -  <font color=red>*park_codes*</font>
+    -  <font color=red>*team_codes*</font>
+    -  <font color=red>*person_codes*</font>
+
+
+```python
+show_tables()
+```
+
+
+
+
+    ['person',
+     'park',
+     'league',
+     'team',
+     'game',
+     'team_appearance',
+     'game_log',
+     'park_codes',
+     'person_codes',
+     'team_codes',
+     'appearance_type',
+     'person_appearance']
+
+
+
+
+```python
+tables = [
+    "game_log",
+    "park_codes",
+    "team_codes",
+    "person_codes"
+]
+
+for t in tables:
+    c = '''
+    DROP TABLE {}
+    '''.format(t)
+    
+    run_command(c)
+
+show_tables()
+```
+
+
+
+
+    ['person',
+     'park',
+     'league',
+     'team',
+     'game',
+     'team_appearance',
+     'appearance_type',
+     'person_appearance']
+
+
