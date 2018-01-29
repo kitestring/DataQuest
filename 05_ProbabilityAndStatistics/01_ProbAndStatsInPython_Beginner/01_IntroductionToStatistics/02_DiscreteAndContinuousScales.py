@@ -20,5 +20,5 @@ for plot in range(0,2):
 plt.legend(loc='upper left')
 plt.xlabel('day_numbers')
 plt.ylabel('Unrelated Shit')
-plt.title('Seeing the difference between linear and logrithmic data sets')    
+plt.title('This is a completely meaningless plot')    
 plt.show()
