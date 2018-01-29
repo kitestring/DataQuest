@@ -104,6 +104,7 @@ venv.bak/
 
 
 # my additions
+*.tmp
 *.csv
 *.doc
 *.docx
@@ -115,9 +116,9 @@ PyDev.txt
 /fivethirtyeight
 
 # Eclipse 
-.metadata
-.project
-.pydevproject
+*.metadata
+*.project
+*.pydevproject
 
 # Security
 client_settings_json.txt
