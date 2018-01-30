@@ -106,9 +106,10 @@ venv.bak/
 # my additions
 *.tmp
 *.csv
-*.doc
-*.docx
 *.doc#
+GitHub_Readme.docx
+LocationOfData_GitData.txt
+PyDev.txt
 LocationOfData_GitData.txt
 PyDev.txt
 /OtherProjects
