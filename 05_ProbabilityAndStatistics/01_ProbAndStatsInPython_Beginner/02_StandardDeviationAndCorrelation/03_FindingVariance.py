@@ -1,3 +1,5 @@
+#!~/anaconda3/bin/
+
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -17,6 +19,6 @@ for p in nba_stats["pts"]:
     square_difference = difference ** 2
     # Add the difference to the total.
     variance += square_difference
-# Average the total to find the final variance.
+# Average the total to find the final variance.sf
 point_variance = variance / len(nba_stats["pts"]) 
 print(point_variance)
