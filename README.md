@@ -5,7 +5,7 @@
 ## Below is a list of topics covered in meticulous detail.
 In an effort to transition my career from that of a Chemist & Data Automation Specialist to a Data Scientist, I followed the self-guided curriculum laid out by [DataQuest.io](https://www.dataquest.io/).  I elected to skip the first Chapter as I was already very strong in the basics of python, 2 years of Python/SQLite data automation experience.  The code for each [DataQuest.io](https://www.dataquest.io/) mission is included  in the repo.
 
-Unfortunately, the sheer volume and size of the raw csv files vastly exceeds the file size limitation imposed by github.  Therefore, I’ve have included \*.csv files on the .gitignore file.
+Unfortunately, the sheer volume and size of the raw csv files used vastly exceeds the file size limitation imposed by github.  Therefore, I’ve have included \*.csv files on the .gitignore file.
 
 ### 2. Data Analysis, Visualization, & Cleaning
   * Numpy
