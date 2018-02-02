@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import random
+import numpy
 
 def roll():
     return random.randint(1, 6)
@@ -40,3 +41,14 @@ ax3.set_ylim(0,70)
 ax3.set_xlim(0,0.4)
 
 plt.show()
+
+large_sample_std = numpy.std(large_sample)
+large_sample_mean = numpy.mean(large_sample)
+deviations_from_mean = (0.18 - large_sample_mean) / large_sample_std
+over_18_count = len([i for i in large_sample if i >= 0.18])
+
+
+print(large_sample_mean)
+print(large_sample_std)
+print(deviations_from_mean)
+print(over_18_count)
