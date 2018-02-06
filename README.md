@@ -45,6 +45,11 @@ Unfortunately, the sheer volume and size of the raw csv files used, vastly excee
   * Probability Distributions
   * Chi-Squared Tests
   * Multi Category Chi-Squared Tests
+  * Major Python Libraries Utilized:
+    * scipy
+    * math
+    * functools
+    * operator
   
 ### 6. Maching Learning  
   1. Fundamentals
