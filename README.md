@@ -46,7 +46,14 @@ Unfortunately, the sheer volume and size of the raw csv files used, vastly excee
   * Chi-Squared Tests
   * Multi Category Chi-Squared Tests
   * Major Python Libraries Utilized:
-    * scipy
+    * scipy.stats
+      * skew
+      * kurtosis
+      * norm
+      * pearsonr
+      * linregress
+      * binom
+      * linspace (note, this one is in scipy, not scipy.stats)
     * math
     * functools
     * operator
