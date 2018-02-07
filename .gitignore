@@ -107,8 +107,8 @@ venv.bak/
 *.tmp
 *.csv
 *.doc#
+*~$*.doc
 GitHub_Readme.docx
-LocationOfData_GitData.txt
 PyDev.txt
 LocationOfData_GitData.txt
 PyDev.txt
