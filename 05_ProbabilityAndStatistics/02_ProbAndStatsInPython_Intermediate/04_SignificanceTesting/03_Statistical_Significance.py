@@ -10,8 +10,8 @@ weight_lost_b = [5, 4, 5, 5, 4, 5, 7, 5, 4, 3, 3, 5, 10, 3, 4, 9, 7, 6, 9, 4, 2,
 mean_group_a = np.asarray(weight_lost_a).mean()
 mean_group_b = np.asarray(weight_lost_b).mean()
 
-print(mean_group_a)
-print(mean_group_a)
+print('mean_group_a:', mean_group_a)
+print('mean_group_b:', mean_group_b)
 
 fig = plt.figure(figsize=(10,5))
 ax1 = fig.add_subplot(1,2,1)
