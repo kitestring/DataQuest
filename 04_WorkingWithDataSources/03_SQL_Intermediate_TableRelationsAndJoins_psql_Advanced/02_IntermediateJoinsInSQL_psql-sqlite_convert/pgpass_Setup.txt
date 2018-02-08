@@ -9,7 +9,7 @@ kkite@mint18 ~ $ nano ~/.pgpass
 kkite@mint18 ~ $ chmod 0600 .pgpass
 
 # Once the .pgpass file has the correct permissions and is in 
-# the correction you can run *.sql files using psql.
+# the correct location you can run *.sql files using psql.
 # To run *.sql files using PostgreSQL use the following command:
 kkite@mint18 ~ $ psql -d chinook -U kitestring -w -f *.sql
 
