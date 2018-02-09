@@ -85,7 +85,7 @@ class postgresql_converter():
         tables = self.getTables_FromSQLite()
         tables[:] = ['%s' % t for t in tables]
         for table_name in tables:
-            print('Woring Table: {tn}\n'.format(tn=table_name))
+            print('Working Table: {tn}\n'.format(tn=table_name))
             table_schema = self.getTableSchema_FromSQLite(table_name)
             print(table_schema)
             table_rows = self.getData_FromSQLite(table_name)

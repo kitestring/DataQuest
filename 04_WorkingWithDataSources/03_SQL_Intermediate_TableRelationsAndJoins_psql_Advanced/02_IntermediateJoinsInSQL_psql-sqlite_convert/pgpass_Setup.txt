@@ -14,4 +14,4 @@ kkite@mint18 ~ $ chmod 0600 .pgpass
 kkite@mint18 ~ $ psql -d chinook -U kitestring -w -f *.sql
 
 # more generically:
-psql -d Database -U UserInPGpassFile -w -f SQL_Command(s).sql
+psql -d Database -U UserInPGpassFile -w -f file.sql
