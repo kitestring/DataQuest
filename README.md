@@ -53,6 +53,8 @@ Unfortunately, the sheer volume and size of the raw csv files used, vastly excee
       * pearsonr
       * linregress
       * binom
+      * chisquare
+      * chi2_contingency
       * linspace (note, this one is in scipy, not scipy.stats)
     * math
     * functools
