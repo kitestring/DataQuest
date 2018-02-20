@@ -27,9 +27,12 @@ for index, row in test_df.iterrows():
 
 mae = sum_abs_diff / test_df.shape[0]  
 mse = sum_abs_diff_squared / test_df.shape[0]
+rmse = mse ** 0.5
 
 print('mae:', mae)
 print('mse:', mse)
+print('rmse:', rmse)
 
 # mae: 56.2900107411
 # mse: 18646.525370569325
+# rmse: 136.55228072269364
