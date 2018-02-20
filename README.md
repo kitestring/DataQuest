@@ -96,4 +96,6 @@ Unfortunately, the sheer volume and size of the raw csv files used, vastly excee
      1. random forests (F-Ratio?)
   1. Major Python Libraries Learned in the __Machine Learning__ Course
      1. scipy.spatial 
-        * distance (calculates Euclidean distance)
+        * distance
+     1. sklearn.neighbors 
+        * KNeighborsRegressor
