@@ -101,3 +101,6 @@ Unfortunately, the sheer volume and size of the raw csv files used, vastly excee
         * KNeighborsRegressor
      1. sklearn.metrics 
         * mean_squared_error
+     1. sklearn.model_selection 
+        * cross_val_score
+        * KFold
