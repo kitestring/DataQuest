@@ -20,4 +20,3 @@ unnecessary_columns = ['room_type', 'city', 'state', 'latitude', 'longitude', 'z
                        'host_response_rate', 'host_acceptance_rate', 'host_listings_count']
 dc_listings.drop(labels=unnecessary_columns, inplace=True, axis=1)
 print(dc_listings.info())
-
