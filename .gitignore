@@ -116,6 +116,8 @@ PyDev.txt
 /DS_Step2
 /fivethirtyeight
 JEOPARDY_QUESTIONS1.json
+/DataQuestAnswers
+/DataQuestAnswers_Playing
 
 # Eclipse 
 *.metadata

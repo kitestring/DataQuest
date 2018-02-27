@@ -20,4 +20,3 @@ for fold in num_folds:
     avg_rmse = np.mean(rmses)
     std_rmse = np.std(rmses)
     print(str(fold), "folds: ", "avg RMSE: ", str(avg_rmse), "std RMSE: ", str(std_rmse))
-    
