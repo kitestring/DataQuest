@@ -37,7 +37,7 @@ Unfortunately, the sheer volume and size of the raw csv files used, vastly excee
   * PostgreSQL (psycopg2, PostgreSQL Command-line, .pgpass)
   * Database indexing
 
-### 5. Probability and Statistics
+### 5. Probability & Statistics
   * Standard Deviation & Correlation
   * Linear Regression
   * Disributions & Sampling
@@ -45,7 +45,7 @@ Unfortunately, the sheer volume and size of the raw csv files used, vastly excee
   * Probability Distributions
   * Chi-Squared Tests
   * Multi Category Chi-Squared Tests
-  * Major Python Libraries Utilized:
+  * Major Python Libraries Learned/Utilized in the __Probability & Statistics__ Course:
     * scipy.stats
       * skew
       * kurtosis
