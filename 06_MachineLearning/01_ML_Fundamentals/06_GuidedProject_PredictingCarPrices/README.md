@@ -5,6 +5,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+#from matplotlib.font_manager import FontProperties
 ```
 
 ## <font color=blue>01 Introduction to the data set</font> 
@@ -274,16 +275,20 @@ numeric_cars.head(10)
 *  Explore the missing value counts for the other numeric columns and handle any missing values.
 *  Of the columns you decided to keep, normalize the numeric ones so all values range from __0__ to __1__.
 
+### Note...
+I struggled quite a bit with this section.  Somehow when I was cleaning my dataset I ended up with 201 entires, 0 to 204.  Which meant I had 3 empty rows *(I think)*; I'm still trying to make sence of it.  Take a look a the cell below with the __FinalDataCheck__ tag.  It resulted in the following exception: __ValueError: Input contains NaN, infinity or a value too large for dtype('float64')__  when I was trying to fit the data.  I was given some great help from the stackoverflow community, see this [thread](https://stackoverflow.com/questions/49042340/valueerror-input-contains-nan-infinity-or-a-value-too-large-for-dtypefloat64).  I believe the problem originated in the __dropna_price__ cell, however, I'm still not positive yet.  The line of code in question is shown here:
+
+> numeric_cars.dropna(subset=['price'], inplace=True)
+
 
 ```python
-print('Convert missing values (?) with np.NaN then set the type to float')
+# Convert missing values (?) with np.NaN then set the type to float
 numeric_cars.replace(to_replace='?', value=np.nan, inplace=True)
 numeric_cars = numeric_cars.astype('float')
 print(numeric_cars.info())
 numeric_cars.head(10)
 ```
 
-    Convert missing values (?) with np.NaN then set the type to float
     <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 205 entries, 0 to 204
     Data columns (total 14 columns):
@@ -522,15 +527,12 @@ numeric_cars.head(10)
 
 
 ```python
-print('This shows the percentage of values in each column that are not numberic.')
+# Show the percentage of values in each column that are not numberic.
 
 not_numeric_count = len(numeric_cars) - numeric_cars.count(axis=0, level=None, numeric_only=False)
 percentage_not_numeric = (not_numeric_count / len(numeric_cars)) * 100
 percentage_not_numeric
 ```
-
-    This shows the percentage of values in each column that are not numberic.
-
 
 
 
@@ -555,71 +557,61 @@ percentage_not_numeric
 
 
 ```python
-print("Because the column we're trying to predict is 'price', any row were price is NaN will be removed.")
-print("After doings so we will again check the percentage of values that are NaN for each column")
+# Because the column we're trying to predict is 'price', any row were price is NaN will be removed.
+# After doing check the DataFrame again
 numeric_cars.dropna(subset=['price'], inplace=True)
-not_numeric_count = len(numeric_cars) - numeric_cars.count(axis=0, level=None, numeric_only=False)
-percentage_not_numeric = (not_numeric_count / len(numeric_cars)) * 100
-percentage_not_numeric
+numeric_cars.info()
 ```
 
-    Because the column we're trying to predict is 'price', any row were price is NaN will be removed.
-    After doings so we will again check the percentage of values that are NaN for each column
-
-
-
-
-
-    normalized_losses    18.407960
-    wheel_base            0.000000
-    length                0.000000
-    width                 0.000000
-    height                0.000000
-    curb_weight           0.000000
-    bore                  1.990050
-    stroke                1.990050
-    compression_ratio     0.000000
-    horsepower            0.995025
-    peak_rpm              0.995025
-    city_mpg              0.000000
-    highway_mpg           0.000000
-    price                 0.000000
-    dtype: float64
-
+    <class 'pandas.core.frame.DataFrame'>
+    Int64Index: 201 entries, 0 to 204
+    Data columns (total 14 columns):
+    normalized_losses    164 non-null float64
+    wheel_base           201 non-null float64
+    length               201 non-null float64
+    width                201 non-null float64
+    height               201 non-null float64
+    curb_weight          201 non-null float64
+    bore                 197 non-null float64
+    stroke               197 non-null float64
+    compression_ratio    201 non-null float64
+    horsepower           199 non-null float64
+    peak_rpm             199 non-null float64
+    city_mpg             201 non-null float64
+    highway_mpg          201 non-null float64
+    price                201 non-null float64
+    dtypes: float64(14)
+    memory usage: 23.6 KB
 
 
 
 ```python
-print("All remaining NaN's will be filled with the mean of its respective column")
+# All remaining NaN's will be filled with the mean of its respective column
+# Then, yet again check the DataFrame.
+
 numeric_cars = numeric_cars.fillna(numeric_cars.mean())
-print("Then, verify that all NaN's have been removed by showing the number of NaN's for each column.\n")
-numeric_cars.isnull().sum()
+numeric_cars.info()
 ```
 
-    All remaining NaN's will be filled with the mean of its respective column
-    Then, verify that all NaN's have been removed by showing the number of NaN's for each column.
-    
-
-
-
-
-
-    normalized_losses    0
-    wheel_base           0
-    length               0
-    width                0
-    height               0
-    curb_weight          0
-    bore                 0
-    stroke               0
-    compression_ratio    0
-    horsepower           0
-    peak_rpm             0
-    city_mpg             0
-    highway_mpg          0
-    price                0
-    dtype: int64
-
+    <class 'pandas.core.frame.DataFrame'>
+    Int64Index: 201 entries, 0 to 204
+    Data columns (total 14 columns):
+    normalized_losses    201 non-null float64
+    wheel_base           201 non-null float64
+    length               201 non-null float64
+    width                201 non-null float64
+    height               201 non-null float64
+    curb_weight          201 non-null float64
+    bore                 201 non-null float64
+    stroke               201 non-null float64
+    compression_ratio    201 non-null float64
+    horsepower           201 non-null float64
+    peak_rpm             201 non-null float64
+    city_mpg             201 non-null float64
+    highway_mpg          201 non-null float64
+    price                201 non-null float64
+    dtypes: float64(14)
+    memory usage: 23.6 KB
 
 
 
@@ -628,12 +620,14 @@ numeric_cars.isnull().sum()
 test_features = numeric_cars.columns.tolist()
 predictive_feature = 'price'
 test_features.remove(predictive_feature)
-k_values = [x for x in range(10) if x/2 != round(x/2)]
+# k_values = [x for x in range(22) if x/2 != round(x/2)]
+k_values = [x for x in range(1,22)]
 
 # Normalize columns
 numeric_cars_normalized = numeric_cars[test_features].copy()
-numeric_cars_normalized = numeric_cars_normalized/ numeric_cars.max()
+numeric_cars_normalized = (numeric_cars_normalized - numeric_cars_normalized.min()) / (numeric_cars_normalized.max() - numeric_cars_normalized.min())
 numeric_cars_normalized[predictive_feature] = numeric_cars[predictive_feature].copy()
+
 numeric_cars_normalized.head(5)
 ```
 
@@ -658,107 +652,251 @@ numeric_cars_normalized.head(5)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>bore</th>
-      <th>city_mpg</th>
-      <th>compression_ratio</th>
-      <th>curb_weight</th>
-      <th>height</th>
-      <th>highway_mpg</th>
-      <th>horsepower</th>
-      <th>length</th>
       <th>normalized_losses</th>
-      <th>peak_rpm</th>
-      <th>price</th>
-      <th>stroke</th>
       <th>wheel_base</th>
+      <th>length</th>
       <th>width</th>
+      <th>height</th>
+      <th>curb_weight</th>
+      <th>bore</th>
+      <th>stroke</th>
+      <th>compression_ratio</th>
+      <th>horsepower</th>
+      <th>peak_rpm</th>
+      <th>city_mpg</th>
+      <th>highway_mpg</th>
+      <th>price</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.880711</td>
-      <td>0.428571</td>
-      <td>0.391304</td>
-      <td>0.626660</td>
-      <td>0.816054</td>
-      <td>0.500000</td>
-      <td>0.423664</td>
-      <td>0.811148</td>
-      <td>0.476562</td>
-      <td>0.757576</td>
+      <td>0.298429</td>
+      <td>0.058309</td>
+      <td>0.413433</td>
+      <td>0.324786</td>
+      <td>0.083333</td>
+      <td>0.411171</td>
+      <td>0.664286</td>
+      <td>0.290476</td>
+      <td>0.1250</td>
+      <td>0.294393</td>
+      <td>0.346939</td>
+      <td>0.222222</td>
+      <td>0.289474</td>
       <td>13495.0</td>
-      <td>0.642686</td>
-      <td>0.732837</td>
-      <td>0.890278</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.880711</td>
-      <td>0.428571</td>
-      <td>0.391304</td>
-      <td>0.626660</td>
-      <td>0.816054</td>
-      <td>0.500000</td>
-      <td>0.423664</td>
-      <td>0.811148</td>
-      <td>0.476562</td>
-      <td>0.757576</td>
+      <td>0.298429</td>
+      <td>0.058309</td>
+      <td>0.413433</td>
+      <td>0.324786</td>
+      <td>0.083333</td>
+      <td>0.411171</td>
+      <td>0.664286</td>
+      <td>0.290476</td>
+      <td>0.1250</td>
+      <td>0.294393</td>
+      <td>0.346939</td>
+      <td>0.222222</td>
+      <td>0.289474</td>
       <td>16500.0</td>
-      <td>0.642686</td>
-      <td>0.732837</td>
-      <td>0.890278</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.680203</td>
-      <td>0.387755</td>
-      <td>0.391304</td>
-      <td>0.694294</td>
-      <td>0.876254</td>
-      <td>0.481481</td>
-      <td>0.587786</td>
-      <td>0.822681</td>
-      <td>0.476562</td>
-      <td>0.757576</td>
+      <td>0.298429</td>
+      <td>0.230321</td>
+      <td>0.449254</td>
+      <td>0.444444</td>
+      <td>0.383333</td>
+      <td>0.517843</td>
+      <td>0.100000</td>
+      <td>0.666667</td>
+      <td>0.1250</td>
+      <td>0.495327</td>
+      <td>0.346939</td>
+      <td>0.166667</td>
+      <td>0.263158</td>
       <td>16500.0</td>
-      <td>0.832134</td>
-      <td>0.781638</td>
-      <td>0.909722</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.809645</td>
-      <td>0.489796</td>
-      <td>0.434783</td>
-      <td>0.574766</td>
-      <td>0.908027</td>
-      <td>0.555556</td>
-      <td>0.389313</td>
-      <td>0.848630</td>
-      <td>0.640625</td>
-      <td>0.833333</td>
+      <td>0.518325</td>
+      <td>0.384840</td>
+      <td>0.529851</td>
+      <td>0.504274</td>
+      <td>0.541667</td>
+      <td>0.329325</td>
+      <td>0.464286</td>
+      <td>0.633333</td>
+      <td>0.1875</td>
+      <td>0.252336</td>
+      <td>0.551020</td>
+      <td>0.305556</td>
+      <td>0.368421</td>
       <td>13950.0</td>
-      <td>0.815348</td>
-      <td>0.825476</td>
-      <td>0.919444</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.809645</td>
-      <td>0.367347</td>
-      <td>0.347826</td>
-      <td>0.694540</td>
-      <td>0.908027</td>
-      <td>0.407407</td>
-      <td>0.438931</td>
-      <td>0.848630</td>
-      <td>0.640625</td>
-      <td>0.833333</td>
+      <td>0.518325</td>
+      <td>0.373178</td>
+      <td>0.529851</td>
+      <td>0.521368</td>
+      <td>0.541667</td>
+      <td>0.518231</td>
+      <td>0.464286</td>
+      <td>0.633333</td>
+      <td>0.0625</td>
+      <td>0.313084</td>
+      <td>0.551020</td>
+      <td>0.138889</td>
+      <td>0.157895</td>
       <td>17450.0</td>
-      <td>0.815348</td>
-      <td>0.822167</td>
-      <td>0.922222</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+# Do a final check on the data and verify that it has been cleaned properly and there are no NaN's or inf
+
+index = []
+NaN_counter = []
+inf_counter = []
+
+for col in numeric_cars_normalized.columns:
+    index.append(col)
+    inf_counter.append(np.any(np.isfinite(numeric_cars_normalized[col])))
+    NaN_counter.append(np.any(np.isnan(numeric_cars_normalized[col])))
+ 
+data_check = {'Any_NaN': NaN_counter, 'Any_inf': inf_counter}
+data_verification = pd.DataFrame(data=data_check, index=index)
+
+print(numeric_cars_normalized.info())
+data_verification
+```
+
+    <class 'pandas.core.frame.DataFrame'>
+    Int64Index: 201 entries, 0 to 204
+    Data columns (total 14 columns):
+    normalized_losses    201 non-null float64
+    wheel_base           201 non-null float64
+    length               201 non-null float64
+    width                201 non-null float64
+    height               201 non-null float64
+    curb_weight          201 non-null float64
+    bore                 201 non-null float64
+    stroke               201 non-null float64
+    compression_ratio    201 non-null float64
+    horsepower           201 non-null float64
+    peak_rpm             201 non-null float64
+    city_mpg             201 non-null float64
+    highway_mpg          201 non-null float64
+    price                201 non-null float64
+    dtypes: float64(14)
+    memory usage: 23.6 KB
+    None
+
+
+
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Any_NaN</th>
+      <th>Any_inf</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>normalized_losses</th>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>wheel_base</th>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>length</th>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>width</th>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>height</th>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>curb_weight</th>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>bore</th>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>stroke</th>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>compression_ratio</th>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>horsepower</th>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>peak_rpm</th>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>city_mpg</th>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>highway_mpg</th>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>price</th>
+      <td>False</td>
+      <td>True</td>
     </tr>
   </tbody>
 </table>
@@ -774,31 +912,34 @@ numeric_cars_normalized.head(5)
 *  Use this function to train and test univariate models using the different numeric columns in the data set. Which column performed the best using the default __k__ value?
 *  Modify the __knn_train_test()__ function you wrote to accept a parameter for the __k__ value.
   *  Update the function logic to use this parameter.
-  *  For each numeric column, create, train, and test a univariate model using the following __k__ values (__1__, __3__, __5__, __7__, and __9__). Visualize the results using a scatter plot and a line plot.
+  *  For each numeric column, create, train, and test a univariate model using the following __k__ values (__1 - 21__). Visualize the results using a scatter plot and a line plot.
 
 
 ```python
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import mean_squared_error
 
-def knn_train_test(df, train_features, predict_feature, k_value):
+def knn_train_test(df, train_columns, predict_column, k_value):
     # Randomly resorts the DataFrame to mitiate sampling bias
-    np.random.seed(1)
-    df = df.loc[np.random.permutation(len(numeric_cars))]
+    # np.random.seed(1)
+    # df = df.loc[np.random.permutation(len(df))]
 
     # Split the DataFrame into ~75% train / 25% test data sets
     split_integer = round(len(df) * 0.75)
     train_df = df.iloc[0:split_integer]
     test_df = df.iloc[split_integer:]
     
+    train_features = train_df[train_columns].values.reshape(-1, 1)
+    train_target = train_df[predict_column].values.reshape(-1, 1)
+    test_features = test_df[train_columns].values.reshape(-1, 1)
+    
     # Trains the model
     knn = KNeighborsRegressor(n_neighbors=k_value)
-    knn.fit(train_df[[train_features]], train_df[predict_feature])
+    knn.fit(train_features, train_target)
     
     # Test the model & return calculate mean square error
-    predictions = knn.predict(test_df[train_features])
-    print("predictions")
-    mse = mean_squared_error(y_true=test_df[predict_feature], y_pred=predictions)
+    predictions = knn.predict(test_features)
+    mse = mean_squared_error(y_true=test_df[predict_column], y_pred=predictions)
     return mse
 ```
 
@@ -808,79 +949,44 @@ def knn_train_test(df, train_features, predict_feature, k_value):
 mse_dict = {}
 
 for feature in test_features:
-    print(feature)
     # instantiate mse list
-    mse = [knn_train_test(df=numeric_cars_normalized, train_features=feature, predict_feature=predictive_feature, k_value=k) for k in k_values]
-    mse_dict[feature] = mse
+    mse = []
     
-mse_dict
+    for k_value in k_values:
+        mse.append(knn_train_test(df=numeric_cars_normalized, train_columns=feature, 
+                    predict_column=predictive_feature, k_value=k_value))
+        
+    mse_dict[feature] = mse
 ```
 
-    normalized_losses
+
+```python
+fig = plt.figure(figsize=(12,12))
+ax1 = fig.add_subplot(2,1,1)
+ax2 = fig.add_subplot(2,1,2)
+
+ax1.set_prop_cycle('color',plt.cm.spectral(np.linspace(0,1.7,21)))
+ax2.set_prop_cycle('color',plt.cm.spectral(np.linspace(0,1.7,21)))
+
+for i, feature in enumerate(test_features):
+    ax1.scatter(x=k_values, y=mse_dict[feature], label=feature)
+    ax2.plot(k_values, mse_dict[feature], label=feature)
+    
+ax1.legend(loc='center right', bbox_to_anchor=(1.25, 0.5))
+ax1.set_xlabel('k Values')
+ax1.set_ylabel('Mean Squared Error') 
+ax1.set_xticks(k_values)
+
+ax2.legend(loc='center right', bbox_to_anchor=(1.25, 0.5))
+ax2.set_xlabel('k Values')
+ax2.set_ylabel('Mean Squared Error') 
+ax2.set_xticks(k_values)
+
+plt.show()
+```
 
 
-
-    ---------------------------------------------------------------------------
-
-    ValueError                                Traceback (most recent call last)
-
-    <ipython-input-171-edf06703e8b1> in <module>()
-          5     print(feature)
-          6     # instantiate mse list
-    ----> 7     mse = [knn_train_test(df=numeric_cars_normalized, train_features=feature, predict_feature=predictive_feature, k_value=k) for k in k_values]
-          8     mse_dict[feature] = mse
-          9 
-
-
-    <ipython-input-171-edf06703e8b1> in <listcomp>(.0)
-          5     print(feature)
-          6     # instantiate mse list
-    ----> 7     mse = [knn_train_test(df=numeric_cars_normalized, train_features=feature, predict_feature=predictive_feature, k_value=k) for k in k_values]
-          8     mse_dict[feature] = mse
-          9 
-
-
-    <ipython-input-170-4214cc777bb6> in knn_train_test(df, train_features, predict_feature, k_value)
-         14     # Trains the model
-         15     knn = KNeighborsRegressor(n_neighbors=k_value)
-    ---> 16     knn.fit(train_df[[train_features]], train_df[predict_feature])
-         17 
-         18     # Test the model & return calculate mean square error
-
-
-    ~/anaconda3/lib/python3.6/site-packages/sklearn/neighbors/base.py in fit(self, X, y)
-        743         """
-        744         if not isinstance(X, (KDTree, BallTree)):
-    --> 745             X, y = check_X_y(X, y, "csr", multi_output=True)
-        746         self._y = y
-        747         return self._fit(X)
-
-
-    ~/anaconda3/lib/python3.6/site-packages/sklearn/utils/validation.py in check_X_y(X, y, accept_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, multi_output, ensure_min_samples, ensure_min_features, y_numeric, warn_on_dtype, estimator)
-        540     X = check_array(X, accept_sparse, dtype, order, copy, force_all_finite,
-        541                     ensure_2d, allow_nd, ensure_min_samples,
-    --> 542                     ensure_min_features, warn_on_dtype, estimator)
-        543     if multi_output:
-        544         y = check_array(y, 'csr', force_all_finite=True, ensure_2d=False,
-
-
-    ~/anaconda3/lib/python3.6/site-packages/sklearn/utils/validation.py in check_array(array, accept_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, warn_on_dtype, estimator)
-        420                              % (array.ndim, estimator_name))
-        421         if force_all_finite:
-    --> 422             _assert_all_finite(array)
-        423 
-        424     shape_repr = _shape_repr(array.shape)
-
-
-    ~/anaconda3/lib/python3.6/site-packages/sklearn/utils/validation.py in _assert_all_finite(X)
-         41             and not np.isfinite(X).all()):
-         42         raise ValueError("Input contains NaN, infinity"
-    ---> 43                          " or a value too large for %r." % X.dtype)
-         44 
-         45 
-
-
-    ValueError: Input contains NaN, infinity or a value too large for dtype('float64').
+![png](output_13_0.png)
 
 
 ## <font color=blue>04 Mulitvariate Model</font>

@@ -9,7 +9,6 @@
 # In[58]:
 
 
-get_ipython().magic('matplotlib inline')
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
