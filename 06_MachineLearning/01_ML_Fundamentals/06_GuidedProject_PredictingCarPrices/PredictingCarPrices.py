@@ -1,13 +1,14 @@
 
 # coding: utf-8
 
-# In[139]:
+# In[1]:
 
 
 get_ipython().magic('matplotlib inline')
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib
 #from matplotlib.font_manager import FontProperties
 
 
@@ -16,7 +17,7 @@ import matplotlib.pyplot as plt
 # *  Determine which columns are numeric and can be used as features and which column is the target column.
 # *  Display the first few rows of the dataframe and make sure it looks like the data set preview.
 
-# In[140]:
+# In[2]:
 
 
 headers=['symboling','normalized_losses','make','fuel_type','aspiration','num_of_doors',
@@ -48,7 +49,7 @@ numeric_cars.head(10)
 # 
 # > numeric_cars.dropna(subset=['price'], inplace=True)
 
-# In[141]:
+# In[3]:
 
 
 # Convert missing values (?) with np.NaN then set the type to float
@@ -58,7 +59,7 @@ print(numeric_cars.info())
 numeric_cars.head(10)
 
 
-# In[142]:
+# In[4]:
 
 
 # Show the percentage of values in each column that are not numberic.
@@ -68,7 +69,7 @@ percentage_not_numeric = (not_numeric_count / len(numeric_cars)) * 100
 percentage_not_numeric
 
 
-# In[143]:
+# In[5]:
 
 
 # Because the column we're trying to predict is 'price', any row were price is NaN will be removed.
@@ -77,7 +78,7 @@ numeric_cars.dropna(subset=['price'], inplace=True)
 numeric_cars.info()
 
 
-# In[144]:
+# In[6]:
 
 
 # All remaining NaN's will be filled with the mean of its respective column
@@ -87,7 +88,7 @@ numeric_cars = numeric_cars.fillna(numeric_cars.mean())
 numeric_cars.info()
 
 
-# In[145]:
+# In[7]:
 
 
 # Create training feature list and k value list
@@ -105,7 +106,7 @@ numeric_cars_normalized[predictive_feature] = numeric_cars[predictive_feature].c
 numeric_cars_normalized.head(5)
 
 
-# In[146]:
+# In[8]:
 
 
 # Do a final check on the data and verify that it has been cleaned properly and there are no NaN's or inf
@@ -136,13 +137,13 @@ data_verification
 #   *  Update the function logic to use this parameter.
 #   *  For each numeric column, create, train, and test a univariate model using the following __k__ values (__1 - 21__). Visualize the results using a scatter plot and a line plot.
 
-# In[147]:
+# In[9]:
 
 
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.metrics import mean_squared_error
 
-def knn_train_test(df, train_columns, predict_column, k_value):
+def knn_train_test_Univariate(df, train_columns, predict_column, k_value):
     # Randomly resorts the DataFrame to mitiate sampling bias
     # np.random.seed(1)
     # df = df.loc[np.random.permutation(len(df))]
@@ -163,49 +164,75 @@ def knn_train_test(df, train_columns, predict_column, k_value):
     # Test the model & return calculate mean square error
     predictions = knn.predict(test_features)
     mse = mean_squared_error(y_true=test_df[predict_column], y_pred=predictions)
-    return mse
+    return mse ** 0.5
+
+def knn_train_test_Mulitvariate_Model(df, train_columns, predict_column, k_value):
+    # Randomly resorts the DataFrame to mitiate sampling bias
+    # np.random.seed(1)
+    # df = df.loc[np.random.permutation(len(df))]
+
+    # Split the DataFrame into ~75% train / 25% test data sets
+    split_integer = round(len(df) * 0.75)
+    train_df = df.iloc[0:split_integer]
+    test_df = df.iloc[split_integer:]
+    
+    train_features = train_df[train_columns].values
+    train_target = train_df[predict_column].values
+    test_features = test_df[train_columns].values
+    
+    # Trains the model
+    knn = KNeighborsRegressor(n_neighbors=k_value)
+    knn.fit(train_features, train_target)
+    
+    # Test the model & return calculate mean square error
+    predictions = knn.predict(test_features)
+    mse = mean_squared_error(y_true=test_df[predict_column], y_pred=predictions)
+    return mse ** 0.5
 
 
-# In[148]:
+# In[10]:
 
 
 # instantiate mse dict
-mse_dict = {}
+rmse_dict = {}
 
 for feature in test_features:
     # instantiate mse list
-    mse = []
+    rmse = []
     
     for k_value in k_values:
-        mse.append(knn_train_test(df=numeric_cars_normalized, train_columns=feature, 
+        rmse.append(knn_train_test_Univariate(df=numeric_cars_normalized, train_columns=feature, 
                     predict_column=predictive_feature, k_value=k_value))
         
-    mse_dict[feature] = mse
+    rmse_dict[feature] = rmse
 
 
-# In[178]:
+# In[11]:
 
 
-fig = plt.figure(figsize=(12,12))
+matplotlib.rc('legend', fontsize=16)
+fig = plt.figure(figsize=(12,20))
 ax1 = fig.add_subplot(2,1,1)
 ax2 = fig.add_subplot(2,1,2)
 
-ax1.set_prop_cycle('color',plt.cm.spectral(np.linspace(0,1.7,21)))
-ax2.set_prop_cycle('color',plt.cm.spectral(np.linspace(0,1.7,21)))
+ax1.set_prop_cycle('color',plt.cm.spectral(np.linspace(0,1.6,21)))
+ax2.set_prop_cycle('color',plt.cm.spectral(np.linspace(0,1.6,21)))
 
 for i, feature in enumerate(test_features):
-    ax1.scatter(x=k_values, y=mse_dict[feature], label=feature)
-    ax2.plot(k_values, mse_dict[feature], label=feature)
+    ax1.scatter(x=k_values, y=rmse_dict[feature], label=feature)
+    ax2.plot(k_values, rmse_dict[feature], label=feature)
     
-ax1.legend(loc='center right', bbox_to_anchor=(1.25, 0.5))
+ax1.legend(loc='center right', bbox_to_anchor=(1.35, 0.5))
 ax1.set_xlabel('k Values')
 ax1.set_ylabel('Mean Squared Error') 
 ax1.set_xticks(k_values)
+ax1.set_facecolor("#f2f4f7")
 
-ax2.legend(loc='center right', bbox_to_anchor=(1.25, 0.5))
+ax2.legend(loc='center right', bbox_to_anchor=(1.35, 0.5))
 ax2.set_xlabel('k Values')
 ax2.set_ylabel('Mean Squared Error') 
 ax2.set_xticks(k_values)
+ax2.set_facecolor("#f2f4f7")
 
 plt.show()
 
@@ -218,8 +245,164 @@ plt.show()
 # *  Use the best 3 features from the previous step to train and test a multivariate k-nearest neighbors model using the default __k__ value.
 # *  Use the best 4 features from the previous step to train and test a multivariate k-nearest neighbors model using the default __k__ value.
 # *  Use the best 5 features from the previous step to train and test a multivariate k-nearest neighbors model using the default __k__ value.
+#   *  *Note, I've decided to take this out to the best 8 training features.*
 # *  Display all of the RMSE values.
+
+# In[12]:
+
+
+# Test knn_train_test() using all of the test features and a k value of 5
+rmse = knn_train_test_Mulitvariate_Model(df=numeric_cars_normalized, train_columns=test_features, 
+                    predict_column=predictive_feature, k_value=5)
+print('All test features rmse:', rmse)
+
+
+# In[13]:
+
+
+# Rank the test features by mean mse values from the plots above
+rmse_by_feature = pd.DataFrame(data=rmse_dict)
+rmse_mean_by_feature = rmse_by_feature.mean()
+rmse_mean_by_feature.sort_values(inplace=True)
+print('\t-mean rmse rankings-')
+rmse_mean_by_feature
+
+
+# In[14]:
+
+
+# Just becasue I'm curious I'm going to get the min() RMSE for each feature
+# I want to see how closely it coorelates to the ranking above
+rmse_min_by_feature = rmse_by_feature.min()
+rmse_min_by_feature.sort_values(inplace=True)
+print('\t-min rmse rankings-')
+rmse_min_by_feature
+
+
+# #### Training Features Ranked By RMSE
+# The training features have been ranked both by mean() & min() RMSE values.  It is interesting to see that the top 5 five features are the same via both ranking methods.  The exact sequence of the top five varies a bit.  As a result the next step will be duplicated for both top 5 rankings.  The top 3 modles that yields the lowest RMSQ will be used in the next evaluation.
+
+# In[15]:
+
+
+# Use the best 2, 3, ... 8 features from the mean ranking step to train and 
+# test a multivariate k-nearest neighbors model using the default k value (5).
+# Then display all of the RMSE values.
+
+print('**Training Set Evalution using the min rankings**\n')
+
+training_features_lst = []
+RMSE = []
+feature_count = []
+for i, n in enumerate(range(2,9)):
+    feature_count.append(n)
+    training_features = rmse_min_by_feature.index[:n].tolist()
+    training_features_lst.append(' - '.join(training_features))
+    RMSE.append(knn_train_test_Mulitvariate_Model(df=numeric_cars_normalized, train_columns=training_features, 
+                    predict_column=predictive_feature, k_value=5))
+    
+min_ranking_eval_set = pd.DataFrame({'feature_cnt': feature_count, 'features': training_features_lst, 'RMSE': RMSE})
+min_ranking_eval_set.sort_values('RMSE', inplace=True)
+min_ranking_eval_set
+
+
+# In[16]:
+
+
+# Use the best 2, 3, ... 8 features from the mean ranking step to train and 
+# test a multivariate k-nearest neighbors model using the default k value (5).
+# Then display all of the RMSE values.
+
+print('**Training Set Evalution using the mean rankings**\n')
+feature_count = []
+training_features_lst = []
+RMSE = []
+for i, n in enumerate(range(2,9)):
+    feature_count.append(n)
+    training_features = rmse_mean_by_feature.index[:n].tolist()
+    training_features_lst.append(' - '.join(training_features))
+    RMSE.append(knn_train_test_Mulitvariate_Model(df=numeric_cars_normalized, train_columns=training_features, 
+                    predict_column=predictive_feature, k_value=5))
+    
+mean_ranking_eval_set = pd.DataFrame({'feature_cnt': feature_count, 'features': training_features_lst, 'RMSE': RMSE})
+mean_ranking_eval_set.sort_values('RMSE', inplace=True)
+mean_ranking_eval_set
+
 
 # ## <font color=blue>05 Hyperparameter Tuning</font>
 # *  For the top 3 models in the last step, vary the hyperparameter value from __1__ to __25__ and plot the resulting RMSE values.
 # *  Which __k__ value is optimal for each model? How different are the __k__ values and what do you think accounts for the differences?
+
+# In[17]:
+
+
+# Optimize the hyperparameter (k) for the top 3 models
+
+rmse_dict = {}
+
+for n in range(3):
+    feature_cnt = min_ranking_eval_set.iloc[n]['feature_cnt']
+    features = rmse_min_by_feature.index[:feature_cnt].tolist()
+    # instantiate mse list
+    rmse = []
+    
+    for k_value in range(1,50):
+        rmse.append(knn_train_test_Mulitvariate_Model(df=numeric_cars_normalized, train_columns=features, 
+                    predict_column=predictive_feature, k_value=k_value))
+        
+    rmse_dict[min_ranking_eval_set.iloc[n]['features']] = rmse
+
+
+# In[18]:
+
+
+rmse_by_feature = pd.DataFrame(data=rmse_dict)
+rmse_by_feature['k_value'] = [x for x in range(1,50)]
+rmse_by_feature.head(5)
+
+
+# In[19]:
+
+
+# Plot the k values versus RMSE to visualize which model works best 
+# and at what k value
+
+model_features = rmse_by_feature.columns.tolist()
+model_features.remove('k_value')
+
+matplotlib.rc('legend', fontsize=12)
+fig = plt.figure(figsize=(12,20))
+ax1 = fig.add_subplot(2,1,1)
+ax2 = fig.add_subplot(2,1,2)
+
+ax1.set_prop_cycle('color',plt.cm.spectral(np.linspace(0.25,1.0,3)))
+ax2.set_prop_cycle('color',plt.cm.spectral(np.linspace(0.25,1.0,3)))
+
+for i, features in enumerate(model_features):
+    ax1.scatter(x=rmse_by_feature['k_value'], y=rmse_by_feature[features], label=features)
+    ax2.plot(rmse_by_feature['k_value'], rmse_by_feature[features], label=features)
+    
+ax1.set_xlabel('k Values')
+ax1.set_ylabel('Mean Squared Error') 
+ax1.set_facecolor("#f2f4f7")
+
+ax2.legend(loc='upper center', bbox_to_anchor=(0.5, 1.14))
+ax2.set_xlabel('k Values')
+ax2.set_ylabel('Mean Squared Error') 
+ax2.set_facecolor("#f2f4f7")
+
+plt.show()
+
+
+# In[20]:
+
+
+# Display the optimal k values for each model
+
+for features in model_features:
+    k_at_RMSE_min = rmse_by_feature['k_value'][rmse_by_feature[features] == rmse_by_feature[features].min()]
+    print('Model:', features)
+    print('\tOptimal K value:', k_at_RMSE_min.values[0])
+    print('\tMin RMSE:', rmse_by_feature[features].min())
+    print('\n')
+
