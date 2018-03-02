@@ -6,7 +6,10 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
-#from matplotlib.font_manager import FontProperties
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import cross_val_score, KFold
+from sklearn.neighbors.regression import KNeighborsRegressor
 ```
 
 ## <font color=blue>01 Introduction to the data set</font> 
@@ -276,10 +279,24 @@ numeric_cars.head(10)
 *  Explore the missing value counts for the other numeric columns and handle any missing values.
 *  Of the columns you decided to keep, normalize the numeric ones so all values range from __0__ to __1__.
 
-### Note...
-I struggled quite a bit with this section.  Somehow when I was cleaning my dataset I ended up with 201 entires, 0 to 204.  Which meant I had 3 empty rows *(I think)*; I'm still trying to make sence of it.  Take a look a the cell below with the __FinalDataCheck__ tag.  It resulted in the following exception: __ValueError: Input contains NaN, infinity or a value too large for dtype('float64')__  when I was trying to fit the data.  I was given some great help from the stackoverflow community, see this [thread](https://stackoverflow.com/questions/49042340/valueerror-input-contains-nan-infinity-or-a-value-too-large-for-dtypefloat64).  I believe the problem originated in the __dropna_price__ cell, however, I'm still not positive yet.  The line of code in question is shown here:
+### Mein Kampf...
+I struggled quite a bit with this section.  Somehow when I was cleaning my dataset I ended up with 201 entires, 0 to 204.  Which meant I had 3 empty rows *(I think)*; I'm still trying to make sence of it.  Take a look a the cell below with the __FinalDataCheck__ tag.  It resulted in the following exception: __ValueError: Input contains NaN, infinity or a value too large for dtype('float64')__  when I was trying to fit the data.  I was given some great help from the stackoverflow community, see this [stackoverflow thread](https://stackoverflow.com/questions/49042340/valueerror-input-contains-nan-infinity-or-a-value-too-large-for-dtypefloat64).  I believe the problem originated in the __dropna_price__ cell, however, I'm still not positive yet.  The line of code in question is shown here:
 
 > numeric_cars.dropna(subset=['price'], inplace=True)
+
+
+The explaination I was offered does an excellent job of describing what occured when I was cleaning my data that created the problem.  Here's the quote:
+> The code from the question has two problems that I see, one of them is that you are using directly pandas dataframes, when you do that and pass them to knn, it will try to operate with the dataframe or series directly. If you debug the code and check the dataframe.shape, you will see something like (201,) instead of (201,1) that you would expect. That could cause some trouble sometimes, so it is recommended that you use df.values.reshape(-1,1). values will transform them to numpy arrays, and reshape will make sure the shape of the array has 1 column and the -1 makes sure the rest are rows.  The other problem is related to the data cleaning you did, it will remove some rows, as you pointed out, 3 of them, actually, but the index are still there, when you use permutation, python still finds them and then uses the index, that are the 'nan' that you removed previously. Another solution would be to reindex your dataframe so you make sure this does not happens, as an additional sanitization step, I didn't try it, though. – OscarD
+
+However, it does not explain how I can remove those 3 empty indexes.  That is somthing I'm going to pursue in the near future.  The short term fix is, as @OscarD recommended, to comment out the following lines of code:
+
+> \# Randomly resorts the DataFrame to mitiate sampling bias
+
+> np.random.seed(1)
+
+>df = df.loc[np.random.permutation(len(df))]
+
+The trouble with this solution, is it introduces sampling bias into my analysis.  This is not satisfactory to me, and as I said, I definately intend to circle back to this and figure out how to remove those 3 empty indexes.
 
 
 ```python
@@ -917,9 +934,6 @@ data_verification
 
 
 ```python
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.metrics import mean_squared_error
-
 def knn_train_test_Univariate(df, train_columns, predict_column, k_value):
     # Randomly resorts the DataFrame to mitiate sampling bias
     # np.random.seed(1)
@@ -990,20 +1004,20 @@ fig = plt.figure(figsize=(12,20))
 ax1 = fig.add_subplot(2,1,1)
 ax2 = fig.add_subplot(2,1,2)
 
-ax1.set_prop_cycle('color',plt.cm.spectral(np.linspace(0,1.6,21)))
-ax2.set_prop_cycle('color',plt.cm.spectral(np.linspace(0,1.6,21)))
+ax1.set_prop_cycle('color',plt.cm.spectral(np.linspace(0,1.3,21)))
+ax2.set_prop_cycle('color',plt.cm.spectral(np.linspace(0,1.3,21)))
 
 for i, feature in enumerate(test_features):
     ax1.scatter(x=k_values, y=rmse_dict[feature], label=feature)
     ax2.plot(k_values, rmse_dict[feature], label=feature)
     
-ax1.legend(loc='center right', bbox_to_anchor=(1.35, 0.5))
+# ax1.legend(loc='center right', bbox_to_anchor=(1.35, 1.5))
 ax1.set_xlabel('k Values')
 ax1.set_ylabel('Mean Squared Error') 
 ax1.set_xticks(k_values)
 ax1.set_facecolor("#f2f4f7")
 
-ax2.legend(loc='center right', bbox_to_anchor=(1.35, 0.5))
+ax2.legend(loc='center right', bbox_to_anchor=(1.35, 1.09))
 ax2.set_xlabel('k Values')
 ax2.set_ylabel('Mean Squared Error') 
 ax2.set_xticks(k_values)
@@ -1029,7 +1043,7 @@ plt.show()
 
 
 ```python
-# Test knn_train_test() using all of the test features and a k value of 5
+# Test knn_train_test() using all of the test features and the "default" k value of 10
 rmse = knn_train_test_Mulitvariate_Model(df=numeric_cars_normalized, train_columns=test_features, 
                     predict_column=predictive_feature, k_value=5)
 print('All test features rmse:', rmse)
@@ -1472,4 +1486,510 @@ for features in model_features:
     	Min RMSE: 1709.5768035
     
     
+
+
+## <font color=blue>06 k-Fold Validation</font>
+*  Create a new function called knn_kfold_validation(), it should use apply a k nearest nieghbors fir with a k-fold cross validation instead of test/train validation.
+*  Using the k-fold validation repeat the model optimization and see how your results compare to the test/train validation
+  *  Find the top 8 univariate training features
+  *  Then, determine which are the top three training combinations of features to build the price prediction model.
+  *  Determine the optimal k value for each of the 3 top price prediction models.
+
+
+```python
+def knn_kfold_validation(df, train_columns, predict_column, folds, k_value):
+    # Instantiate the kFond class
+    kf = KFold(n_splits=folds, shuffle=True, random_state=1)
+    
+    # Instantiate the KNeighborsRegressor class
+    knn = KNeighborsRegressor(n_neighbors=k_value)
+    
+    # Use the cross_val_score() function to perform k-fold cross-validation
+    # This will calculate our mean squared error for each fold.
+    mses = cross_val_score(estimator=knn, X=df[train_columns], y=df[predict_column],
+            scoring="neg_mean_squared_error", cv=kf)
+    
+    # Take the absolute value and square root of the mses to get Root Mean Squared Error (RMSE)
+    mses_abs_sqrt = np.sqrt(np.absolute(mses))
+    
+    # Return the mean of all the RMSE values
+    # for the k-fold cross validation of the model
+    mean_rmse = np.mean(mses_abs_sqrt)
+    return mean_rmse
+```
+
+
+```python
+# In an effort to determine the optimal training features, each possible training
+# feature will be evaluated with k values ranging from 1 - 25.
+
+k_values = [k for k in range(1,26)]
+
+# instantiate mse dict
+rmse_dict = {}
+
+
+for feature in test_features:
+    # instantiate mse list
+    mean_rmse = []
+    
+    for k_value in k_values:
+        mean_rmse.append(knn_kfold_validation(df=numeric_cars_normalized, train_columns=[feature], 
+                    predict_column=predictive_feature, folds=10, k_value=k_value))
+        
+    rmse_dict[feature] = mean_rmse
+```
+
+
+```python
+# Visualize the univariate analysis to provide informaiton as to which the best training features are.
+
+matplotlib.rc('legend', fontsize=16)
+fig = plt.figure(figsize=(12,20))
+ax1 = fig.add_subplot(2,1,1)
+ax2 = fig.add_subplot(2,1,2)
+
+ax1.set_prop_cycle('color',plt.cm.spectral(np.linspace(0,1.3,21)))
+ax2.set_prop_cycle('color',plt.cm.spectral(np.linspace(0,1.3,21)))
+
+for i, feature in enumerate(test_features):
+    ax1.scatter(x=k_values, y=rmse_dict[feature], label=feature)
+    ax2.plot(k_values, rmse_dict[feature], label=feature)
+    
+# ax1.legend(loc='center right', bbox_to_anchor=(1.35, 1.5))
+ax1.set_xlabel('k Values')
+ax1.set_ylabel('Mean Squared Error') 
+ax1.set_xticks(k_values)
+ax1.set_facecolor("#f2f4f7")
+
+ax2.legend(loc='center right', bbox_to_anchor=(1.35, 1.09))
+ax2.set_xlabel('k Values')
+ax2.set_ylabel('Mean Squared Error') 
+ax2.set_xticks(k_values)
+ax2.set_facecolor("#f2f4f7")
+
+plt.show()
+```
+
+
+![png](output_29_0.png)
+
+
+
+```python
+# Rank the training features by mininum RMSE
+rmse_by_feature = pd.DataFrame(data=rmse_dict)
+min_rmse_by_feature = rmse_by_feature.min()
+min_rmse_by_feature.sort_values(inplace=True)
+print('\t-min rmse rankings-')
+min_rmse_by_feature
+```
+
+    	-min rmse rankings-
+
+
+
+
+
+    horsepower           3734.338728
+    curb_weight          3854.423917
+    width                4007.136578
+    wheel_base           4127.664023
+    highway_mpg          4130.257090
+    city_mpg             4247.140019
+    length               4837.140126
+    compression_ratio    5821.947865
+    bore                 6505.448116
+    normalized_losses    6671.869661
+    stroke               7264.390769
+    peak_rpm             7455.535073
+    height               7461.408715
+    dtype: float64
+
+
+
+
+```python
+# Use the best 2, 3, ... 8 features from the mean ranking step to train and 
+# test a multivariate k-nearest neighbors model using the default k value (5).
+# Then display all of the RMSE values.
+
+print('**Training Set Evalution using the min rankings**\n')
+
+training_features_lst = []
+RMSE = []
+feature_count = []
+for i, n in enumerate(range(2,9)):
+    feature_count.append(n)
+    training_features = min_rmse_by_feature.index[:n].tolist()
+    training_features_lst.append(' - '.join(training_features))
+    RMSE.append(knn_kfold_validation(df=numeric_cars_normalized, train_columns=training_features, 
+                    predict_column=predictive_feature, folds=10, k_value=10))
+                
+min_ranking_eval_set = pd.DataFrame({'feature_cnt': feature_count, 'features': training_features_lst, 'RMSE': RMSE})
+min_ranking_eval_set.sort_values('RMSE', inplace=True)
+min_ranking_eval_set
+```
+
+    **Training Set Evalution using the min rankings**
+    
+
+
+
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>RMSE</th>
+      <th>feature_cnt</th>
+      <th>features</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>3265.309896</td>
+      <td>3</td>
+      <td>horsepower - curb_weight - width</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>3418.902452</td>
+      <td>2</td>
+      <td>horsepower - curb_weight</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3766.670507</td>
+      <td>4</td>
+      <td>horsepower - curb_weight - width - wheel_base</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3784.966643</td>
+      <td>6</td>
+      <td>horsepower - curb_weight - width - wheel_base ...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>3791.335778</td>
+      <td>7</td>
+      <td>horsepower - curb_weight - width - wheel_base ...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3819.457879</td>
+      <td>5</td>
+      <td>horsepower - curb_weight - width - wheel_base ...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>3965.200668</td>
+      <td>8</td>
+      <td>horsepower - curb_weight - width - wheel_base ...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+# Optimize the hyperparameter (k) for the top 3 models
+
+rmse_dict = {}
+
+for n in range(3):
+    feature_cnt = min_ranking_eval_set.iloc[n]['feature_cnt']
+    features = rmse_min_by_feature.index[:feature_cnt].tolist()
+    # instantiate rmse list
+    rmse = []
+    
+    for k_value in range(1,50):
+        rmse.append(knn_kfold_validation(df=numeric_cars_normalized, train_columns=training_features, 
+                    predict_column=predictive_feature, folds=10, k_value=k_value))
+        
+    rmse_dict[min_ranking_eval_set.iloc[n]['features']] = rmse
+```
+
+
+
+
+    {'horsepower - curb_weight': [3052.4334355552737,
+      2904.6885925928773,
+      3206.5385977237083,
+      3460.7484429182878,
+      3457.9233619400029,
+      3654.4370868728729,
+      3747.1570883354739,
+      3839.5741953420788,
+      3925.7263208954037,
+      3965.2006682508754,
+      3972.1073252556766,
+      4031.4940488861694,
+      4138.7323240041542,
+      4213.0165116133894,
+      4207.3174457916857,
+      4234.7492101146781,
+      4246.1998696845176,
+      4311.8818279840807,
+      4358.8339521027838,
+      4394.2420970954427,
+      4463.4118102549455,
+      4512.5413339409815,
+      4537.208582063201,
+      4533.7341854089973,
+      4583.1135775390421,
+      4641.3392052832442,
+      4681.3081159810099,
+      4720.1366809526553,
+      4746.182354699029,
+      4759.8471571225664,
+      4769.4655364752498,
+      4775.5296176932106,
+      4796.0419669324328,
+      4816.2348481355712,
+      4823.0544604404331,
+      4856.0042185020266,
+      4877.8933680734553,
+      4890.1158474886042,
+      4905.3152915102237,
+      4903.4926402442343,
+      4918.7388092460824,
+      4932.6151001670187,
+      4954.8564910672267,
+      4978.4606381209678,
+      5016.2778654812009,
+      5034.580000386266,
+      5036.4834866150222,
+      5043.5412594898171,
+      5050.6595674914233],
+     'horsepower - curb_weight - width': [3052.4334355552737,
+      2904.6885925928773,
+      3206.5385977237083,
+      3460.7484429182878,
+      3457.9233619400029,
+      3654.4370868728729,
+      3747.1570883354739,
+      3839.5741953420788,
+      3925.7263208954037,
+      3965.2006682508754,
+      3972.1073252556766,
+      4031.4940488861694,
+      4138.7323240041542,
+      4213.0165116133894,
+      4207.3174457916857,
+      4234.7492101146781,
+      4246.1998696845176,
+      4311.8818279840807,
+      4358.8339521027838,
+      4394.2420970954427,
+      4463.4118102549455,
+      4512.5413339409815,
+      4537.208582063201,
+      4533.7341854089973,
+      4583.1135775390421,
+      4641.3392052832442,
+      4681.3081159810099,
+      4720.1366809526553,
+      4746.182354699029,
+      4759.8471571225664,
+      4769.4655364752498,
+      4775.5296176932106,
+      4796.0419669324328,
+      4816.2348481355712,
+      4823.0544604404331,
+      4856.0042185020266,
+      4877.8933680734553,
+      4890.1158474886042,
+      4905.3152915102237,
+      4903.4926402442343,
+      4918.7388092460824,
+      4932.6151001670187,
+      4954.8564910672267,
+      4978.4606381209678,
+      5016.2778654812009,
+      5034.580000386266,
+      5036.4834866150222,
+      5043.5412594898171,
+      5050.6595674914233],
+     'horsepower - curb_weight - width - wheel_base': [3052.4334355552737,
+      2904.6885925928773,
+      3206.5385977237083,
+      3460.7484429182878,
+      3457.9233619400029,
+      3654.4370868728729,
+      3747.1570883354739,
+      3839.5741953420788,
+      3925.7263208954037,
+      3965.2006682508754,
+      3972.1073252556766,
+      4031.4940488861694,
+      4138.7323240041542,
+      4213.0165116133894,
+      4207.3174457916857,
+      4234.7492101146781,
+      4246.1998696845176,
+      4311.8818279840807,
+      4358.8339521027838,
+      4394.2420970954427,
+      4463.4118102549455,
+      4512.5413339409815,
+      4537.208582063201,
+      4533.7341854089973,
+      4583.1135775390421,
+      4641.3392052832442,
+      4681.3081159810099,
+      4720.1366809526553,
+      4746.182354699029,
+      4759.8471571225664,
+      4769.4655364752498,
+      4775.5296176932106,
+      4796.0419669324328,
+      4816.2348481355712,
+      4823.0544604404331,
+      4856.0042185020266,
+      4877.8933680734553,
+      4890.1158474886042,
+      4905.3152915102237,
+      4903.4926402442343,
+      4918.7388092460824,
+      4932.6151001670187,
+      4954.8564910672267,
+      4978.4606381209678,
+      5016.2778654812009,
+      5034.580000386266,
+      5036.4834866150222,
+      5043.5412594898171,
+      5050.6595674914233]}
+
+
+
+
+```python
+rmse_by_feature = pd.DataFrame(data=rmse_dict)
+rmse_by_feature['k_value'] = [x for x in range(1,50)]
+rmse_by_feature.head(5)
+```
+
+
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>horsepower - curb_weight</th>
+      <th>horsepower - curb_weight - width</th>
+      <th>horsepower - curb_weight - width - wheel_base</th>
+      <th>k_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3052.433436</td>
+      <td>3052.433436</td>
+      <td>3052.433436</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2904.688593</td>
+      <td>2904.688593</td>
+      <td>2904.688593</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3206.538598</td>
+      <td>3206.538598</td>
+      <td>3206.538598</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3460.748443</td>
+      <td>3460.748443</td>
+      <td>3460.748443</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>3457.923362</td>
+      <td>3457.923362</td>
+      <td>3457.923362</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+
+```python
+# Plot the k values versus RMSE to visualize which model works best 
+# and at what k value
+
+model_features = rmse_by_feature.columns.tolist()
+model_features.remove('k_value')
+
+matplotlib.rc('legend', fontsize=12)
+fig = plt.figure(figsize=(12,20))
+ax1 = fig.add_subplot(2,1,1)
+ax2 = fig.add_subplot(2,1,2)
+
+ax1.set_prop_cycle('color',plt.cm.spectral(np.linspace(0.25,1.0,3)))
+ax2.set_prop_cycle('color',plt.cm.spectral(np.linspace(0.25,1.0,3)))
+
+for i, features in enumerate(model_features):
+    ax1.scatter(x=rmse_by_feature['k_value'], y=rmse_by_feature[features], label=features)
+    ax2.plot(rmse_by_feature['k_value'], rmse_by_feature[features], label=features)
+    
+ax1.set_xlabel('k Values')
+ax1.set_ylabel('Mean Squared Error') 
+ax1.set_facecolor("#f2f4f7")
+
+ax2.legend(loc='upper center', bbox_to_anchor=(0.5, 1.14))
+ax2.set_xlabel('k Values')
+ax2.set_ylabel('Mean Squared Error') 
+ax2.set_facecolor("#f2f4f7")
+
+plt.show()
+```
+
+
+![png](output_34_0.png)
 
