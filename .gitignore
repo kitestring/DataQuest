@@ -118,6 +118,7 @@ PyDev.txt
 JEOPARDY_QUESTIONS1.json
 /DataQuestAnswers
 /DataQuestAnswers_Playing
+/PandasOnRay
 
 # Eclipse 
 *.metadata
