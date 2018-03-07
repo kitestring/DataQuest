@@ -105,3 +105,5 @@ Unfortunately, the sheer volume and size of the raw csv files used, vastly excee
         * cross_val_score
         * KFold
      1. Sumpy
+        * symbols
+        * limit
