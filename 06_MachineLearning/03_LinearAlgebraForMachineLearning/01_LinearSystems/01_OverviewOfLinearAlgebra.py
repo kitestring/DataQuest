@@ -1,3 +1,5 @@
+# See page 9 from math refresher notebook for more context
+
 import numpy as np
 import matplotlib.pyplot as plt
 import sympy
