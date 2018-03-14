@@ -115,3 +115,7 @@ Unfortunately, the sheer volume and size of the raw csv files used, vastly excee
      1. SumPy
         * symbols
         * limit
+     1. NumPy
+        * linalg.inv
+        * linalg.det
+        * dot
