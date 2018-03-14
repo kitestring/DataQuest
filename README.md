@@ -62,22 +62,26 @@ Unfortunately, the sheer volume and size of the raw csv files used, vastly excee
   
 ### 6. Maching Learning  
   1. Fundamentals
-     1. Model Testing using error metrics & simple validation
-     1. K-Nearest Neighbors
+     1. Introduction to K-Nearest Neighbors
+     1. Evaluating Model Performance
      1. Multivariate K-Nearest Neighbors
      1. Hyperparameter Optimization
      1. Cross Validation
   1. Calculus For Machine Learning
+     1. Understanding Linear & Nonlinear Functions
+     1. Understanding Limits
+     1. Finding Extreme Points
+  1. Linear Algebra For Machine Learning
      1. Linear Systems
      1. Vectors
      1. Matrix Algebra
-     1. K-Nearest Neighbors
-     1. Multivariate K-Nearest Neighbors
+     1. Solution Sets
   1. Linear Regression For Machine Learning
-     1. Linear Regression
-     1. Select features for linear regression
-     1. Fit a model using gradient descent
+     1. The Linear Regression Model
+     1. Feature Selection
+     1. Gradient Descent
      1. Ordinary Least Squares
+     1. Processing & Transforming Features
   1. Machine Learning in Python Intermediate Course
      1. Logistic Regression
      1. Binary Classifiers
