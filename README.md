@@ -98,6 +98,10 @@ Unfortunately, the sheer volume and size of the raw csv files used, vastly excee
      1. ID3 algorithm
      1. apply & tweak decision trees
      1. random forests (F-Ratio?)
+  1. Machine Learning Final Project
+     1. Data Cleaning
+     1. Preparing the features
+     1. Making Predictions
   1. Major Python Libraries Learned in the __Machine Learning__ Course
      1. scipy.spatial 
         * distance
