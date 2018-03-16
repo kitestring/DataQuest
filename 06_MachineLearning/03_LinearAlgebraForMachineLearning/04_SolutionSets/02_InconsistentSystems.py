@@ -1,3 +1,5 @@
+# page 29 in the hand written notes for context
+
 import numpy as np
 import matplotlib.pyplot as plt
 import sympy
