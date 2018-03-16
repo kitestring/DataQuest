@@ -107,6 +107,8 @@ Unfortunately, the sheer volume and size of the raw csv files used, vastly excee
         * distance
      1. sklearn.neighbors 
         * KNeighborsRegressor
+     1. sklearn.linear_model 
+        * LinearRegression
      1. sklearn.metrics 
         * mean_squared_error
      1. sklearn.model_selection 
