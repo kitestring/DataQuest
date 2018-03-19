@@ -17,30 +17,24 @@ null_series = pd.Series(numerical_train.isnull().sum())
 # keep only the columns with no missing values, and assign the resulting Series object to full_cols_series
 full_cols_series = null_series[null_series==0]
 
-# Determine the correlation of each feature column to the target column
-train_subset = train[full_cols_series.index]
-corrmat = train_subset.corr()
-sorted_corrs = corrmat['SalePrice'].abs().sort_values()
-
-# Limit the check to features with a correlation to the SalePrice >= 0.3
-strong_corrs = sorted_corrs[sorted_corrs >= 0.3]
-
-# Drop the columns that exhibit a strong Colinearity
-final_corr_cols = strong_corrs.drop(['Garage Cars', 'TotRms AbvGrd'])
-
-# Check the data remaining dataset for missing values
-# test[final_corr_cols.index].info()
-# print('\n')
-
-# The preceding check shows that Garage Area has a single missing value
-# Since there's only only one that row will be dropped
-clean_test = test[final_corr_cols.index].dropna(subset=['Garage Area']).copy()
+features  = ['Wood Deck SF', 'Open Porch SF', 'Fireplaces', 'Full Bath',
+       '1st Flr SF', 'Garage Area', 'Gr Liv Area', 'Overall Qual']
 
 
-# Build a linear regression model using the features in features.
-# Calculate the RMSE on the test and train sets.
-# Assign the train RMSE to train_rmse and the test RMSE to test_rmse.
-features = final_corr_cols.drop(['SalePrice']).index
-target = 'SalePrice'
+unit_train = (train[features] - train[features].min()) / (train[features].max() - train[features].min())
 
 
+print('Rescaling Check\n\nMax Values')
+print(unit_train.max())
+
+print('\n\nMin Values')
+print(unit_train.min())
+
+sorted_vars = unit_train.var().sort_values()
+print('\n\nSorted Variance Values')
+print(sorted_vars)
+
+print('\n\nFeatures with a variance > 0.015')
+features  = ['Wood Deck SF', 'Fireplaces', 'Full Bath',
+       '1st Flr SF', 'Garage Area', 'Gr Liv Area', 'Overall Qual']
+print(features)

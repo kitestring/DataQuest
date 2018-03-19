@@ -29,33 +29,34 @@ strong_corrs = sorted_corrs[sorted_corrs >= 0.3]
 # Drop the columns that exhibit a strong Colinearity
 final_corr_cols = strong_corrs.drop(['Garage Cars', 'TotRms AbvGrd'])
 
-# Check the data remaining dataset for missing values
-# test[final_corr_cols.index].info()
-# print('\n')
-
 # The preceding check shows that Garage Area has a single missing value
 # Since there's only only one that row will be dropped
 clean_test = test[final_corr_cols.index].dropna(subset=['Garage Area']).copy()
 
+# The final cleaning step is to remove features with variance > 0.015
+features  = ['Wood Deck SF', 'Fireplaces', 'Full Bath',
+       '1st Flr SF', 'Garage Area', 'Gr Liv Area', 'Overall Qual']
 
-# Build a linear regression model using the features in features.
-# Calculate the RMSE on the test and train sets.
-# Assign the train RMSE to train_rmse and the test RMSE to test_rmse.
-features = final_corr_cols.drop(['SalePrice']).index
 target = 'SalePrice'
+
+# Build a linear regression model using the remaining features.
+# Calculate the RMSE on the test and train sets.
+# Assign the train RMSE to train_rmse_2 and the test RMSE to test_rmse_2.
+
 lr = LinearRegression()
+
 lr.fit(train[features], train[target])
+train_predict_2 = lr.predict(train[features])
+test_predict_2 = lr.predict(clean_test[features])
 
-predict_train = lr.predict(train[features])
-predict_test = lr.predict(clean_test[features])
+train_mse_2 = mean_squared_error(y_true=train[target], y_pred=train_predict_2)
+test_mse_2 = mean_squared_error(y_true=clean_test[target], y_pred=test_predict_2)
 
-train_mse = mean_squared_error(y_true=train[target], y_pred=predict_train)
-train_rmse = np.sqrt(train_mse)
-print('train_rmse:', train_rmse)
- 
-test_mse = mean_squared_error(y_true=clean_test[target], y_pred=predict_test)
-test_rmse = np.sqrt(test_mse)
-print('test_rmse:', test_rmse)
+train_rmse_2 = np.sqrt(train_mse_2)
+test_rmse_2 = np.sqrt(test_mse_2)
 
-# train_rmse: 34173.9762919
-# test_rmse: 41032.0261202
+print('train_rmse_2:', train_rmse_2)
+print('test_rmse_2:', test_rmse_2)
+
+# train_rmse_2: 34372.6967078
+# test_rmse_2: 40591.4270244
