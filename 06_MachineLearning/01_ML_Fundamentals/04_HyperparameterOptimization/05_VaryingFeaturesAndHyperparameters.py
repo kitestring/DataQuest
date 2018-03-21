@@ -8,7 +8,7 @@ test_df = pd.read_csv('dc_airbnb_test.csv')
 features = train_df.columns.tolist()
 features.remove('price')
 
-hyper_params = [x for x in range(1,21)]
+hyper_params = [X for X in range(1,21)]
 mse_values = []
 k_mse_values = {}
 
@@ -23,7 +23,7 @@ for i, k_value in enumerate(hyper_params):
 min_mse = min(mse_values)
 print('\nWhen k={kv}, the mse value is at the minimum'.format(kv=k_mse_values[min_mse]))
     
-plt.scatter(x=hyper_params, y=mse_values)
+plt.scatter(X=hyper_params, y=mse_values)
 plt.show()
 
 # Best k value is:

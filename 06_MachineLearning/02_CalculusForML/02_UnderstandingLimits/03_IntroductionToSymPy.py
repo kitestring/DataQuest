@@ -1,11 +1,11 @@
 import sympy
 
-# Import SymPy and declare x and y as SymPy symbols.
-x,y = sympy.symbols('x y')
-y = x**2 + 1
+# Import SymPy and declare X and y as SymPy symbols.
+X,y = sympy.symbols('X y')
+y = X**2 + 1
 
 print(y)
 
-y = 3*x
+y = 3*X
 
 print(y)

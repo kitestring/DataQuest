@@ -11,11 +11,11 @@ test_df = dc_listings.iloc[2792:].copy()
 def predict_price(new_listing):
     ## DataFrame.copy() performs a deep copy
     temp_df = train_df.copy()
-    temp_df['distance'] = temp_df['accommodates'].apply(lambda x: np.abs(x - new_listing))
+    temp_df['distance'] = temp_df['accommodates'].apply(lambda X: np.abs(X - new_listing))
     temp_df = temp_df.sort_values('distance')
     nearest_neighbor_prices = temp_df.iloc[0:5]['price']
     predicted_price = nearest_neighbor_prices.mean()
     return(predicted_price)
 
-test_df['predicted_price'] = test_df['accommodates'].apply(lambda x: predict_price(x))
+test_df['predicted_price'] = test_df['accommodates'].apply(lambda X: predict_price(X))
 print(test_df[['predicted_price', 'price']])

@@ -1,7 +1,7 @@
 # Generate 3 scatter plots in the same column:
-# The first plot should plot the Garage Area column on the x-axis against the SalePrice column on the y-axis.
-# The second one should plot the Gr Liv Area column on the x-axis against the SalePrice column on the y-axis.
-# The third one should plot the Overall Cond column on the x-axis against the SalePrice column on the y-axis.
+# The first plot should plot the Garage Area column on the X-axis against the SalePrice column on the y-axis.
+# The second one should plot the Gr Liv Area column on the X-axis against the SalePrice column on the y-axis.
+# The third one should plot the Overall Cond column on the X-axis against the SalePrice column on the y-axis.
 # Read more about these 3 columns in the data documentation.
 
 import pandas as pd
@@ -28,8 +28,8 @@ ax1 = fig.add_subplot(3, 1, 1)
 ax2 = fig.add_subplot(3, 1, 2)
 ax3 = fig.add_subplot(3, 1, 3)
 
-train.plot(x="Garage Area", y="SalePrice", ax=ax1, kind="scatter")
-train.plot(x="Gr Liv Area", y="SalePrice", ax=ax2, kind="scatter")
-train.plot(x="Overall Cond", y="SalePrice", ax=ax3, kind="scatter")
+train.plot(X="Garage Area", y="SalePrice", ax=ax1, kind="scatter")
+train.plot(X="Gr Liv Area", y="SalePrice", ax=ax2, kind="scatter")
+train.plot(X="Overall Cond", y="SalePrice", ax=ax3, kind="scatter")
 
 plt.show()

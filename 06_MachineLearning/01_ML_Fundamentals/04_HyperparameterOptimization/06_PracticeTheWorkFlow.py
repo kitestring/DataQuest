@@ -7,7 +7,7 @@ test_df = pd.read_csv('dc_airbnb_test.csv')
 
 def grid_search_k(features):
 
-    hyper_params = [x for x in range(1,21)]
+    hyper_params = [X for X in range(1,21)]
     mse_values = []
     k_mse_values = {}
     
