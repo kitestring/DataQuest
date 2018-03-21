@@ -6,7 +6,7 @@ train_df = pd.read_csv('dc_airbnb_train.csv')
 test_df = pd.read_csv('dc_airbnb_test.csv')
 features = ['accommodates', 'bedrooms', 'bathrooms', 'number_of_reviews']
 
-hyper_params = [x for x in range(1,6)]
+hyper_params = [X for X in range(1,6)]
 mse_values = []
 
 for i, k in enumerate(hyper_params):

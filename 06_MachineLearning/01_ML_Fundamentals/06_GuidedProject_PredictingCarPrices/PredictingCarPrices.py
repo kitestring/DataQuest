@@ -259,7 +259,7 @@ def plot_RMSE_k_value_eval(training_features, k_values, rmse_dict, title,
     ax2.set_prop_cycle('color',plt.cm.spectral(np.linspace(0,1.3,21)))
 
     for i, feature in enumerate(training_features):
-        ax1.scatter(x=k_values, y=rmse_dict[feature], label=feature)
+        ax1.scatter(x=X_values, y=rmse_dict[feature], label=feature)
         ax2.plot(k_values, rmse_dict[feature], label=feature)
 
     # ax1.legend(loc='center right', bbox_to_anchor=(1.35, 1.5))
@@ -383,7 +383,7 @@ rmse_univariate_k_eval_series
 
 # Create list containing list of 2, 3 ... 8 best features
 f = rmse_univariate_k_eval_series.index.tolist()
-best_feature_combinations = [f[:x] for x in range(2,9)]
+best_feature_combinations = [f[:x]Xfor x Xn range(2,9)]
 best_feature_combinations
 
 

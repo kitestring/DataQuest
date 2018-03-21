@@ -5,15 +5,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sympy as s
 
-x = np.linspace(-5,6,110)
+X = np.linspace(-5,6,110)
 
-c,y = s.symbols('x y')
-y = -2 * x + 3
+c,y = s.symbols('X y')
+y = -2 * X + 3
 
 fig = plt.figure()
 
-plt.plot(x,y)
-plt.title('This plots the slope of the tangent line at any x value.\nWhich is the derivative of the function.')
-plt.xlabel('x value')
+plt.plot(X,y)
+plt.title('This plots the slope of the tangent line at any X value.\nWhich is the derivative of the function.')
+plt.xlabel('X value')
 plt.ylabel('slope')
 plt.show()
