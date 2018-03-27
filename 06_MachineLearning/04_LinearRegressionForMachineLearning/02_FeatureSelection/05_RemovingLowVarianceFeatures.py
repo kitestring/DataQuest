@@ -1,7 +1,4 @@
 import pandas as pd
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
-import numpy as np
 
 data = pd.read_csv('AmesHousing.txt', delimiter='\t')
 train = data.iloc[:1460]
