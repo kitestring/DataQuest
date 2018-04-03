@@ -1,5 +1,4 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 
 admissions = pd.read_csv("admissions.csv")

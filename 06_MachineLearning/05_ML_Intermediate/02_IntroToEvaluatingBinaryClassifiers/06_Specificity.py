@@ -7,7 +7,7 @@ admissions = pd.read_csv("admissions.csv")
 # instantiate LogisticRegression object
 model = LogisticRegression()
 
-# Train & Test LogisticRegression model
+# Train LogisticRegression model
 model.fit(admissions[["gpa"]], admissions["admit"])
 labels = model.predict(admissions[["gpa"]])
 admissions['predicted_label'] = labels
