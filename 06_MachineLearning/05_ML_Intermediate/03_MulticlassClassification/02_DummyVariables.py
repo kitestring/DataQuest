@@ -1,7 +1,7 @@
 import pandas as pd
 
 # read csv files
-cars = pd.read_csv('cars.csv')
+cars = pd.read_csv('auto.csv')
 
 # create dummy variables for the categorical variables
 dummy_cylinders = pd.get_dummies(cars["cylinders"], prefix="cyl")

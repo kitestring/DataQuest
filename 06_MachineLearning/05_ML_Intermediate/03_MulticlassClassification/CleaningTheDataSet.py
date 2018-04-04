@@ -17,4 +17,4 @@ cars = cars.dropna(axis=0, how='any')
 cars = cars.reset_index(drop=True)
 
 # write the df to csv, as is
-cars.to_csv('cars.csv',index=False)
+cars.to_csv('auto.csv',index=False)
