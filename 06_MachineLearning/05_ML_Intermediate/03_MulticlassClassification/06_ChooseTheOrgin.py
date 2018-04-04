@@ -34,12 +34,16 @@ test = shuffled_cars.iloc[seventy_percent:]
 # Add each model to the models dictionary with the following structure:
     # key: origin value (1, 2, or 3),
     # value: relevant LogistcRegression model instance.
+# For each origin value from unique_origins:
+    # Use the LogisticRegression predict_proba function to return the 
+    # 3 lists of predicted probabilities for the test set and add to the testing_probs Dataframe.
 
 features = [c for c in train.columns if c.startswith("cyl") or c.startswith("year")]
 
 unique_origins = cars['origin'].unique()
 unique_origins.sort()
 models = {}
+predictions = {}
 
 for origin in unique_origins:
     # Generate boolean list based upon current target
@@ -48,23 +52,22 @@ for origin in unique_origins:
     # instantiate LogisticRegression object
     model = LogisticRegression()
     
-    # Train LogisticRegression model
+    # Train LogisticRegression model & Make Predictions
     model.fit(train[features], target)
     
-    # Add the model to the dictionary
+    # Recall that the predict_proba function returns a 2 dimensional nd array
+    # the 0th column is the probability that the prediction is false
+    # the 1st column is the probability that the prediction is true
+    pred_probs = model.predict_proba(test[features])[:,1]
+    
+    # Add the model to the dictionaries
     models[origin] = model
+    predictions[origin] = pred_probs
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+testing_probs = pd.DataFrame(data=predictions)  
+
+# Classify each observation in the test set using the testing_probs Dataframe.
+# Assign the predicted origins to predicted_origins and use the print function to display it.  
+predicted_origins = testing_probs.idxmax(axis=1)
+
+print(predicted_origins) 

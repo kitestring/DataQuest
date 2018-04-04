@@ -1,6 +1,8 @@
+# origin -- Integer and Categorical. 1: North America, 2: Europe, 3: Asia.
+
 import pandas as pd
 
-cars = pd.read_csv('cars.csv')
+cars = pd.read_csv('auto.csv')
 print(cars.info())
 
 unique_cylinders = cars['cylinders'].unique()
