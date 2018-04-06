@@ -1,6 +1,6 @@
+import os
 import matplotlib.pyplot as plt
 import pandas as pd
-import os
 import numpy as np
 
 nba = pd.read_csv("nba_2013.csv")

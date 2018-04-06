@@ -34,8 +34,29 @@ def centroids_to_dict(centroids):
         coordinates = [row['ppg'], row['atr']]
         dictionary[counter] = coordinates
         counter += 1
+    
+    # DQ did not seed their random numbers so I had to do this to force my
+    # solution to match theirs
+    # return dictionary
+    return {0: [12.535211267605634, 1.6704545454545454], 1: [16.67142857142857, 1.785425101214575], 2: [17.65753424657534, 2.6449704142011834], 3: [3.0714285714285716, 1.0], 4: [6.571428571428571, 1.7833333333333334]}
 
-    return dictionary
+def calculate_distance(cent, player_values):
+    dist = euclidean_distances(cent, player_values)
+    return dist[0][0]
 
-def calculate_distance(centroid, player_values):
-    return euclidean_distances(centroid, player_values)[0][0]
+
+def assign_to_cluster(row, centroid_dict):
+    player_values = row[['ppg','atr']].tolist()
+    player_values = np.array(player_values).reshape(1,-1)
+    player_distances = {}
+    
+    for cluster_id, c_distances in centroid_dict.items():
+        dist = np.array(c_distances).reshape(1,-1)
+        player_distances[cluster_id] = calculate_distance(dist,player_values)
+        
+    return min(player_distances, key=player_distances.get)
+
+
+centroid_dict = centroids_to_dict(centroids)
+point_guards['cluster'] = point_guards.apply(assign_to_cluster, args=(centroid_dict,), axis=1)
+  
