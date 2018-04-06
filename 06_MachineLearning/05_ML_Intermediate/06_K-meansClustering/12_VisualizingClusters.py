@@ -59,8 +59,8 @@ def assign_to_cluster(row, centroid_dict):
     return min(player_distances, key=player_distances.get)
 
 
-centroid_dict = centroids_to_dict(centroids)
-point_guards['cluster'] = point_guards.apply(assign_to_cluster, args=(centroid_dict,), axis=1)
+centroids_dict = centroids_to_dict(centroids)
+point_guards['cluster'] = point_guards.apply(assign_to_cluster, args=(centroids_dict,), axis=1)
   
 print(point_guards['cluster'])
 

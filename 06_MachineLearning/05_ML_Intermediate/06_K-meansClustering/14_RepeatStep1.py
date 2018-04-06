@@ -58,13 +58,8 @@ def assign_to_cluster(row, centroid_dict):
         
     return min(player_distances, key=player_distances.get)
 
-# Here we assign each player to the randomly determined centriods
-# based upon which player is nearest in euclidean distance 
-centroid_dict = centroids_to_dict(centroids)
-point_guards['cluster'] = point_guards.apply(assign_to_cluster, args=(centroid_dict,), axis=1)
-
 # Visualizing clusters
-def visualize_clusters(df, num_clusters, title='K-Means Clustering',figure_no):
+def visualize_clusters(df, num_clusters, title, figure_no):
     colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k']
 
     for n in range(num_clusters):
@@ -76,20 +71,29 @@ def visualize_clusters(df, num_clusters, title='K-Means Clustering',figure_no):
     
     plot_file_name = os.path.splitext(os.path.basename(__file__))[0]+'_fig'+ figure_no +'.png'
     plt.savefig(plot_file_name, bbox_inches='tight')
-    plt.show()
+#     plt.show()
 
-# Next, we recalculate the centroids for each cluster by averaging 
-# the values in the cluster, in this case 'ppg' and 'atr'
+
 def recalculate_centroids(df):
     dictionary = {}
     for cluster_id in df['cluster'].unique().tolist():
         filtered_df = df[df['cluster']==cluster_id]
-        new_centroid = [np.average(filtered_df['ppg']), [np.average(filtered_df['atr'])]]
+        new_centroid = [np.average(filtered_df['ppg']), np.average(filtered_df['atr'])]
         dictionary[cluster_id] = new_centroid
         
     return dictionary
 
-centroids_dict = recalculate_centroids(point_guards)
-print(centroids_dict)
+# Here we assign each player to the randomly determined centriods
+# based upon which player is nearest in euclidean distance 
+centroid_dict_one = centroids_to_dict(centroids)
+point_guards['cluster'] = point_guards.apply(assign_to_cluster, args=(centroid_dict_one,), axis=1)
+visualize_clusters(point_guards, 5, "Initial Randomly Determined Centroids",'1')
+
+# Next, we recalculate the centroids for each cluster by averaging 
+# the values in the cluster, in this case 'ppg' and 'atr'
+centroids_dict_two = recalculate_centroids(point_guards)
+point_guards['cluster'] = point_guards.apply(assign_to_cluster, args=(centroids_dict_two,), axis=1)
+visualize_clusters(point_guards, 5, "Recalculated Centroids",'2')
+
                         
                         
