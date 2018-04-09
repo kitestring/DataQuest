@@ -1,3 +1,5 @@
+# pages 40-x in the hand written notes for context
+
 import pandas
 import matplotlib.pyplot as plt
 import os
