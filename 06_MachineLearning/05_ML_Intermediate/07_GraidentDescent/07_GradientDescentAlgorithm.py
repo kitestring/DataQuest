@@ -62,7 +62,7 @@ def gradient_descent(x, y, alpha=0.1, theta0=0, theta1=0):
     costs = [c]     # Lets store each update
     # Set a convergence threshold to find where the cost function in minimized
     # When the difference between the previous cost and current cost 
-    #        is less than this value we will say the parameters converged
+        # is less than this value we will say the parameters converged
     convergence_thres = 0.000001  
     cprev = c + 10   
     theta0s = [theta0]
@@ -94,4 +94,15 @@ def gradient_descent(x, y, alpha=0.1, theta0=0, theta1=0):
 
     return {'theta0': theta0, 'theta1': theta1, "costs": costs}
 
-print("Theta1 =", gradient_descent(pga.distance, pga.accuracy))
+descend =  gradient_descent(x=pga.distance, y=pga.accuracy, alpha=0.01, theta0=0, theta1=0)
+costs = descend["costs"]
+iterations = range(len(costs))
+plt.plot(iterations, costs)
+
+title = str(len(costs)) + " Iterations until convergence\nthreshold of 0.000001 achieved."
+plt.title(title)
+plt.xlabel('iteration')
+plt.ylabel('cost')
+plot_file_name = os.path.splitext(os.path.basename(__file__))[0]+'_fig1.png'
+plt.savefig(plot_file_name, bbox_inches='tight')
+plt.show()
