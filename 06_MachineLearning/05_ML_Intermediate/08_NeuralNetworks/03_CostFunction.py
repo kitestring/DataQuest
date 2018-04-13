@@ -43,7 +43,7 @@ def singlecost(X, y, theta):
     return cost
 
 # First observation's features and target
-x0 = X[0] # yes, this is redundant from earlier
+x0 = X[0] # yes, this is redundant from earlierwa
 y0 = y[0]
 
 first_cost = singlecost(x0, y0, theta_init)
