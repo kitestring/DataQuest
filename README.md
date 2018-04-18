@@ -97,7 +97,7 @@ Unfortunately, the sheer volume and size of the raw csv files used, vastly excee
      1. Information gain
      1. ID3 algorithm
      1. apply & tweak decision trees
-     1. random forests (F-Ratio?)
+     1. random forests
   1. Machine Learning Final Project
      1. Data Cleaning
      1. Preparing the features
