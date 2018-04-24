@@ -1,6 +1,6 @@
 <img src="https://avatars1.githubusercontent.com/u/18421630?s=400&u=d5c54d6323e38b78cf9115512b21647e80338ec0&v=4" width="48">
 
-# Self-Directed Data Science Bootcamp 
+# Data Science Massive Open Online Course 
 
 ## Below is a list of topics covered in meticulous detail.
 In an effort to transition my career from that of a Chemist & Data Automation Specialist to a Data Scientist, I followed the self-guided curriculum laid out by [DataQuest.io](https://www.dataquest.io/).  I elected to skip the first course as I was already very strong in the basics of python.  When I began, I already had 2+ years of Python/SQLite data extraction, cleansing, and analysis experience.  The code for each [DataQuest.io](https://www.dataquest.io/) course is included in this repo.
