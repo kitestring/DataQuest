@@ -130,3 +130,6 @@ client_settings_json.txt
 initializejsonfile.py
 chekoathtwovalidtime.py
 security.py
+
+# Don't need all the spark installation files
+09_WorkingWithLargeDataSets/01_SparkAndMapReduce/02_Project_SparkInstallationAndJupyterNotebookIntegration/spark/
