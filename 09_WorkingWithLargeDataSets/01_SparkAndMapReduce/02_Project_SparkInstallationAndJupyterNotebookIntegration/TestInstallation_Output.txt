@@ -1,0 +1,71 @@
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+18/04/26 16:49:28 INFO SparkContext: Running Spark version 1.6.2
+18/04/26 16:49:28 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+18/04/26 16:49:29 WARN Utils: Your hostname, mint18 resolves to a loopback address: 127.0.1.1; using 10.0.2.15 instead (on interface enp0s3)
+18/04/26 16:49:29 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+18/04/26 16:49:29 INFO SecurityManager: Changing view acls to: kkite
+18/04/26 16:49:29 INFO SecurityManager: Changing modify acls to: kkite
+18/04/26 16:49:29 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: Set(kkite); users with modify permissions: Set(kkite)
+18/04/26 16:49:29 INFO Utils: Successfully started service 'sparkDriver' on port 36627.
+18/04/26 16:49:29 INFO Slf4jLogger: Slf4jLogger started
+18/04/26 16:49:30 INFO Remoting: Starting remoting
+18/04/26 16:49:30 INFO Remoting: Remoting started; listening on addresses :[akka.tcp://sparkDriverActorSystem@10.0.2.15:38269]
+18/04/26 16:49:30 INFO Utils: Successfully started service 'sparkDriverActorSystem' on port 38269.
+18/04/26 16:49:30 INFO SparkEnv: Registering MapOutputTracker
+18/04/26 16:49:30 INFO SparkEnv: Registering BlockManagerMaster
+18/04/26 16:49:30 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-563ee7cd-be68-4a9f-b28a-3f43be078096
+18/04/26 16:49:30 INFO MemoryStore: MemoryStore started with capacity 511.1 MB
+18/04/26 16:49:30 INFO SparkEnv: Registering OutputCommitCoordinator
+18/04/26 16:49:30 WARN Utils: Service 'SparkUI' could not bind on port 4040. Attempting port 4041.
+18/04/26 16:49:30 INFO Utils: Successfully started service 'SparkUI' on port 4041.
+18/04/26 16:49:30 INFO SparkUI: Started SparkUI at http://10.0.2.15:4041
+18/04/26 16:49:30 INFO Executor: Starting executor ID driver on host localhost
+18/04/26 16:49:30 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 40791.
+18/04/26 16:49:30 INFO NettyBlockTransferService: Server created on 40791
+18/04/26 16:49:30 INFO BlockManagerMaster: Trying to register BlockManager
+18/04/26 16:49:30 INFO BlockManagerMasterEndpoint: Registering block manager localhost:40791 with 511.1 MB RAM, BlockManagerId(driver, localhost, 40791)
+18/04/26 16:49:30 INFO BlockManagerMaster: Registered BlockManager
+18/04/26 16:49:31 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 127.4 KB, free 127.4 KB)
+18/04/26 16:49:31 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 13.9 KB, free 141.3 KB)
+18/04/26 16:49:31 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on localhost:40791 (size: 13.9 KB, free: 511.1 MB)
+18/04/26 16:49:31 INFO SparkContext: Created broadcast 0 from textFile at NativeMethodAccessorImpl.java:-2
+18/04/26 16:49:31 INFO FileInputFormat: Total input paths to process : 1
+18/04/26 16:49:31 INFO SparkContext: Starting job: runJob at PythonRDD.scala:393
+18/04/26 16:49:31 INFO DAGScheduler: Got job 0 (runJob at PythonRDD.scala:393) with 1 output partitions
+18/04/26 16:49:31 INFO DAGScheduler: Final stage: ResultStage 0 (runJob at PythonRDD.scala:393)
+18/04/26 16:49:31 INFO DAGScheduler: Parents of final stage: List()
+18/04/26 16:49:31 INFO DAGScheduler: Missing parents: List()
+18/04/26 16:49:31 INFO DAGScheduler: Submitting ResultStage 0 (PythonRDD[2] at RDD at PythonRDD.scala:43), which has no missing parents
+18/04/26 16:49:31 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 5.3 KB, free 146.7 KB)
+18/04/26 16:49:31 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 3.4 KB, free 150.0 KB)
+18/04/26 16:49:31 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on localhost:40791 (size: 3.4 KB, free: 511.1 MB)
+18/04/26 16:49:31 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1006
+18/04/26 16:49:31 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (PythonRDD[2] at RDD at PythonRDD.scala:43)
+18/04/26 16:49:31 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks
+18/04/26 16:49:32 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0, localhost, partition 0,PROCESS_LOCAL, 2251 bytes)
+18/04/26 16:49:32 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)
+18/04/26 16:49:32 INFO HadoopRDD: Input split: file:/media/sf_DATAQUEST/09_WorkingWithLargeDataSets/01_SparkAndMapReduce/02_Project_SparkInstallationAndJupyterNotebookIntegration/recent-grads.csv:0+13436
+18/04/26 16:49:32 INFO deprecation: mapred.tip.id is deprecated. Instead, use mapreduce.task.id
+18/04/26 16:49:32 INFO deprecation: mapred.task.id is deprecated. Instead, use mapreduce.task.attempt.id
+18/04/26 16:49:32 INFO deprecation: mapred.task.is.map is deprecated. Instead, use mapreduce.task.ismap
+18/04/26 16:49:32 INFO deprecation: mapred.task.partition is deprecated. Instead, use mapreduce.task.partition
+18/04/26 16:49:32 INFO deprecation: mapred.job.id is deprecated. Instead, use mapreduce.job.id
+18/04/26 16:49:32 INFO PythonRunner: Times: total = 550, boot = 541, init = 9, finish = 0
+18/04/26 16:49:32 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 3764 bytes result sent to driver
+18/04/26 16:49:32 INFO DAGScheduler: ResultStage 0 (runJob at PythonRDD.scala:393) finished in 0.733 s
+18/04/26 16:49:32 INFO DAGScheduler: Job 0 finished: runJob at PythonRDD.scala:393, took 0.918554 s
+18/04/26 16:49:32 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 722 ms on localhost (1/1)
+18/04/26 16:49:32 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+18/04/26 16:49:32 INFO SparkContext: Invoking stop() from shutdown hook
+kkite@mint18 /media/sf_DATAQUEST/09_WorkingWithLargeDataSets/01_SparkAndMapReduce/02_Project_SparkInstallationAndJupyterNotebookIntegration $ 18/04/26 16:49:32 INFO SparkUI: Stopped Spark web UI at http://10.0.2.15:4041
+18/04/26 16:49:32 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+18/04/26 16:49:32 INFO MemoryStore: MemoryStore cleared
+18/04/26 16:49:32 INFO BlockManager: BlockManager stopped
+18/04/26 16:49:32 INFO BlockManagerMaster: BlockManagerMaster stopped
+18/04/26 16:49:32 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+18/04/26 16:49:32 INFO RemoteActorRefProvider$RemotingTerminator: Shutting down remote daemon.
+18/04/26 16:49:32 INFO SparkContext: Successfully stopped SparkContext
+18/04/26 16:49:32 INFO ShutdownHookManager: Shutdown hook called
+18/04/26 16:49:32 INFO ShutdownHookManager: Deleting directory /tmp/spark-af4cd538-ca50-49cc-a4b8-231cd6ff5770/pyspark-7ede5c5f-d22a-46f6-8e2b-a382df7f1ef1
+18/04/26 16:49:32 INFO ShutdownHookManager: Deleting directory /tmp/spark-af4cd538-ca50-49cc-a4b8-231cd6ff5770
+18/04/26 16:49:32 INFO RemoteActorRefProvider$RemotingTerminator: Remote daemon shut down; proceeding with flushing remote transports.
