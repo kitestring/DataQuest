@@ -133,3 +133,4 @@ security.py
 
 # Don't need all the spark installation files
 09_WorkingWithLargeDataSets/01_SparkAndMapReduce/02_Project_SparkInstallationAndJupyterNotebookIntegration/spark/
+Anaconda*.sh
